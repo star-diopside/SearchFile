@@ -1,4 +1,5 @@
 using System;
+using System.ComponentModel;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
@@ -110,7 +111,7 @@ namespace MyLib.CustomControls
             // 現在のヘッダー情報を取得する
             if (SendMessage(this.HeaderHandle, (uint)HeaderMessages.HDM_GETITEM, (uint)column, ref item) == IntPtr.Zero)
             {
-                throw new Exception();
+                throw new Win32Exception();
             }
 
             // ヘッダースタイルを設定する
@@ -138,7 +139,7 @@ namespace MyLib.CustomControls
             // ヘッダー情報を設定する
             if (SendMessage(this.HeaderHandle, (uint)HeaderMessages.HDM_SETITEM, (uint)column, ref item) == IntPtr.Zero)
             {
-                throw new Exception();
+                throw new Win32Exception();
             }
         }
     }

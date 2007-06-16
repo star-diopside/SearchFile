@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("SearchFile")]
-[assembly: AssemblyCopyright("Copyright (C)  2006")]
+[assembly: AssemblyCopyright("Copyright (C)  2007")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

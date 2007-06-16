@@ -227,7 +227,7 @@ namespace MyLib.CustomControls
         {
             get
             {
-                return GetAlphaBlendedColor(this.ImageMarginGradientBegin, this.ImageMarginGradientEnd, 0.5f);
+                return GetAlphaBlendedColor(this.ImageMarginGradientBegin, this.ImageMarginGradientEnd, 0.6f);
             }
         }
 

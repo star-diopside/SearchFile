@@ -1,4 +1,5 @@
 using System;
+using System.ComponentModel;
 using System.Drawing;
 using MyLib.WindowsShell;
 
@@ -52,7 +53,18 @@ namespace SearchFile
         {
             get
             {
-                return _info.Extension;
+                // 拡張子を取得する
+                string ext = _info.Extension;
+
+                // 拡張子の先頭のピリオドを削除する
+                if (!string.IsNullOrEmpty(ext) && ext[0] == '.')
+                {
+                    return ext.Substring(1);
+                }
+                else
+                {
+                    return ext;
+                }
             }
         }
 
@@ -81,7 +93,7 @@ namespace SearchFile
                         // ファイルに関連付けられたアイコンを取得する
                         _smallIcon = ExtractIcon.ExtractFileIcon(_info.FullName, ExtractIcon.IconSize.Small);
                     }
-                    catch (Exception)
+                    catch (Win32Exception)
                     {
                         // アイコンが取得できない場合は null を設定する
                         _smallIcon = null;
@@ -106,7 +118,7 @@ namespace SearchFile
                         // ファイルに関連付けられたアイコンを取得する
                         _largeIcon = ExtractIcon.ExtractFileIcon(_info.FullName, ExtractIcon.IconSize.Large);
                     }
-                    catch (Exception)
+                    catch (Win32Exception)
                     {
                         // アイコンが取得できない場合は null を設定する
                         _largeIcon = null;

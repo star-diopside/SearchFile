@@ -1,4 +1,5 @@
 using System;
+using System.ComponentModel;
 using System.Drawing;
 using System.Runtime.InteropServices;
 
@@ -13,6 +14,9 @@ namespace MyLib.WindowsShell
 
         [DllImport("shell32.dll", CharSet = CharSet.Auto)]
         private static extern IntPtr SHGetFileInfo(string pszPath, FileAttributes dwFileAttributes, ref SHFILEINFO psfi, uint cbFileInfo, SHGetFileInfoFlags uFlags);
+
+        [DllImport("user32.dll", CharSet = CharSet.Auto)]
+        private static extern bool DestroyIcon(IntPtr hIcon);
 
         [Flags]
         private enum FileAttributes : uint
@@ -88,11 +92,30 @@ namespace MyLib.WindowsShell
         /// </summary>
         /// <param name="fileName">ファイル名</param>
         /// <param name="iconSize">アイコンサイズ</param>
-        /// <returns></returns>
+        /// <returns>ファイルに関連付けられたアイコン</returns>
+        /// <exception cref="System.ComponentModel.Win32Exception">アイコンが取得できない場合</exception>
+        /// <exception cref="System.DllNotFoundException">DLL が見つからない場合</exception>
         public static Icon ExtractFileIcon(string fileName, IconSize iconSize)
         {
-            // アイコンを識別する Windows ハンドルから GDI+ ICON を作成する
-            return Icon.FromHandle(ExtractFileIconHandle(fileName, iconSize));
+            IntPtr? handle = null;
+
+            try
+            {
+                // アイコンを識別する Windows ハンドルから GDI+ ICON を作成する
+                handle = ExtractFileIconHandle(fileName, iconSize);
+                using (Icon icon = Icon.FromHandle(handle.Value))
+                {
+                    return (Icon)icon.Clone();
+                }
+            }
+            finally
+            {
+                // アイコンを破棄する
+                if (handle.HasValue)
+                {
+                    DestroyIcon(handle.Value);
+                }
+            }
         }
 
         /// <summary>
@@ -100,7 +123,9 @@ namespace MyLib.WindowsShell
         /// </summary>
         /// <param name="fileName">ファイル名</param>
         /// <param name="iconSize">アイコンサイズ</param>
-        /// <returns></returns>
+        /// <returns>ファイルに関連付けられたアイコンを識別する Windows ハンドルを示す IntPtr</returns>
+        /// <exception cref="System.ComponentModel.Win32Exception">アイコンが取得できない場合</exception>
+        /// <exception cref="System.DllNotFoundException">DLL が見つからない場合</exception>
         private static IntPtr ExtractFileIconHandle(string fileName, IconSize iconSize)
         {
             // アイコンを取得する
@@ -110,7 +135,7 @@ namespace MyLib.WindowsShell
             // アイコンが取得できない場合は例外を発生させる
             if (result == IntPtr.Zero)
             {
-                throw new ArgumentException();
+                throw new Win32Exception();
             }
 
             // アイコンを識別する Windows ハンドルを返す

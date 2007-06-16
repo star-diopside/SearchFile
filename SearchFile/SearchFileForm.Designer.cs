@@ -68,6 +68,10 @@
             this.menuEditSelectAll = new System.Windows.Forms.ToolStripMenuItem();
             this.menuEditReverseSelection = new System.Windows.Forms.ToolStripMenuItem();
             this.mainSplitContainer = new System.Windows.Forms.SplitContainer();
+            this.listViewFileName = new MyLib.CustomControls.ListViewEx();
+            this.columnFileName = new System.Windows.Forms.ColumnHeader();
+            this.columnExtension = new System.Windows.Forms.ColumnHeader();
+            this.columnDirectoryName = new System.Windows.Forms.ColumnHeader();
             this.contextFileList = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.contextFileListClear = new System.Windows.Forms.ToolStripMenuItem();
             this.contextFileListResultCopy = new System.Windows.Forms.ToolStripMenuItem();
@@ -85,10 +89,6 @@
             this.toolEditCut = new System.Windows.Forms.ToolStripButton();
             this.toolEditCopy = new System.Windows.Forms.ToolStripButton();
             this.toolEditPaste = new System.Windows.Forms.ToolStripButton();
-            this.listViewFileName = new MyLib.CustomControls.ListViewEx();
-            this.columnFileName = new System.Windows.Forms.ColumnHeader();
-            this.columnExtension = new System.Windows.Forms.ColumnHeader();
-            this.columnDirectoryName = new System.Windows.Forms.ColumnHeader();
             this.backgroundSearchFile = new SearchFile.BackgroundSearchFile();
             labelSeparator = new System.Windows.Forms.Label();
             contextFileListSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -130,22 +130,22 @@
             // contextFileListSeparator1
             // 
             contextFileListSeparator1.Name = "contextFileListSeparator1";
-            contextFileListSeparator1.Size = new System.Drawing.Size(210, 6);
+            contextFileListSeparator1.Size = new System.Drawing.Size(227, 6);
             // 
             // contextFileListSeparator2
             // 
             contextFileListSeparator2.Name = "contextFileListSeparator2";
-            contextFileListSeparator2.Size = new System.Drawing.Size(210, 6);
+            contextFileListSeparator2.Size = new System.Drawing.Size(227, 6);
             // 
             // contextFileListSeparator3
             // 
             contextFileListSeparator3.Name = "contextFileListSeparator3";
-            contextFileListSeparator3.Size = new System.Drawing.Size(210, 6);
+            contextFileListSeparator3.Size = new System.Drawing.Size(227, 6);
             // 
             // contextFileListSeparator4
             // 
             contextFileListSeparator4.Name = "contextFileListSeparator4";
-            contextFileListSeparator4.Size = new System.Drawing.Size(210, 6);
+            contextFileListSeparator4.Size = new System.Drawing.Size(227, 6);
             // 
             // mainToolStripSeparator1
             // 
@@ -180,17 +180,17 @@
             // menuFileSeparator1
             // 
             menuFileSeparator1.Name = "menuFileSeparator1";
-            menuFileSeparator1.Size = new System.Drawing.Size(177, 6);
+            menuFileSeparator1.Size = new System.Drawing.Size(211, 6);
             // 
             // menuFileSeparator2
             // 
             menuFileSeparator2.Name = "menuFileSeparator2";
-            menuFileSeparator2.Size = new System.Drawing.Size(177, 6);
+            menuFileSeparator2.Size = new System.Drawing.Size(211, 6);
             // 
             // menuEditSeparator1
             // 
             menuEditSeparator1.Name = "menuEditSeparator1";
-            menuEditSeparator1.Size = new System.Drawing.Size(167, 6);
+            menuEditSeparator1.Size = new System.Drawing.Size(187, 6);
             // 
             // mainStatusStrip
             // 
@@ -253,7 +253,7 @@
             this.inputSearchInfoPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.inputSearchInfoPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.inputSearchInfoPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.inputSearchInfoPanel.Size = new System.Drawing.Size(203, 295);
+            this.inputSearchInfoPanel.Size = new System.Drawing.Size(203, 293);
             this.inputSearchInfoPanel.TabIndex = 0;
             // 
             // textDirectory
@@ -393,7 +393,7 @@
             this.menuEdit});
             this.mainMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.mainMenuStrip.Name = "mainMenuStrip";
-            this.mainMenuStrip.Size = new System.Drawing.Size(632, 24);
+            this.mainMenuStrip.Size = new System.Drawing.Size(632, 26);
             this.mainMenuStrip.TabIndex = 0;
             // 
             // menuFile
@@ -406,7 +406,7 @@
             menuFileSeparator2,
             this.menuFileExit});
             this.menuFile.Name = "menuFile";
-            this.menuFile.Size = new System.Drawing.Size(66, 20);
+            this.menuFile.Size = new System.Drawing.Size(85, 22);
             this.menuFile.Text = global::SearchFile.Properties.Settings.Default.menuFile_Text;
             // 
             // menuFileClear
@@ -414,7 +414,7 @@
             this.menuFileClear.Image = ((System.Drawing.Image)(resources.GetObject("menuFileClear.Image")));
             this.menuFileClear.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.menuFileClear.Name = "menuFileClear";
-            this.menuFileClear.Size = new System.Drawing.Size(180, 22);
+            this.menuFileClear.Size = new System.Drawing.Size(214, 22);
             this.menuFileClear.Text = global::SearchFile.Properties.Settings.Default.menuFileClear_Text;
             this.menuFileClear.Click += new System.EventHandler(this.FileListClearEvent);
             // 
@@ -423,7 +423,7 @@
             this.menuFileSelectDirectory.Image = ((System.Drawing.Image)(resources.GetObject("menuFileSelectDirectory.Image")));
             this.menuFileSelectDirectory.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.menuFileSelectDirectory.Name = "menuFileSelectDirectory";
-            this.menuFileSelectDirectory.Size = new System.Drawing.Size(180, 22);
+            this.menuFileSelectDirectory.Size = new System.Drawing.Size(214, 22);
             this.menuFileSelectDirectory.Text = global::SearchFile.Properties.Settings.Default.menuFileSelectDirectory_Text;
             this.menuFileSelectDirectory.Click += new System.EventHandler(this.SelectDirectoryEvent);
             // 
@@ -432,14 +432,14 @@
             this.menuFileSaveAs.Image = ((System.Drawing.Image)(resources.GetObject("menuFileSaveAs.Image")));
             this.menuFileSaveAs.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.menuFileSaveAs.Name = "menuFileSaveAs";
-            this.menuFileSaveAs.Size = new System.Drawing.Size(180, 22);
+            this.menuFileSaveAs.Size = new System.Drawing.Size(214, 22);
             this.menuFileSaveAs.Text = global::SearchFile.Properties.Settings.Default.menuFileSaveAs_Text;
             this.menuFileSaveAs.Click += new System.EventHandler(this.SaveFileListEvent);
             // 
             // menuFileExit
             // 
             this.menuFileExit.Name = "menuFileExit";
-            this.menuFileExit.Size = new System.Drawing.Size(180, 22);
+            this.menuFileExit.Size = new System.Drawing.Size(214, 22);
             this.menuFileExit.Text = global::SearchFile.Properties.Settings.Default.menuFileExit_Text;
             this.menuFileExit.Click += new System.EventHandler(this.FormCloseEvent);
             // 
@@ -451,7 +451,7 @@
             this.menuEditSelectAll,
             this.menuEditReverseSelection});
             this.menuEdit.Name = "menuEdit";
-            this.menuEdit.Size = new System.Drawing.Size(56, 20);
+            this.menuEdit.Size = new System.Drawing.Size(61, 22);
             this.menuEdit.Text = global::SearchFile.Properties.Settings.Default.menuEdit_Text;
             this.menuEdit.DropDownOpened += new System.EventHandler(this.menuEdit_DropDownOpened);
             // 
@@ -460,21 +460,21 @@
             this.menuEditCopy.Image = ((System.Drawing.Image)(resources.GetObject("menuEditCopy.Image")));
             this.menuEditCopy.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.menuEditCopy.Name = "menuEditCopy";
-            this.menuEditCopy.Size = new System.Drawing.Size(170, 22);
+            this.menuEditCopy.Size = new System.Drawing.Size(190, 22);
             this.menuEditCopy.Text = global::SearchFile.Properties.Settings.Default.menuEditCopy_Text;
             this.menuEditCopy.Click += new System.EventHandler(this.ResultCopyEvent);
             // 
             // menuEditSelectAll
             // 
             this.menuEditSelectAll.Name = "menuEditSelectAll";
-            this.menuEditSelectAll.Size = new System.Drawing.Size(170, 22);
+            this.menuEditSelectAll.Size = new System.Drawing.Size(190, 22);
             this.menuEditSelectAll.Text = global::SearchFile.Properties.Settings.Default.menuEditSelectAll_Text;
             this.menuEditSelectAll.Click += new System.EventHandler(this.SelectAllFileListEvent);
             // 
             // menuEditReverseSelection
             // 
             this.menuEditReverseSelection.Name = "menuEditReverseSelection";
-            this.menuEditReverseSelection.Size = new System.Drawing.Size(170, 22);
+            this.menuEditReverseSelection.Size = new System.Drawing.Size(190, 22);
             this.menuEditReverseSelection.Text = global::SearchFile.Properties.Settings.Default.menuEditReverseSelection_Text;
             this.menuEditReverseSelection.Click += new System.EventHandler(this.ReverseSelectionFileListEvent);
             // 
@@ -492,9 +492,43 @@
             // mainSplitContainer.Panel2
             // 
             this.mainSplitContainer.Panel2.Controls.Add(this.inputSearchInfoPanel);
-            this.mainSplitContainer.Size = new System.Drawing.Size(632, 295);
+            this.mainSplitContainer.Size = new System.Drawing.Size(632, 293);
             this.mainSplitContainer.SplitterDistance = 425;
             this.mainSplitContainer.TabIndex = 1;
+            // 
+            // listViewFileName
+            // 
+            this.listViewFileName.AllowColumnReorder = true;
+            this.listViewFileName.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnFileName,
+            this.columnExtension,
+            this.columnDirectoryName});
+            this.listViewFileName.ContextMenuStrip = this.contextFileList;
+            this.listViewFileName.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listViewFileName.HideSelection = false;
+            this.listViewFileName.Location = new System.Drawing.Point(0, 0);
+            this.listViewFileName.Name = "listViewFileName";
+            this.listViewFileName.Size = new System.Drawing.Size(425, 293);
+            this.listViewFileName.SmallImageList = this.imageFileList;
+            this.listViewFileName.TabIndex = 0;
+            this.listViewFileName.UseCompatibleStateImageBehavior = false;
+            this.listViewFileName.View = System.Windows.Forms.View.Details;
+            this.listViewFileName.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.listViewFileName_ColumnClick);
+            // 
+            // columnFileName
+            // 
+            this.columnFileName.Text = global::SearchFile.Properties.Settings.Default.columnFileName_Text;
+            this.columnFileName.Width = 180;
+            // 
+            // columnExtension
+            // 
+            this.columnExtension.Text = global::SearchFile.Properties.Settings.Default.columnExtension_Text;
+            this.columnExtension.Width = 120;
+            // 
+            // columnDirectoryName
+            // 
+            this.columnDirectoryName.Text = global::SearchFile.Properties.Settings.Default.columnDirectoryName_Text;
+            this.columnDirectoryName.Width = 180;
             // 
             // contextFileList
             // 
@@ -510,7 +544,7 @@
             contextFileListSeparator4,
             this.contextFileListShowProperty});
             this.contextFileList.Name = "contextFileList";
-            this.contextFileList.Size = new System.Drawing.Size(214, 160);
+            this.contextFileList.Size = new System.Drawing.Size(231, 160);
             this.contextFileList.Opened += new System.EventHandler(this.contextFileList_Opened);
             // 
             // contextFileListClear
@@ -518,7 +552,7 @@
             this.contextFileListClear.Image = ((System.Drawing.Image)(resources.GetObject("contextFileListClear.Image")));
             this.contextFileListClear.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.contextFileListClear.Name = "contextFileListClear";
-            this.contextFileListClear.Size = new System.Drawing.Size(213, 22);
+            this.contextFileListClear.Size = new System.Drawing.Size(230, 22);
             this.contextFileListClear.Text = global::SearchFile.Properties.Settings.Default.contextFileListClear_Text;
             this.contextFileListClear.Click += new System.EventHandler(this.FileListClearEvent);
             // 
@@ -527,35 +561,35 @@
             this.contextFileListResultCopy.Image = ((System.Drawing.Image)(resources.GetObject("contextFileListResultCopy.Image")));
             this.contextFileListResultCopy.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.contextFileListResultCopy.Name = "contextFileListResultCopy";
-            this.contextFileListResultCopy.Size = new System.Drawing.Size(213, 22);
+            this.contextFileListResultCopy.Size = new System.Drawing.Size(230, 22);
             this.contextFileListResultCopy.Text = global::SearchFile.Properties.Settings.Default.contextFileListResultCopy_Text;
             this.contextFileListResultCopy.Click += new System.EventHandler(this.ResultCopyEvent);
             // 
             // contextFileListSelectAll
             // 
             this.contextFileListSelectAll.Name = "contextFileListSelectAll";
-            this.contextFileListSelectAll.Size = new System.Drawing.Size(213, 22);
+            this.contextFileListSelectAll.Size = new System.Drawing.Size(230, 22);
             this.contextFileListSelectAll.Text = global::SearchFile.Properties.Settings.Default.contextFileListSelectAll_Text;
             this.contextFileListSelectAll.Click += new System.EventHandler(this.SelectAllFileListEvent);
             // 
             // contextFileListReverseSelection
             // 
             this.contextFileListReverseSelection.Name = "contextFileListReverseSelection";
-            this.contextFileListReverseSelection.Size = new System.Drawing.Size(213, 22);
+            this.contextFileListReverseSelection.Size = new System.Drawing.Size(230, 22);
             this.contextFileListReverseSelection.Text = global::SearchFile.Properties.Settings.Default.contextFileListReverseSelection_Text;
             this.contextFileListReverseSelection.Click += new System.EventHandler(this.ReverseSelectionFileListEvent);
             // 
             // contextFileListAutoColumnWidth
             // 
             this.contextFileListAutoColumnWidth.Name = "contextFileListAutoColumnWidth";
-            this.contextFileListAutoColumnWidth.Size = new System.Drawing.Size(213, 22);
+            this.contextFileListAutoColumnWidth.Size = new System.Drawing.Size(230, 22);
             this.contextFileListAutoColumnWidth.Text = global::SearchFile.Properties.Settings.Default.contextFileListAutoColumnWidth_Text;
             this.contextFileListAutoColumnWidth.Click += new System.EventHandler(this.AutoFileListColumnWidthEvent);
             // 
             // contextFileListShowProperty
             // 
             this.contextFileListShowProperty.Name = "contextFileListShowProperty";
-            this.contextFileListShowProperty.Size = new System.Drawing.Size(213, 22);
+            this.contextFileListShowProperty.Size = new System.Drawing.Size(230, 22);
             this.contextFileListShowProperty.Text = global::SearchFile.Properties.Settings.Default.contextFileListShowProperty_Text;
             this.contextFileListShowProperty.Click += new System.EventHandler(this.ShowFilePropertyEvent);
             // 
@@ -575,7 +609,7 @@
             // mainToolStripContainer.ContentPanel
             // 
             this.mainToolStripContainer.ContentPanel.Controls.Add(this.mainSplitContainer);
-            this.mainToolStripContainer.ContentPanel.Size = new System.Drawing.Size(632, 295);
+            this.mainToolStripContainer.ContentPanel.Size = new System.Drawing.Size(632, 293);
             this.mainToolStripContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainToolStripContainer.Location = new System.Drawing.Point(0, 0);
             this.mainToolStripContainer.Name = "mainToolStripContainer";
@@ -600,7 +634,7 @@
             this.toolEditCut,
             this.toolEditCopy,
             this.toolEditPaste});
-            this.mainToolStrip.Location = new System.Drawing.Point(3, 24);
+            this.mainToolStrip.Location = new System.Drawing.Point(3, 26);
             this.mainToolStrip.Name = "mainToolStrip";
             this.mainToolStrip.Size = new System.Drawing.Size(185, 25);
             this.mainToolStrip.TabIndex = 1;
@@ -674,40 +708,6 @@
             this.toolEditPaste.Size = new System.Drawing.Size(23, 22);
             this.toolEditPaste.Text = global::SearchFile.Properties.Settings.Default.toolEditPaste_Text;
             this.toolEditPaste.Click += new System.EventHandler(this.TextBoxBasePasteEvent);
-            // 
-            // listViewFileName
-            // 
-            this.listViewFileName.AllowColumnReorder = true;
-            this.listViewFileName.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnFileName,
-            this.columnExtension,
-            this.columnDirectoryName});
-            this.listViewFileName.ContextMenuStrip = this.contextFileList;
-            this.listViewFileName.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listViewFileName.HideSelection = false;
-            this.listViewFileName.Location = new System.Drawing.Point(0, 0);
-            this.listViewFileName.Name = "listViewFileName";
-            this.listViewFileName.Size = new System.Drawing.Size(425, 295);
-            this.listViewFileName.SmallImageList = this.imageFileList;
-            this.listViewFileName.TabIndex = 0;
-            this.listViewFileName.UseCompatibleStateImageBehavior = false;
-            this.listViewFileName.View = System.Windows.Forms.View.Details;
-            this.listViewFileName.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.listViewFileName_ColumnClick);
-            // 
-            // columnFileName
-            // 
-            this.columnFileName.Text = global::SearchFile.Properties.Settings.Default.columnFileName_Text;
-            this.columnFileName.Width = 180;
-            // 
-            // columnExtension
-            // 
-            this.columnExtension.Text = global::SearchFile.Properties.Settings.Default.columnExtension_Text;
-            this.columnExtension.Width = 120;
-            // 
-            // columnDirectoryName
-            // 
-            this.columnDirectoryName.Text = global::SearchFile.Properties.Settings.Default.columnDirectoryName_Text;
-            this.columnDirectoryName.Width = 180;
             // 
             // backgroundSearchFile
             // 
