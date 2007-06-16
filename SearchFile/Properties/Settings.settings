@@ -1,0 +1,120 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="SearchFile.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="labelDirectory_Text" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">ディレクトリ名(&amp;D):</Value>
+    </Setting>
+    <Setting Name="buttonDirectory_Text" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">ディレクトリの選択</Value>
+    </Setting>
+    <Setting Name="labelFile_Text" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">ファイル名(&amp;F):</Value>
+    </Setting>
+    <Setting Name="radioWildcard_Text" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">ワイルドカード</Value>
+    </Setting>
+    <Setting Name="radioRegex_Text" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">正規表現</Value>
+    </Setting>
+    <Setting Name="buttonSearch_Text" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">検索開始(&amp;S)</Value>
+    </Setting>
+    <Setting Name="buttonSearch_StopText" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">検索中止(&amp;S)</Value>
+    </Setting>
+    <Setting Name="buttonClear_Text" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">リストのクリア</Value>
+    </Setting>
+    <Setting Name="buttonSelectAll_Text" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">すべて選択</Value>
+    </Setting>
+    <Setting Name="buttonReverseSelection_Text" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">選択の切り替え</Value>
+    </Setting>
+    <Setting Name="buttonDeleteFile_Text" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">選択ファイルを削除する</Value>
+    </Setting>
+    <Setting Name="checkMoveRecycler_Text" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">削除時にファイルをごみ箱に移す</Value>
+    </Setting>
+    <Setting Name="columnFileName_Text" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">ファイル名</Value>
+    </Setting>
+    <Setting Name="columnExtension_Text" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">拡張子</Value>
+    </Setting>
+    <Setting Name="columnDirectoryName_Text" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">ディレクトリ</Value>
+    </Setting>
+    <Setting Name="menuFile_Text" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">ファイル(&amp;F)</Value>
+    </Setting>
+    <Setting Name="menuEdit_Text" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">編集(&amp;E)</Value>
+    </Setting>
+    <Setting Name="menuEditCopy_Text" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">検索結果をコピー(&amp;C)</Value>
+    </Setting>
+    <Setting Name="menuEditSelectAll_Text" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">すべて選択(&amp;A)</Value>
+    </Setting>
+    <Setting Name="menuEditReverseSelection_Text" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">選択の切り替え(&amp;R)</Value>
+    </Setting>
+    <Setting Name="menuFileClear_Text" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">リストのクリア(&amp;C)</Value>
+    </Setting>
+    <Setting Name="menuFileSelectDirectory_Text" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">ディレクトリの選択(&amp;S)...</Value>
+    </Setting>
+    <Setting Name="menuFileSaveAs_Text" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">名前を付けて保存(&amp;A)...</Value>
+    </Setting>
+    <Setting Name="menuFileExit_Text" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">終了(&amp;X)</Value>
+    </Setting>
+    <Setting Name="SearchFileForm_Text" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">ファイルの検索</Value>
+    </Setting>
+    <Setting Name="toolFileClear_Text" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">リストのクリア</Value>
+    </Setting>
+    <Setting Name="toolFileSelectDirectory_Text" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">ディレクトリの選択</Value>
+    </Setting>
+    <Setting Name="toolFileSaveAs_Text" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">名前を付けて保存</Value>
+    </Setting>
+    <Setting Name="toolEditResultCopy_Text" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">検索結果をコピー</Value>
+    </Setting>
+    <Setting Name="toolEditCut_Text" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">切り取り</Value>
+    </Setting>
+    <Setting Name="toolEditCopy_Text" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">コピー</Value>
+    </Setting>
+    <Setting Name="toolEditPaste_Text" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">貼り付け</Value>
+    </Setting>
+    <Setting Name="contextFileListClear_Text" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">リストのクリア(&amp;C)</Value>
+    </Setting>
+    <Setting Name="contextFileListResultCopy_Text" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">検索結果をコピー(&amp;O)</Value>
+    </Setting>
+    <Setting Name="contextFileListSelectAll_Text" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">すべて選択(&amp;A)</Value>
+    </Setting>
+    <Setting Name="contextFileListReverseSelection_Text" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">選択の切り替え(&amp;R)</Value>
+    </Setting>
+    <Setting Name="contextFileListAutoColumnWidth_Text" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">検索時に列幅を自動調整(&amp;W)</Value>
+    </Setting>
+    <Setting Name="contextFileListShowProperty_Text" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">プロパティの表示(&amp;P)</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
