@@ -36,10 +36,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AbstractDrawLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="BackgroundSearchFile.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="BorderPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="LinearGradientDrawLabel.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="StringComparer.cs" />

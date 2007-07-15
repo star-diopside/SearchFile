@@ -68,7 +68,7 @@
             this.contextFileListShowProperty = new System.Windows.Forms.ToolStripMenuItem();
             this.imageFileList = new System.Windows.Forms.ImageList(this.components);
             this.inputSplitContainer = new System.Windows.Forms.SplitContainer();
-            this.inputSearchInfoBorderPanel = new MyLib.CustomControls.BorderPanel();
+            this.inputSearchInfoBorderPanel = new MyLib.CustomControls.LineBorderPanel();
             this.inputSearchInfoPanel = new System.Windows.Forms.TableLayoutPanel();
             this.textDirectory = new System.Windows.Forms.TextBox();
             this.textFile = new System.Windows.Forms.TextBox();
@@ -77,14 +77,14 @@
             this.buttonDirectory = new System.Windows.Forms.Button();
             this.radioWildcard = new System.Windows.Forms.RadioButton();
             this.radioRegex = new System.Windows.Forms.RadioButton();
-            this.inputSearchInfoTitle = new System.Windows.Forms.Label();
-            this.inputActionInfoBorderPanel = new MyLib.CustomControls.BorderPanel();
+            this.inputSearchInfoTitle = new MyLib.CustomControls.LinearGradientDrawLabel();
+            this.inputActionInfoBorderPanel = new MyLib.CustomControls.LineBorderPanel();
             this.inputActionInfoPanel = new System.Windows.Forms.TableLayoutPanel();
             this.buttonSelectAll = new System.Windows.Forms.Button();
             this.buttonReverseSelection = new System.Windows.Forms.Button();
             this.buttonDeleteFile = new System.Windows.Forms.Button();
             this.checkMoveRecycler = new System.Windows.Forms.CheckBox();
-            this.inputActionInfoTitle = new System.Windows.Forms.Label();
+            this.inputActionInfoTitle = new MyLib.CustomControls.LinearGradientDrawLabel();
             this.mainToolStripContainer = new System.Windows.Forms.ToolStripContainer();
             this.mainToolStrip = new System.Windows.Forms.ToolStrip();
             this.toolFileClear = new System.Windows.Forms.ToolStripButton();
@@ -809,6 +809,8 @@
             this.Name = "SearchFileForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.WindowsDefaultBounds;
             this.Text = global::SearchFile.Properties.Settings.Default.SearchFileForm_Text;
+            this.Deactivate += new System.EventHandler(this.FormDeactivateEvent);
+            this.Activated += new System.EventHandler(this.FormActivatedEvent);
             this.mainStatusStrip.ResumeLayout(false);
             this.mainStatusStrip.PerformLayout();
             this.mainMenuStrip.ResumeLayout(false);
@@ -889,12 +891,12 @@
         private System.Windows.Forms.RadioButton radioWildcard;
         private System.Windows.Forms.RadioButton radioRegex;
         private BackgroundSearchFile backgroundSearchFile;
-        private MyLib.CustomControls.BorderPanel inputSearchInfoBorderPanel;
-        private System.Windows.Forms.Label inputSearchInfoTitle;
-        private MyLib.CustomControls.BorderPanel inputActionInfoBorderPanel;
-        private System.Windows.Forms.Label inputActionInfoTitle;
+        private MyLib.CustomControls.LineBorderPanel inputSearchInfoBorderPanel;
+        private MyLib.CustomControls.LineBorderPanel inputActionInfoBorderPanel;
         private System.Windows.Forms.TableLayoutPanel inputActionInfoPanel;
         private System.Windows.Forms.SplitContainer inputSplitContainer;
+        private MyLib.CustomControls.LinearGradientDrawLabel inputSearchInfoTitle;
+        private MyLib.CustomControls.LinearGradientDrawLabel inputActionInfoTitle;
     }
 }
 

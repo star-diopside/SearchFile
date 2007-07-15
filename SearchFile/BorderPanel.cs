@@ -5,11 +5,17 @@ using System.Windows.Forms;
 
 namespace MyLib.CustomControls
 {
-    class BorderPanel : Panel
+    /// <summary>
+    /// 単純な線を境界線として表示する Panel コントロールを表します。
+    /// </summary>
+    public class LineBorderPanel : Panel
     {
         private Color _lineColor = Color.Empty;
 
-        public BorderPanel()
+        /// <summary>
+        /// BorderPanel クラスの新しいインスタンスを初期化します。
+        /// </summary>
+        public LineBorderPanel()
         {
             // サイズ変更時に再描画を行う
             this.ResizeRedraw = true;
@@ -68,8 +74,9 @@ namespace MyLib.CustomControls
         {
             base.OnPaint(e);
 
-            Rectangle rect = new Rectangle(this.ClientRectangle.X, this.ClientRectangle.Y,
-                                           this.ClientRectangle.Width - 1, this.ClientRectangle.Height - 1);
+            Rectangle rect = this.ClientRectangle;
+            rect.Width -= 1;
+            rect.Height -= 1;
 
             using (Pen p = CreateLinePen())
             {

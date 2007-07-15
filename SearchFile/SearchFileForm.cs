@@ -710,5 +710,31 @@ namespace SearchFile
 
             return sb.ToString();
         }
+
+        /// <summary>
+        /// フォームがアクティブになった時のイベントを処理するメソッド
+        /// </summary>
+        private void FormActivatedEvent(object sender, EventArgs e)
+        {
+            inputSearchInfoTitle.FillColor1 = SystemColors.ActiveCaption;
+            inputSearchInfoTitle.FillColor2 = SystemColors.GradientActiveCaption;
+            inputSearchInfoTitle.BackColor = SystemColors.ActiveCaptionText;
+            inputActionInfoTitle.FillColor1 = SystemColors.ActiveCaption;
+            inputActionInfoTitle.FillColor2 = SystemColors.GradientActiveCaption;
+            inputActionInfoTitle.BackColor = SystemColors.ActiveCaptionText;
+        }
+
+        /// <summary>
+        /// フォームが非アクティブになった時のイベントを処理するメソッド
+        /// </summary>
+        private void FormDeactivateEvent(object sender, EventArgs e)
+        {
+            inputSearchInfoTitle.FillColor1 = SystemColors.InactiveCaption;
+            inputSearchInfoTitle.FillColor2 = SystemColors.GradientInactiveCaption;
+            inputSearchInfoTitle.BackColor = SystemColors.InactiveCaptionText;
+            inputActionInfoTitle.FillColor1 = SystemColors.InactiveCaption;
+            inputActionInfoTitle.FillColor2 = SystemColors.GradientInactiveCaption;
+            inputActionInfoTitle.BackColor = SystemColors.InactiveCaptionText;
+        }
     }
 }
