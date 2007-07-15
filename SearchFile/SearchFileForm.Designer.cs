@@ -29,34 +29,21 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.Label labelSeparator;
             System.Windows.Forms.ToolStripSeparator contextFileListSeparator1;
             System.Windows.Forms.ToolStripSeparator contextFileListSeparator2;
             System.Windows.Forms.ToolStripSeparator contextFileListSeparator3;
             System.Windows.Forms.ToolStripSeparator contextFileListSeparator4;
             System.Windows.Forms.ToolStripSeparator mainToolStripSeparator1;
             System.Windows.Forms.ToolStripSeparator mainToolStripSeparator2;
-            System.Windows.Forms.Label labelDirectory;
-            System.Windows.Forms.Label labelFile;
             System.Windows.Forms.ToolStripSeparator menuFileSeparator1;
             System.Windows.Forms.ToolStripSeparator menuFileSeparator2;
             System.Windows.Forms.ToolStripSeparator menuEditSeparator1;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SearchFileForm));
+            System.Windows.Forms.Label labelDirectory;
+            System.Windows.Forms.Label labelFile;
             this.mainStatusStrip = new System.Windows.Forms.StatusStrip();
             this.statusLabelSearching = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusProgressSearching = new System.Windows.Forms.ToolStripProgressBar();
-            this.inputSearchInfoPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.textDirectory = new System.Windows.Forms.TextBox();
-            this.textFile = new System.Windows.Forms.TextBox();
-            this.buttonSearch = new System.Windows.Forms.Button();
-            this.buttonClear = new System.Windows.Forms.Button();
-            this.buttonDirectory = new System.Windows.Forms.Button();
-            this.buttonSelectAll = new System.Windows.Forms.Button();
-            this.buttonReverseSelection = new System.Windows.Forms.Button();
-            this.buttonDeleteFile = new System.Windows.Forms.Button();
-            this.checkMoveRecycler = new System.Windows.Forms.CheckBox();
-            this.radioWildcard = new System.Windows.Forms.RadioButton();
-            this.radioRegex = new System.Windows.Forms.RadioButton();
             this.mainMenuStrip = new System.Windows.Forms.MenuStrip();
             this.menuFile = new System.Windows.Forms.ToolStripMenuItem();
             this.menuFileClear = new System.Windows.Forms.ToolStripMenuItem();
@@ -68,10 +55,6 @@
             this.menuEditSelectAll = new System.Windows.Forms.ToolStripMenuItem();
             this.menuEditReverseSelection = new System.Windows.Forms.ToolStripMenuItem();
             this.mainSplitContainer = new System.Windows.Forms.SplitContainer();
-            this.listViewFileName = new MyLib.CustomControls.ListViewEx();
-            this.columnFileName = new System.Windows.Forms.ColumnHeader();
-            this.columnExtension = new System.Windows.Forms.ColumnHeader();
-            this.columnDirectoryName = new System.Windows.Forms.ColumnHeader();
             this.contextFileList = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.contextFileListClear = new System.Windows.Forms.ToolStripMenuItem();
             this.contextFileListResultCopy = new System.Windows.Forms.ToolStripMenuItem();
@@ -80,6 +63,7 @@
             this.contextFileListAutoColumnWidth = new System.Windows.Forms.ToolStripMenuItem();
             this.contextFileListShowProperty = new System.Windows.Forms.ToolStripMenuItem();
             this.imageFileList = new System.Windows.Forms.ImageList(this.components);
+            this.inputSplitContainer = new System.Windows.Forms.SplitContainer();
             this.mainToolStripContainer = new System.Windows.Forms.ToolStripContainer();
             this.mainToolStrip = new System.Windows.Forms.ToolStrip();
             this.toolFileClear = new System.Windows.Forms.ToolStripButton();
@@ -89,43 +73,58 @@
             this.toolEditCut = new System.Windows.Forms.ToolStripButton();
             this.toolEditCopy = new System.Windows.Forms.ToolStripButton();
             this.toolEditPaste = new System.Windows.Forms.ToolStripButton();
+            this.buttonSearch = new System.Windows.Forms.Button();
+            this.listViewFileName = new MyLib.CustomControls.ListViewEx();
+            this.columnFileName = new System.Windows.Forms.ColumnHeader();
+            this.columnExtension = new System.Windows.Forms.ColumnHeader();
+            this.columnDirectoryName = new System.Windows.Forms.ColumnHeader();
+            this.inputSearchInfoBorderPanel = new MyLib.CustomControls.BorderPanel();
+            this.inputSearchInfoPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.textDirectory = new System.Windows.Forms.TextBox();
+            this.textFile = new System.Windows.Forms.TextBox();
+            this.buttonClear = new System.Windows.Forms.Button();
+            this.buttonDirectory = new System.Windows.Forms.Button();
+            this.radioWildcard = new System.Windows.Forms.RadioButton();
+            this.radioRegex = new System.Windows.Forms.RadioButton();
+            this.inputSearchInfoTitle = new System.Windows.Forms.Label();
+            this.inputActionInfoBorderPanel = new MyLib.CustomControls.BorderPanel();
+            this.inputActionInfoPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.buttonSelectAll = new System.Windows.Forms.Button();
+            this.buttonReverseSelection = new System.Windows.Forms.Button();
+            this.buttonDeleteFile = new System.Windows.Forms.Button();
+            this.checkMoveRecycler = new System.Windows.Forms.CheckBox();
+            this.inputActionInfoTitle = new System.Windows.Forms.Label();
             this.backgroundSearchFile = new SearchFile.BackgroundSearchFile();
-            labelSeparator = new System.Windows.Forms.Label();
             contextFileListSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             contextFileListSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             contextFileListSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             contextFileListSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             mainToolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             mainToolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            labelDirectory = new System.Windows.Forms.Label();
-            labelFile = new System.Windows.Forms.Label();
             menuFileSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             menuFileSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             menuEditSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            labelDirectory = new System.Windows.Forms.Label();
+            labelFile = new System.Windows.Forms.Label();
             this.mainStatusStrip.SuspendLayout();
-            this.inputSearchInfoPanel.SuspendLayout();
             this.mainMenuStrip.SuspendLayout();
             this.mainSplitContainer.Panel1.SuspendLayout();
             this.mainSplitContainer.Panel2.SuspendLayout();
             this.mainSplitContainer.SuspendLayout();
             this.contextFileList.SuspendLayout();
+            this.inputSplitContainer.Panel1.SuspendLayout();
+            this.inputSplitContainer.Panel2.SuspendLayout();
+            this.inputSplitContainer.SuspendLayout();
             this.mainToolStripContainer.BottomToolStripPanel.SuspendLayout();
             this.mainToolStripContainer.ContentPanel.SuspendLayout();
             this.mainToolStripContainer.TopToolStripPanel.SuspendLayout();
             this.mainToolStripContainer.SuspendLayout();
             this.mainToolStrip.SuspendLayout();
+            this.inputSearchInfoBorderPanel.SuspendLayout();
+            this.inputSearchInfoPanel.SuspendLayout();
+            this.inputActionInfoBorderPanel.SuspendLayout();
+            this.inputActionInfoPanel.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // labelSeparator
-            // 
-            labelSeparator.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.inputSearchInfoPanel.SetColumnSpan(labelSeparator, 2);
-            labelSeparator.Dock = System.Windows.Forms.DockStyle.Top;
-            labelSeparator.Location = new System.Drawing.Point(3, 170);
-            labelSeparator.Margin = new System.Windows.Forms.Padding(3, 8, 3, 8);
-            labelSeparator.Name = "labelSeparator";
-            labelSeparator.Size = new System.Drawing.Size(189, 2);
-            labelSeparator.TabIndex = 12;
             // 
             // contextFileListSeparator1
             // 
@@ -157,26 +156,6 @@
             mainToolStripSeparator2.Name = "mainToolStripSeparator2";
             mainToolStripSeparator2.Size = new System.Drawing.Size(6, 25);
             // 
-            // labelDirectory
-            // 
-            labelDirectory.AutoSize = true;
-            this.inputSearchInfoPanel.SetColumnSpan(labelDirectory, 2);
-            labelDirectory.Location = new System.Drawing.Point(3, 8);
-            labelDirectory.Name = "labelDirectory";
-            labelDirectory.Size = new System.Drawing.Size(84, 12);
-            labelDirectory.TabIndex = 0;
-            labelDirectory.Text = global::SearchFile.Properties.Settings.Default.labelDirectory_Text;
-            // 
-            // labelFile
-            // 
-            labelFile.AutoSize = true;
-            this.inputSearchInfoPanel.SetColumnSpan(labelFile, 2);
-            labelFile.Location = new System.Drawing.Point(3, 74);
-            labelFile.Name = "labelFile";
-            labelFile.Size = new System.Drawing.Size(68, 12);
-            labelFile.TabIndex = 3;
-            labelFile.Text = global::SearchFile.Properties.Settings.Default.labelFile_Text;
-            // 
             // menuFileSeparator1
             // 
             menuFileSeparator1.Name = "menuFileSeparator1";
@@ -201,7 +180,7 @@
             this.mainStatusStrip.Location = new System.Drawing.Point(0, 0);
             this.mainStatusStrip.Name = "mainStatusStrip";
             this.mainStatusStrip.Size = new System.Drawing.Size(632, 22);
-            this.mainStatusStrip.TabIndex = 2;
+            this.mainStatusStrip.TabIndex = 0;
             // 
             // statusLabelSearching
             // 
@@ -216,173 +195,6 @@
             this.statusProgressSearching.Name = "statusProgressSearching";
             this.statusProgressSearching.Size = new System.Drawing.Size(88, 16);
             this.statusProgressSearching.Visible = false;
-            // 
-            // inputSearchInfoPanel
-            // 
-            this.inputSearchInfoPanel.ColumnCount = 2;
-            this.inputSearchInfoPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.inputSearchInfoPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.inputSearchInfoPanel.Controls.Add(labelDirectory, 0, 0);
-            this.inputSearchInfoPanel.Controls.Add(this.textDirectory, 0, 1);
-            this.inputSearchInfoPanel.Controls.Add(labelFile, 0, 3);
-            this.inputSearchInfoPanel.Controls.Add(this.textFile, 0, 4);
-            this.inputSearchInfoPanel.Controls.Add(this.buttonSearch, 0, 6);
-            this.inputSearchInfoPanel.Controls.Add(this.buttonClear, 1, 6);
-            this.inputSearchInfoPanel.Controls.Add(this.buttonDirectory, 0, 2);
-            this.inputSearchInfoPanel.Controls.Add(this.buttonSelectAll, 0, 8);
-            this.inputSearchInfoPanel.Controls.Add(this.buttonReverseSelection, 1, 8);
-            this.inputSearchInfoPanel.Controls.Add(this.buttonDeleteFile, 0, 9);
-            this.inputSearchInfoPanel.Controls.Add(this.checkMoveRecycler, 0, 10);
-            this.inputSearchInfoPanel.Controls.Add(labelSeparator, 0, 7);
-            this.inputSearchInfoPanel.Controls.Add(this.radioWildcard, 0, 5);
-            this.inputSearchInfoPanel.Controls.Add(this.radioRegex, 1, 5);
-            this.inputSearchInfoPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.inputSearchInfoPanel.Location = new System.Drawing.Point(0, 0);
-            this.inputSearchInfoPanel.Name = "inputSearchInfoPanel";
-            this.inputSearchInfoPanel.Padding = new System.Windows.Forms.Padding(0, 8, 8, 0);
-            this.inputSearchInfoPanel.RowCount = 11;
-            this.inputSearchInfoPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.inputSearchInfoPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.inputSearchInfoPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.inputSearchInfoPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.inputSearchInfoPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.inputSearchInfoPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.inputSearchInfoPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.inputSearchInfoPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.inputSearchInfoPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.inputSearchInfoPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.inputSearchInfoPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.inputSearchInfoPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.inputSearchInfoPanel.Size = new System.Drawing.Size(203, 293);
-            this.inputSearchInfoPanel.TabIndex = 0;
-            // 
-            // textDirectory
-            // 
-            this.textDirectory.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.inputSearchInfoPanel.SetColumnSpan(this.textDirectory, 2);
-            this.textDirectory.Location = new System.Drawing.Point(3, 23);
-            this.textDirectory.Name = "textDirectory";
-            this.textDirectory.Size = new System.Drawing.Size(189, 19);
-            this.textDirectory.TabIndex = 1;
-            this.textDirectory.Enter += new System.EventHandler(this.textDirectory_Enter);
-            this.textDirectory.Leave += new System.EventHandler(this.textDirectory_Leave);
-            // 
-            // textFile
-            // 
-            this.textFile.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.inputSearchInfoPanel.SetColumnSpan(this.textFile, 2);
-            this.textFile.Location = new System.Drawing.Point(3, 89);
-            this.textFile.Name = "textFile";
-            this.textFile.Size = new System.Drawing.Size(189, 19);
-            this.textFile.TabIndex = 4;
-            // 
-            // buttonSearch
-            // 
-            this.buttonSearch.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.buttonSearch.Location = new System.Drawing.Point(3, 136);
-            this.buttonSearch.Name = "buttonSearch";
-            this.buttonSearch.Size = new System.Drawing.Size(91, 23);
-            this.buttonSearch.TabIndex = 5;
-            this.buttonSearch.Text = global::SearchFile.Properties.Settings.Default.buttonSearch_Text;
-            this.buttonSearch.UseVisualStyleBackColor = true;
-            this.buttonSearch.Click += new System.EventHandler(this.SearchFileEvent);
-            // 
-            // buttonClear
-            // 
-            this.buttonClear.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.buttonClear.Location = new System.Drawing.Point(100, 136);
-            this.buttonClear.Name = "buttonClear";
-            this.buttonClear.Size = new System.Drawing.Size(92, 23);
-            this.buttonClear.TabIndex = 6;
-            this.buttonClear.Text = global::SearchFile.Properties.Settings.Default.buttonClear_Text;
-            this.buttonClear.UseVisualStyleBackColor = true;
-            this.buttonClear.Click += new System.EventHandler(this.FileListClearEvent);
-            // 
-            // buttonDirectory
-            // 
-            this.buttonDirectory.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.inputSearchInfoPanel.SetColumnSpan(this.buttonDirectory, 2);
-            this.buttonDirectory.Location = new System.Drawing.Point(64, 48);
-            this.buttonDirectory.Name = "buttonDirectory";
-            this.buttonDirectory.Size = new System.Drawing.Size(128, 23);
-            this.buttonDirectory.TabIndex = 2;
-            this.buttonDirectory.Text = global::SearchFile.Properties.Settings.Default.buttonDirectory_Text;
-            this.buttonDirectory.UseVisualStyleBackColor = true;
-            this.buttonDirectory.Click += new System.EventHandler(this.SelectDirectoryEvent);
-            // 
-            // buttonSelectAll
-            // 
-            this.buttonSelectAll.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.buttonSelectAll.Location = new System.Drawing.Point(3, 183);
-            this.buttonSelectAll.Name = "buttonSelectAll";
-            this.buttonSelectAll.Size = new System.Drawing.Size(91, 23);
-            this.buttonSelectAll.TabIndex = 8;
-            this.buttonSelectAll.Text = global::SearchFile.Properties.Settings.Default.buttonSelectAll_Text;
-            this.buttonSelectAll.UseVisualStyleBackColor = true;
-            this.buttonSelectAll.Click += new System.EventHandler(this.SelectAllFileListEvent);
-            // 
-            // buttonReverseSelection
-            // 
-            this.buttonReverseSelection.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.buttonReverseSelection.Location = new System.Drawing.Point(100, 183);
-            this.buttonReverseSelection.Name = "buttonReverseSelection";
-            this.buttonReverseSelection.Size = new System.Drawing.Size(92, 23);
-            this.buttonReverseSelection.TabIndex = 9;
-            this.buttonReverseSelection.Text = global::SearchFile.Properties.Settings.Default.buttonReverseSelection_Text;
-            this.buttonReverseSelection.UseVisualStyleBackColor = true;
-            this.buttonReverseSelection.Click += new System.EventHandler(this.ReverseSelectionFileListEvent);
-            // 
-            // buttonDeleteFile
-            // 
-            this.buttonDeleteFile.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.inputSearchInfoPanel.SetColumnSpan(this.buttonDeleteFile, 2);
-            this.buttonDeleteFile.Location = new System.Drawing.Point(23, 212);
-            this.buttonDeleteFile.Name = "buttonDeleteFile";
-            this.buttonDeleteFile.Size = new System.Drawing.Size(148, 23);
-            this.buttonDeleteFile.TabIndex = 10;
-            this.buttonDeleteFile.Text = global::SearchFile.Properties.Settings.Default.buttonDeleteFile_Text;
-            this.buttonDeleteFile.UseVisualStyleBackColor = true;
-            this.buttonDeleteFile.Click += new System.EventHandler(this.DeleteSelectionFilesEvent);
-            // 
-            // checkMoveRecycler
-            // 
-            this.checkMoveRecycler.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.checkMoveRecycler.AutoSize = true;
-            this.checkMoveRecycler.Checked = true;
-            this.checkMoveRecycler.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.inputSearchInfoPanel.SetColumnSpan(this.checkMoveRecycler, 2);
-            this.checkMoveRecycler.Location = new System.Drawing.Point(17, 241);
-            this.checkMoveRecycler.Name = "checkMoveRecycler";
-            this.checkMoveRecycler.Size = new System.Drawing.Size(175, 16);
-            this.checkMoveRecycler.TabIndex = 11;
-            this.checkMoveRecycler.Text = global::SearchFile.Properties.Settings.Default.checkMoveRecycler_Text;
-            this.checkMoveRecycler.UseVisualStyleBackColor = true;
-            // 
-            // radioWildcard
-            // 
-            this.radioWildcard.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.radioWildcard.AutoSize = true;
-            this.radioWildcard.Checked = true;
-            this.radioWildcard.Location = new System.Drawing.Point(4, 114);
-            this.radioWildcard.Name = "radioWildcard";
-            this.radioWildcard.Size = new System.Drawing.Size(88, 16);
-            this.radioWildcard.TabIndex = 13;
-            this.radioWildcard.TabStop = true;
-            this.radioWildcard.Text = global::SearchFile.Properties.Settings.Default.radioWildcard_Text;
-            this.radioWildcard.UseVisualStyleBackColor = true;
-            // 
-            // radioRegex
-            // 
-            this.radioRegex.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.radioRegex.AutoSize = true;
-            this.radioRegex.Location = new System.Drawing.Point(110, 114);
-            this.radioRegex.Name = "radioRegex";
-            this.radioRegex.Size = new System.Drawing.Size(71, 16);
-            this.radioRegex.TabIndex = 14;
-            this.radioRegex.Text = global::SearchFile.Properties.Settings.Default.radioRegex_Text;
-            this.radioRegex.UseVisualStyleBackColor = true;
             // 
             // mainMenuStrip
             // 
@@ -491,44 +303,10 @@
             // 
             // mainSplitContainer.Panel2
             // 
-            this.mainSplitContainer.Panel2.Controls.Add(this.inputSearchInfoPanel);
-            this.mainSplitContainer.Size = new System.Drawing.Size(632, 293);
-            this.mainSplitContainer.SplitterDistance = 425;
-            this.mainSplitContainer.TabIndex = 1;
-            // 
-            // listViewFileName
-            // 
-            this.listViewFileName.AllowColumnReorder = true;
-            this.listViewFileName.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnFileName,
-            this.columnExtension,
-            this.columnDirectoryName});
-            this.listViewFileName.ContextMenuStrip = this.contextFileList;
-            this.listViewFileName.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listViewFileName.HideSelection = false;
-            this.listViewFileName.Location = new System.Drawing.Point(0, 0);
-            this.listViewFileName.Name = "listViewFileName";
-            this.listViewFileName.Size = new System.Drawing.Size(425, 293);
-            this.listViewFileName.SmallImageList = this.imageFileList;
-            this.listViewFileName.TabIndex = 0;
-            this.listViewFileName.UseCompatibleStateImageBehavior = false;
-            this.listViewFileName.View = System.Windows.Forms.View.Details;
-            this.listViewFileName.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.listViewFileName_ColumnClick);
-            // 
-            // columnFileName
-            // 
-            this.columnFileName.Text = global::SearchFile.Properties.Settings.Default.columnFileName_Text;
-            this.columnFileName.Width = 180;
-            // 
-            // columnExtension
-            // 
-            this.columnExtension.Text = global::SearchFile.Properties.Settings.Default.columnExtension_Text;
-            this.columnExtension.Width = 120;
-            // 
-            // columnDirectoryName
-            // 
-            this.columnDirectoryName.Text = global::SearchFile.Properties.Settings.Default.columnDirectoryName_Text;
-            this.columnDirectoryName.Width = 180;
+            this.mainSplitContainer.Panel2.Controls.Add(this.inputSplitContainer);
+            this.mainSplitContainer.Size = new System.Drawing.Size(632, 407);
+            this.mainSplitContainer.SplitterDistance = 423;
+            this.mainSplitContainer.TabIndex = 0;
             // 
             // contextFileList
             // 
@@ -599,6 +377,24 @@
             this.imageFileList.ImageSize = new System.Drawing.Size(16, 16);
             this.imageFileList.TransparentColor = System.Drawing.Color.Transparent;
             // 
+            // inputSplitContainer
+            // 
+            this.inputSplitContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.inputSplitContainer.Location = new System.Drawing.Point(0, 0);
+            this.inputSplitContainer.Name = "inputSplitContainer";
+            this.inputSplitContainer.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // inputSplitContainer.Panel1
+            // 
+            this.inputSplitContainer.Panel1.Controls.Add(this.inputSearchInfoBorderPanel);
+            // 
+            // inputSplitContainer.Panel2
+            // 
+            this.inputSplitContainer.Panel2.Controls.Add(this.inputActionInfoBorderPanel);
+            this.inputSplitContainer.Size = new System.Drawing.Size(205, 407);
+            this.inputSplitContainer.SplitterDistance = 205;
+            this.inputSplitContainer.TabIndex = 0;
+            // 
             // mainToolStripContainer
             // 
             // 
@@ -609,11 +405,11 @@
             // mainToolStripContainer.ContentPanel
             // 
             this.mainToolStripContainer.ContentPanel.Controls.Add(this.mainSplitContainer);
-            this.mainToolStripContainer.ContentPanel.Size = new System.Drawing.Size(632, 293);
+            this.mainToolStripContainer.ContentPanel.Size = new System.Drawing.Size(632, 407);
             this.mainToolStripContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainToolStripContainer.Location = new System.Drawing.Point(0, 0);
             this.mainToolStripContainer.Name = "mainToolStripContainer";
-            this.mainToolStripContainer.Size = new System.Drawing.Size(632, 366);
+            this.mainToolStripContainer.Size = new System.Drawing.Size(632, 480);
             this.mainToolStripContainer.TabIndex = 3;
             // 
             // mainToolStripContainer.TopToolStripPanel
@@ -709,6 +505,290 @@
             this.toolEditPaste.Text = global::SearchFile.Properties.Settings.Default.toolEditPaste_Text;
             this.toolEditPaste.Click += new System.EventHandler(this.TextBoxBasePasteEvent);
             // 
+            // buttonSearch
+            // 
+            this.buttonSearch.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.buttonSearch.Location = new System.Drawing.Point(7, 136);
+            this.buttonSearch.Name = "buttonSearch";
+            this.buttonSearch.Size = new System.Drawing.Size(91, 23);
+            this.buttonSearch.TabIndex = 7;
+            this.buttonSearch.Text = global::SearchFile.Properties.Settings.Default.buttonSearch_Text;
+            this.buttonSearch.UseVisualStyleBackColor = true;
+            this.buttonSearch.Click += new System.EventHandler(this.SearchFileEvent);
+            // 
+            // listViewFileName
+            // 
+            this.listViewFileName.AllowColumnReorder = true;
+            this.listViewFileName.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnFileName,
+            this.columnExtension,
+            this.columnDirectoryName});
+            this.listViewFileName.ContextMenuStrip = this.contextFileList;
+            this.listViewFileName.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listViewFileName.HideSelection = false;
+            this.listViewFileName.Location = new System.Drawing.Point(0, 0);
+            this.listViewFileName.Name = "listViewFileName";
+            this.listViewFileName.Size = new System.Drawing.Size(423, 407);
+            this.listViewFileName.SmallImageList = this.imageFileList;
+            this.listViewFileName.TabIndex = 0;
+            this.listViewFileName.UseCompatibleStateImageBehavior = false;
+            this.listViewFileName.View = System.Windows.Forms.View.Details;
+            this.listViewFileName.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.listViewFileName_ColumnClick);
+            // 
+            // columnFileName
+            // 
+            this.columnFileName.Text = global::SearchFile.Properties.Settings.Default.columnFileName_Text;
+            this.columnFileName.Width = 180;
+            // 
+            // columnExtension
+            // 
+            this.columnExtension.Text = global::SearchFile.Properties.Settings.Default.columnExtension_Text;
+            this.columnExtension.Width = 120;
+            // 
+            // columnDirectoryName
+            // 
+            this.columnDirectoryName.Text = global::SearchFile.Properties.Settings.Default.columnDirectoryName_Text;
+            this.columnDirectoryName.Width = 180;
+            // 
+            // inputSearchInfoBorderPanel
+            // 
+            this.inputSearchInfoBorderPanel.Controls.Add(this.inputSearchInfoPanel);
+            this.inputSearchInfoBorderPanel.Controls.Add(this.inputSearchInfoTitle);
+            this.inputSearchInfoBorderPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.inputSearchInfoBorderPanel.Location = new System.Drawing.Point(0, 0);
+            this.inputSearchInfoBorderPanel.Name = "inputSearchInfoBorderPanel";
+            this.inputSearchInfoBorderPanel.Padding = new System.Windows.Forms.Padding(1);
+            this.inputSearchInfoBorderPanel.Size = new System.Drawing.Size(205, 205);
+            this.inputSearchInfoBorderPanel.TabIndex = 0;
+            // 
+            // inputSearchInfoPanel
+            // 
+            this.inputSearchInfoPanel.ColumnCount = 2;
+            this.inputSearchInfoPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.inputSearchInfoPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.inputSearchInfoPanel.Controls.Add(labelDirectory, 0, 0);
+            this.inputSearchInfoPanel.Controls.Add(this.textDirectory, 0, 1);
+            this.inputSearchInfoPanel.Controls.Add(labelFile, 0, 3);
+            this.inputSearchInfoPanel.Controls.Add(this.textFile, 0, 4);
+            this.inputSearchInfoPanel.Controls.Add(this.buttonSearch, 0, 6);
+            this.inputSearchInfoPanel.Controls.Add(this.buttonClear, 1, 6);
+            this.inputSearchInfoPanel.Controls.Add(this.buttonDirectory, 0, 2);
+            this.inputSearchInfoPanel.Controls.Add(this.radioWildcard, 0, 5);
+            this.inputSearchInfoPanel.Controls.Add(this.radioRegex, 1, 5);
+            this.inputSearchInfoPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.inputSearchInfoPanel.Location = new System.Drawing.Point(1, 21);
+            this.inputSearchInfoPanel.Name = "inputSearchInfoPanel";
+            this.inputSearchInfoPanel.Padding = new System.Windows.Forms.Padding(4, 8, 4, 0);
+            this.inputSearchInfoPanel.RowCount = 7;
+            this.inputSearchInfoPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.inputSearchInfoPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.inputSearchInfoPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.inputSearchInfoPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.inputSearchInfoPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.inputSearchInfoPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.inputSearchInfoPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.inputSearchInfoPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.inputSearchInfoPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.inputSearchInfoPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.inputSearchInfoPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.inputSearchInfoPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.inputSearchInfoPanel.Size = new System.Drawing.Size(203, 183);
+            this.inputSearchInfoPanel.TabIndex = 1;
+            // 
+            // labelDirectory
+            // 
+            labelDirectory.AutoSize = true;
+            this.inputSearchInfoPanel.SetColumnSpan(labelDirectory, 2);
+            labelDirectory.Location = new System.Drawing.Point(7, 8);
+            labelDirectory.Name = "labelDirectory";
+            labelDirectory.Size = new System.Drawing.Size(84, 12);
+            labelDirectory.TabIndex = 0;
+            labelDirectory.Text = global::SearchFile.Properties.Settings.Default.labelDirectory_Text;
+            // 
+            // textDirectory
+            // 
+            this.textDirectory.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.inputSearchInfoPanel.SetColumnSpan(this.textDirectory, 2);
+            this.textDirectory.Location = new System.Drawing.Point(7, 23);
+            this.textDirectory.Name = "textDirectory";
+            this.textDirectory.Size = new System.Drawing.Size(189, 19);
+            this.textDirectory.TabIndex = 1;
+            this.textDirectory.Enter += new System.EventHandler(this.textDirectory_Enter);
+            this.textDirectory.Leave += new System.EventHandler(this.textDirectory_Leave);
+            // 
+            // labelFile
+            // 
+            labelFile.AutoSize = true;
+            this.inputSearchInfoPanel.SetColumnSpan(labelFile, 2);
+            labelFile.Location = new System.Drawing.Point(7, 74);
+            labelFile.Name = "labelFile";
+            labelFile.Size = new System.Drawing.Size(68, 12);
+            labelFile.TabIndex = 3;
+            labelFile.Text = global::SearchFile.Properties.Settings.Default.labelFile_Text;
+            // 
+            // textFile
+            // 
+            this.textFile.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.inputSearchInfoPanel.SetColumnSpan(this.textFile, 2);
+            this.textFile.Location = new System.Drawing.Point(7, 89);
+            this.textFile.Name = "textFile";
+            this.textFile.Size = new System.Drawing.Size(189, 19);
+            this.textFile.TabIndex = 4;
+            // 
+            // buttonClear
+            // 
+            this.buttonClear.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.buttonClear.Location = new System.Drawing.Point(104, 136);
+            this.buttonClear.Name = "buttonClear";
+            this.buttonClear.Size = new System.Drawing.Size(92, 23);
+            this.buttonClear.TabIndex = 8;
+            this.buttonClear.Text = global::SearchFile.Properties.Settings.Default.buttonClear_Text;
+            this.buttonClear.UseVisualStyleBackColor = true;
+            this.buttonClear.Click += new System.EventHandler(this.FileListClearEvent);
+            // 
+            // buttonDirectory
+            // 
+            this.buttonDirectory.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.inputSearchInfoPanel.SetColumnSpan(this.buttonDirectory, 2);
+            this.buttonDirectory.Location = new System.Drawing.Point(68, 48);
+            this.buttonDirectory.Name = "buttonDirectory";
+            this.buttonDirectory.Size = new System.Drawing.Size(128, 23);
+            this.buttonDirectory.TabIndex = 2;
+            this.buttonDirectory.Text = global::SearchFile.Properties.Settings.Default.buttonDirectory_Text;
+            this.buttonDirectory.UseVisualStyleBackColor = true;
+            this.buttonDirectory.Click += new System.EventHandler(this.SelectDirectoryEvent);
+            // 
+            // radioWildcard
+            // 
+            this.radioWildcard.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.radioWildcard.AutoSize = true;
+            this.radioWildcard.Checked = true;
+            this.radioWildcard.Location = new System.Drawing.Point(8, 114);
+            this.radioWildcard.Name = "radioWildcard";
+            this.radioWildcard.Size = new System.Drawing.Size(88, 16);
+            this.radioWildcard.TabIndex = 5;
+            this.radioWildcard.TabStop = true;
+            this.radioWildcard.Text = global::SearchFile.Properties.Settings.Default.radioWildcard_Text;
+            this.radioWildcard.UseVisualStyleBackColor = true;
+            // 
+            // radioRegex
+            // 
+            this.radioRegex.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.radioRegex.AutoSize = true;
+            this.radioRegex.Location = new System.Drawing.Point(114, 114);
+            this.radioRegex.Name = "radioRegex";
+            this.radioRegex.Size = new System.Drawing.Size(71, 16);
+            this.radioRegex.TabIndex = 6;
+            this.radioRegex.Text = global::SearchFile.Properties.Settings.Default.radioRegex_Text;
+            this.radioRegex.UseVisualStyleBackColor = true;
+            // 
+            // inputSearchInfoTitle
+            // 
+            this.inputSearchInfoTitle.AutoEllipsis = true;
+            this.inputSearchInfoTitle.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.inputSearchInfoTitle.Dock = System.Windows.Forms.DockStyle.Top;
+            this.inputSearchInfoTitle.Location = new System.Drawing.Point(1, 1);
+            this.inputSearchInfoTitle.Name = "inputSearchInfoTitle";
+            this.inputSearchInfoTitle.Padding = new System.Windows.Forms.Padding(2);
+            this.inputSearchInfoTitle.Size = new System.Drawing.Size(203, 20);
+            this.inputSearchInfoTitle.TabIndex = 0;
+            this.inputSearchInfoTitle.Text = "検索条件";
+            this.inputSearchInfoTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // inputActionInfoBorderPanel
+            // 
+            this.inputActionInfoBorderPanel.Controls.Add(this.inputActionInfoPanel);
+            this.inputActionInfoBorderPanel.Controls.Add(this.inputActionInfoTitle);
+            this.inputActionInfoBorderPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.inputActionInfoBorderPanel.Location = new System.Drawing.Point(0, 0);
+            this.inputActionInfoBorderPanel.Name = "inputActionInfoBorderPanel";
+            this.inputActionInfoBorderPanel.Padding = new System.Windows.Forms.Padding(1);
+            this.inputActionInfoBorderPanel.Size = new System.Drawing.Size(205, 198);
+            this.inputActionInfoBorderPanel.TabIndex = 0;
+            // 
+            // inputActionInfoPanel
+            // 
+            this.inputActionInfoPanel.ColumnCount = 2;
+            this.inputActionInfoPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.inputActionInfoPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.inputActionInfoPanel.Controls.Add(this.buttonSelectAll, 0, 0);
+            this.inputActionInfoPanel.Controls.Add(this.buttonReverseSelection, 1, 0);
+            this.inputActionInfoPanel.Controls.Add(this.buttonDeleteFile, 0, 1);
+            this.inputActionInfoPanel.Controls.Add(this.checkMoveRecycler, 0, 2);
+            this.inputActionInfoPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.inputActionInfoPanel.Location = new System.Drawing.Point(1, 19);
+            this.inputActionInfoPanel.Name = "inputActionInfoPanel";
+            this.inputActionInfoPanel.Padding = new System.Windows.Forms.Padding(4, 8, 4, 0);
+            this.inputActionInfoPanel.RowCount = 3;
+            this.inputActionInfoPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.inputActionInfoPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.inputActionInfoPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.inputActionInfoPanel.Size = new System.Drawing.Size(203, 178);
+            this.inputActionInfoPanel.TabIndex = 1;
+            // 
+            // buttonSelectAll
+            // 
+            this.buttonSelectAll.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.buttonSelectAll.Location = new System.Drawing.Point(8, 11);
+            this.buttonSelectAll.Name = "buttonSelectAll";
+            this.buttonSelectAll.Size = new System.Drawing.Size(89, 23);
+            this.buttonSelectAll.TabIndex = 0;
+            this.buttonSelectAll.Text = global::SearchFile.Properties.Settings.Default.buttonSelectAll_Text;
+            this.buttonSelectAll.UseVisualStyleBackColor = true;
+            this.buttonSelectAll.Click += new System.EventHandler(this.SelectAllFileListEvent);
+            // 
+            // buttonReverseSelection
+            // 
+            this.buttonReverseSelection.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.buttonReverseSelection.Location = new System.Drawing.Point(105, 11);
+            this.buttonReverseSelection.Name = "buttonReverseSelection";
+            this.buttonReverseSelection.Size = new System.Drawing.Size(89, 23);
+            this.buttonReverseSelection.TabIndex = 1;
+            this.buttonReverseSelection.Text = global::SearchFile.Properties.Settings.Default.buttonReverseSelection_Text;
+            this.buttonReverseSelection.UseVisualStyleBackColor = true;
+            this.buttonReverseSelection.Click += new System.EventHandler(this.ReverseSelectionFileListEvent);
+            // 
+            // buttonDeleteFile
+            // 
+            this.buttonDeleteFile.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.inputActionInfoPanel.SetColumnSpan(this.buttonDeleteFile, 2);
+            this.buttonDeleteFile.Location = new System.Drawing.Point(27, 40);
+            this.buttonDeleteFile.Name = "buttonDeleteFile";
+            this.buttonDeleteFile.Size = new System.Drawing.Size(148, 23);
+            this.buttonDeleteFile.TabIndex = 2;
+            this.buttonDeleteFile.Text = global::SearchFile.Properties.Settings.Default.buttonDeleteFile_Text;
+            this.buttonDeleteFile.UseVisualStyleBackColor = true;
+            this.buttonDeleteFile.Click += new System.EventHandler(this.DeleteSelectionFilesEvent);
+            // 
+            // checkMoveRecycler
+            // 
+            this.checkMoveRecycler.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.checkMoveRecycler.AutoSize = true;
+            this.checkMoveRecycler.Checked = true;
+            this.checkMoveRecycler.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.inputActionInfoPanel.SetColumnSpan(this.checkMoveRecycler, 2);
+            this.checkMoveRecycler.Location = new System.Drawing.Point(21, 69);
+            this.checkMoveRecycler.Name = "checkMoveRecycler";
+            this.checkMoveRecycler.Size = new System.Drawing.Size(175, 16);
+            this.checkMoveRecycler.TabIndex = 3;
+            this.checkMoveRecycler.Text = global::SearchFile.Properties.Settings.Default.checkMoveRecycler_Text;
+            this.checkMoveRecycler.UseVisualStyleBackColor = true;
+            // 
+            // inputActionInfoTitle
+            // 
+            this.inputActionInfoTitle.AutoEllipsis = true;
+            this.inputActionInfoTitle.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.inputActionInfoTitle.Dock = System.Windows.Forms.DockStyle.Top;
+            this.inputActionInfoTitle.Location = new System.Drawing.Point(1, 1);
+            this.inputActionInfoTitle.Name = "inputActionInfoTitle";
+            this.inputActionInfoTitle.Padding = new System.Windows.Forms.Padding(2);
+            this.inputActionInfoTitle.Size = new System.Drawing.Size(203, 18);
+            this.inputActionInfoTitle.TabIndex = 0;
+            this.inputActionInfoTitle.Text = "アクション";
+            this.inputActionInfoTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // backgroundSearchFile
             // 
             this.backgroundSearchFile.WorkerReportsProgress = true;
@@ -721,7 +801,7 @@
             this.AcceptButton = this.buttonSearch;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(632, 366);
+            this.ClientSize = new System.Drawing.Size(632, 480);
             this.Controls.Add(this.mainToolStripContainer);
             this.MainMenuStrip = this.mainMenuStrip;
             this.Name = "SearchFileForm";
@@ -729,14 +809,15 @@
             this.Text = global::SearchFile.Properties.Settings.Default.SearchFileForm_Text;
             this.mainStatusStrip.ResumeLayout(false);
             this.mainStatusStrip.PerformLayout();
-            this.inputSearchInfoPanel.ResumeLayout(false);
-            this.inputSearchInfoPanel.PerformLayout();
             this.mainMenuStrip.ResumeLayout(false);
             this.mainMenuStrip.PerformLayout();
             this.mainSplitContainer.Panel1.ResumeLayout(false);
             this.mainSplitContainer.Panel2.ResumeLayout(false);
             this.mainSplitContainer.ResumeLayout(false);
             this.contextFileList.ResumeLayout(false);
+            this.inputSplitContainer.Panel1.ResumeLayout(false);
+            this.inputSplitContainer.Panel2.ResumeLayout(false);
+            this.inputSplitContainer.ResumeLayout(false);
             this.mainToolStripContainer.BottomToolStripPanel.ResumeLayout(false);
             this.mainToolStripContainer.BottomToolStripPanel.PerformLayout();
             this.mainToolStripContainer.ContentPanel.ResumeLayout(false);
@@ -746,6 +827,12 @@
             this.mainToolStripContainer.PerformLayout();
             this.mainToolStrip.ResumeLayout(false);
             this.mainToolStrip.PerformLayout();
+            this.inputSearchInfoBorderPanel.ResumeLayout(false);
+            this.inputSearchInfoPanel.ResumeLayout(false);
+            this.inputSearchInfoPanel.PerformLayout();
+            this.inputActionInfoBorderPanel.ResumeLayout(false);
+            this.inputActionInfoPanel.ResumeLayout(false);
+            this.inputActionInfoPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -800,6 +887,12 @@
         private System.Windows.Forms.RadioButton radioWildcard;
         private System.Windows.Forms.RadioButton radioRegex;
         private BackgroundSearchFile backgroundSearchFile;
+        private MyLib.CustomControls.BorderPanel inputSearchInfoBorderPanel;
+        private System.Windows.Forms.Label inputSearchInfoTitle;
+        private MyLib.CustomControls.BorderPanel inputActionInfoBorderPanel;
+        private System.Windows.Forms.Label inputActionInfoTitle;
+        private System.Windows.Forms.TableLayoutPanel inputActionInfoPanel;
+        private System.Windows.Forms.SplitContainer inputSplitContainer;
     }
 }
 

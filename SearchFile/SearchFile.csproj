@@ -39,6 +39,9 @@
     <Compile Include="BackgroundSearchFile.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="BorderPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="StringComparer.cs" />
     <Compile Include="ListViewItemSorter.cs" />
     <Compile Include="ExtractIcon.cs" />
