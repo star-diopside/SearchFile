@@ -17,10 +17,10 @@ namespace MyLib.CustomControls
         #region Win32 API を呼び出すための定義
 
         [DllImport("user32.dll")]
-        protected static extern IntPtr SendMessage(IntPtr hWnd, uint Msg, uint wParam, uint lParam);
+        protected static extern IntPtr SendMessage(HandleRef hWnd, uint Msg, IntPtr wParam, IntPtr lParam);
 
         [DllImport("user32.dll", CharSet = CharSet.Auto)]
-        protected static extern IntPtr SendMessage(IntPtr hWnd, uint Msg, uint wParam, ref HDITEM lParam);
+        protected static extern IntPtr SendMessage(HandleRef hWnd, uint Msg, IntPtr wParam, ref HDITEM lParam);
 
         [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Auto, Pack = 1)]
         protected struct HDITEM
@@ -91,7 +91,7 @@ namespace MyLib.CustomControls
             {
                 if (!this._headerHandle.HasValue)
                 {
-                    this._headerHandle = SendMessage(this.Handle, (uint)ListViewMessages.LVM_GETHEADER, 0, 0);
+                    this._headerHandle = SendMessage(new HandleRef(this, this.Handle), (uint)ListViewMessages.LVM_GETHEADER, (IntPtr)0, (IntPtr)0);
                 }
                 return this._headerHandle.Value;
             }
@@ -109,7 +109,7 @@ namespace MyLib.CustomControls
             item.mask = HeaderItemMasks.HDI_FORMAT;
 
             // 現在のヘッダー情報を取得する
-            if (SendMessage(this.HeaderHandle, (uint)HeaderMessages.HDM_GETITEM, (uint)column, ref item) == IntPtr.Zero)
+            if (SendMessage(new HandleRef(this, this.HeaderHandle), (uint)HeaderMessages.HDM_GETITEM, (IntPtr)column, ref item) == IntPtr.Zero)
             {
                 throw new Win32Exception();
             }
@@ -137,7 +137,7 @@ namespace MyLib.CustomControls
             }
 
             // ヘッダー情報を設定する
-            if (SendMessage(this.HeaderHandle, (uint)HeaderMessages.HDM_SETITEM, (uint)column, ref item) == IntPtr.Zero)
+            if (SendMessage(new HandleRef(this, this.HeaderHandle), (uint)HeaderMessages.HDM_SETITEM, (IntPtr)column, ref item) == IntPtr.Zero)
             {
                 throw new Win32Exception();
             }

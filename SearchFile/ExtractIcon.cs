@@ -16,6 +16,7 @@ namespace MyLib.WindowsShell
         private static extern IntPtr SHGetFileInfo(string pszPath, FileAttributes dwFileAttributes, ref SHFILEINFO psfi, uint cbFileInfo, SHGetFileInfoFlags uFlags);
 
         [DllImport("user32.dll", CharSet = CharSet.Auto)]
+        [return: MarshalAs(UnmanagedType.Bool)]
         private static extern bool DestroyIcon(IntPtr hIcon);
 
         [Flags]
