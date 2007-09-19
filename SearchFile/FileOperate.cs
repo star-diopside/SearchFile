@@ -16,7 +16,7 @@ namespace MyLib.WindowsShell
         [DllImport("shell32.dll", CharSet = CharSet.Auto)]
         private static extern int SHFileOperation(ref SHFILEOPSTRUCT lpFileOp);
 
-        [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Auto, Pack = 1)]
+        [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Auto)]
         private struct SHFILEOPSTRUCT
         {
             public IntPtr hwnd;
@@ -132,11 +132,11 @@ namespace MyLib.WindowsShell
             }
         }
 
-        [DllImport("shell32.dll", CharSet = CharSet.Auto)]
+        [DllImport("shell32.dll", CharSet = CharSet.Auto, SetLastError = true)]
         [return: MarshalAs(UnmanagedType.Bool)]
         private static extern bool ShellExecuteEx(ref SHELLEXECUTEINFO lpExecInfo);
 
-        [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Auto, Pack = 1)]
+        [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Auto)]
         private struct SHELLEXECUTEINFO
         {
             public uint cbSize;
@@ -151,7 +151,7 @@ namespace MyLib.WindowsShell
             [MarshalAs(UnmanagedType.LPTStr)]
             public string lpDirectory;
             public int nShow;
-            public ShellExecuteErrors hInstApp;
+            public IntPtr hInstApp;
 
             // Optional fields
             public IntPtr lpIDList;
@@ -267,7 +267,7 @@ namespace MyLib.WindowsShell
             if (!ShellExecuteEx(ref info))
             {
                 // エラーコードに応じた例外をスローする
-                switch (info.hInstApp)
+                switch ((ShellExecuteErrors)Marshal.GetLastWin32Error())
                 {
                     case ShellExecuteErrors.SE_ERR_FNF:
                         throw new FileNotFoundException();

@@ -22,7 +22,7 @@ namespace MyLib.CustomControls
         [DllImport("user32.dll", CharSet = CharSet.Auto)]
         protected static extern IntPtr SendMessage(HandleRef hWnd, uint Msg, IntPtr wParam, ref HDITEM lParam);
 
-        [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Auto, Pack = 1)]
+        [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Auto)]
         protected struct HDITEM
         {
             public HeaderItemMasks mask;

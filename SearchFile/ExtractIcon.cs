@@ -39,7 +39,7 @@ namespace MyLib.WindowsShell
             FILE_ATTRIBUTE_VIRTUAL = 0x00010000
         }
 
-        [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Auto, Pack = 1)]
+        [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Auto)]
         private struct SHFILEINFO
         {
             public IntPtr hIcon;
