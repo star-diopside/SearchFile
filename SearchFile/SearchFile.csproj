@@ -36,36 +36,36 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AbstractDrawLabel.cs">
+    <Compile Include="src\MyLib\CustomControls\AbstractDrawLabel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="BackgroundSearchFile.cs">
+    <Compile Include="src\SearchFile\BackgroundSearchFile.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="BorderPanel.cs">
+    <Compile Include="src\MyLib\CustomControls\BorderPanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="LinearGradientDrawLabel.cs">
+    <Compile Include="src\MyLib\CustomControls\LinearGradientDrawLabel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="StringComparer.cs" />
-    <Compile Include="ListViewItemSorter.cs" />
-    <Compile Include="ExtractIcon.cs" />
-    <Compile Include="ListViewEx.cs">
+    <Compile Include="src\SearchFile\StringComparer.cs" />
+    <Compile Include="src\SearchFile\ListViewItemSorter.cs" />
+    <Compile Include="src\MyLib\WindowsShell\ExtractIcon.cs" />
+    <Compile Include="src\MyLib\CustomControls\ListViewEx.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="FileInfo.cs" />
-    <Compile Include="ToolStripColorTable.cs" />
-    <Compile Include="FileOperate.cs" />
-    <Compile Include="SearchFileForm.cs">
+    <Compile Include="src\SearchFile\FileInfo.cs" />
+    <Compile Include="src\MyLib\CustomControls\ToolStripColorTable.cs" />
+    <Compile Include="src\MyLib\WindowsShell\FileOperate.cs" />
+    <Compile Include="src\SearchFile\SearchFileForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SearchFileForm.Designer.cs">
+    <Compile Include="src\SearchFile\SearchFileForm.Designer.cs">
       <DependentUpon>SearchFileForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Program.cs" />
+    <Compile Include="src\SearchFile\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="SearchFileForm.resx">
+    <EmbeddedResource Include="src\SearchFile\SearchFileForm.resx">
       <SubType>Designer</SubType>
       <DependentUpon>SearchFileForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -89,7 +89,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="SearchFileWorkerInfo.cs" />
+    <Compile Include="src\SearchFile\SearchFileWorkerInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
