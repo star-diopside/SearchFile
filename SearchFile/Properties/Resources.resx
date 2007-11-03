@@ -189,6 +189,14 @@
     <value>検索を中止しました。</value>
     <comment>検索を中止した場合に示すメッセージ</comment>
   </data>
+  <data name="SearchStartButtonText" xml:space="preserve">
+    <value>検索開始(&amp;S)</value>
+    <comment>検索開始ボタンのテキスト</comment>
+  </data>
+  <data name="SearchStopButtonText" xml:space="preserve">
+    <value>検索中止(&amp;S)</value>
+    <comment>検索中止ボタンのテキスト</comment>
+  </data>
   <data name="ShowErrorDetailsTitle" xml:space="preserve">
     <value>エラーメッセージ:</value>
     <comment>エラーメッセージ詳細を表示する場合のタイトル</comment>

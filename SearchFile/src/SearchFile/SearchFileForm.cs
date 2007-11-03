@@ -291,7 +291,7 @@ namespace SearchFile
                 backgroundSearchFile.RunWorkerAsync();
 
                 // ŒŸõ’†‚Å‚ ‚é‚±‚Æ‚ğ UI ‚É”½‰f‚·‚é
-                buttonSearch.Text = global::SearchFile.Properties.Settings.Default.buttonSearch_StopText;
+                buttonSearch.Text = global::SearchFile.Properties.Resources.SearchStopButtonText;
                 buttonClear.Enabled = false;
                 menuFileClear.Enabled = false;
                 toolFileClear.Enabled = false;
@@ -410,7 +410,7 @@ namespace SearchFile
             }
 
             // ƒXƒŒƒbƒh‚ªŠ®—¹‚µ‚½‚±‚Æ‚ğ UI ‚É”½‰f‚·‚é
-            buttonSearch.Text = global::SearchFile.Properties.Settings.Default.buttonSearch_Text;
+            buttonSearch.Text = global::SearchFile.Properties.Resources.SearchStartButtonText;
             buttonSearch.Enabled = true;
             buttonClear.Enabled = true;
             menuFileClear.Enabled = true;

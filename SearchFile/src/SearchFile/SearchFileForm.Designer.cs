@@ -179,7 +179,7 @@
             labelDirectory.Name = "labelDirectory";
             labelDirectory.Size = new System.Drawing.Size(84, 12);
             labelDirectory.TabIndex = 0;
-            labelDirectory.Text = global::SearchFile.Properties.Settings.Default.labelDirectory_Text;
+            labelDirectory.Text = "ディレクトリ名(&D):";
             // 
             // labelFile
             // 
@@ -189,7 +189,7 @@
             labelFile.Name = "labelFile";
             labelFile.Size = new System.Drawing.Size(68, 12);
             labelFile.TabIndex = 3;
-            labelFile.Text = global::SearchFile.Properties.Settings.Default.labelFile_Text;
+            labelFile.Text = "ファイル名(&F):";
             // 
             // mainStatusStrip
             // 
@@ -239,7 +239,7 @@
             this.menuFileExit});
             this.menuFile.Name = "menuFile";
             this.menuFile.Size = new System.Drawing.Size(85, 22);
-            this.menuFile.Text = global::SearchFile.Properties.Settings.Default.menuFile_Text;
+            this.menuFile.Text = "ファイル(&F)";
             // 
             // menuFileClear
             // 
@@ -247,7 +247,7 @@
             this.menuFileClear.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.menuFileClear.Name = "menuFileClear";
             this.menuFileClear.Size = new System.Drawing.Size(214, 22);
-            this.menuFileClear.Text = global::SearchFile.Properties.Settings.Default.menuFileClear_Text;
+            this.menuFileClear.Text = "リストのクリア(&C)";
             this.menuFileClear.Click += new System.EventHandler(this.FileListClearEvent);
             // 
             // menuFileSelectDirectory
@@ -256,7 +256,7 @@
             this.menuFileSelectDirectory.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.menuFileSelectDirectory.Name = "menuFileSelectDirectory";
             this.menuFileSelectDirectory.Size = new System.Drawing.Size(214, 22);
-            this.menuFileSelectDirectory.Text = global::SearchFile.Properties.Settings.Default.menuFileSelectDirectory_Text;
+            this.menuFileSelectDirectory.Text = "ディレクトリの選択(&S)...";
             this.menuFileSelectDirectory.Click += new System.EventHandler(this.SelectDirectoryEvent);
             // 
             // menuFileSaveAs
@@ -265,14 +265,14 @@
             this.menuFileSaveAs.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.menuFileSaveAs.Name = "menuFileSaveAs";
             this.menuFileSaveAs.Size = new System.Drawing.Size(214, 22);
-            this.menuFileSaveAs.Text = global::SearchFile.Properties.Settings.Default.menuFileSaveAs_Text;
+            this.menuFileSaveAs.Text = "名前を付けて保存(&A)...";
             this.menuFileSaveAs.Click += new System.EventHandler(this.SaveFileListEvent);
             // 
             // menuFileExit
             // 
             this.menuFileExit.Name = "menuFileExit";
             this.menuFileExit.Size = new System.Drawing.Size(214, 22);
-            this.menuFileExit.Text = global::SearchFile.Properties.Settings.Default.menuFileExit_Text;
+            this.menuFileExit.Text = "終了(&X)";
             this.menuFileExit.Click += new System.EventHandler(this.FormCloseEvent);
             // 
             // menuEdit
@@ -284,7 +284,7 @@
             this.menuEditReverseSelection});
             this.menuEdit.Name = "menuEdit";
             this.menuEdit.Size = new System.Drawing.Size(61, 22);
-            this.menuEdit.Text = global::SearchFile.Properties.Settings.Default.menuEdit_Text;
+            this.menuEdit.Text = "編集(&E)";
             this.menuEdit.DropDownOpened += new System.EventHandler(this.menuEdit_DropDownOpened);
             // 
             // menuEditCopy
@@ -293,21 +293,21 @@
             this.menuEditCopy.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.menuEditCopy.Name = "menuEditCopy";
             this.menuEditCopy.Size = new System.Drawing.Size(190, 22);
-            this.menuEditCopy.Text = global::SearchFile.Properties.Settings.Default.menuEditCopy_Text;
+            this.menuEditCopy.Text = "検索結果をコピー(&C)";
             this.menuEditCopy.Click += new System.EventHandler(this.ResultCopyEvent);
             // 
             // menuEditSelectAll
             // 
             this.menuEditSelectAll.Name = "menuEditSelectAll";
             this.menuEditSelectAll.Size = new System.Drawing.Size(190, 22);
-            this.menuEditSelectAll.Text = global::SearchFile.Properties.Settings.Default.menuEditSelectAll_Text;
+            this.menuEditSelectAll.Text = "すべて選択(&A)";
             this.menuEditSelectAll.Click += new System.EventHandler(this.SelectAllFileListEvent);
             // 
             // menuEditReverseSelection
             // 
             this.menuEditReverseSelection.Name = "menuEditReverseSelection";
             this.menuEditReverseSelection.Size = new System.Drawing.Size(190, 22);
-            this.menuEditReverseSelection.Text = global::SearchFile.Properties.Settings.Default.menuEditReverseSelection_Text;
+            this.menuEditReverseSelection.Text = "選択の切り替え(&R)";
             this.menuEditReverseSelection.Click += new System.EventHandler(this.ReverseSelectionFileListEvent);
             // 
             // mainSplitContainer
@@ -349,17 +349,17 @@
             // 
             // columnFileName
             // 
-            this.columnFileName.Text = global::SearchFile.Properties.Settings.Default.columnFileName_Text;
+            this.columnFileName.Text = "ファイル名";
             this.columnFileName.Width = 180;
             // 
             // columnExtension
             // 
-            this.columnExtension.Text = global::SearchFile.Properties.Settings.Default.columnExtension_Text;
+            this.columnExtension.Text = "拡張子";
             this.columnExtension.Width = 120;
             // 
             // columnDirectoryName
             // 
-            this.columnDirectoryName.Text = global::SearchFile.Properties.Settings.Default.columnDirectoryName_Text;
+            this.columnDirectoryName.Text = "ディレクトリ";
             this.columnDirectoryName.Width = 180;
             // 
             // contextFileList
@@ -385,7 +385,7 @@
             this.contextFileListClear.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.contextFileListClear.Name = "contextFileListClear";
             this.contextFileListClear.Size = new System.Drawing.Size(230, 22);
-            this.contextFileListClear.Text = global::SearchFile.Properties.Settings.Default.contextFileListClear_Text;
+            this.contextFileListClear.Text = "リストのクリア(&C)";
             this.contextFileListClear.Click += new System.EventHandler(this.FileListClearEvent);
             // 
             // contextFileListResultCopy
@@ -394,35 +394,35 @@
             this.contextFileListResultCopy.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.contextFileListResultCopy.Name = "contextFileListResultCopy";
             this.contextFileListResultCopy.Size = new System.Drawing.Size(230, 22);
-            this.contextFileListResultCopy.Text = global::SearchFile.Properties.Settings.Default.contextFileListResultCopy_Text;
+            this.contextFileListResultCopy.Text = "検索結果をコピー(&O)";
             this.contextFileListResultCopy.Click += new System.EventHandler(this.ResultCopyEvent);
             // 
             // contextFileListSelectAll
             // 
             this.contextFileListSelectAll.Name = "contextFileListSelectAll";
             this.contextFileListSelectAll.Size = new System.Drawing.Size(230, 22);
-            this.contextFileListSelectAll.Text = global::SearchFile.Properties.Settings.Default.contextFileListSelectAll_Text;
+            this.contextFileListSelectAll.Text = "すべて選択(&A)";
             this.contextFileListSelectAll.Click += new System.EventHandler(this.SelectAllFileListEvent);
             // 
             // contextFileListReverseSelection
             // 
             this.contextFileListReverseSelection.Name = "contextFileListReverseSelection";
             this.contextFileListReverseSelection.Size = new System.Drawing.Size(230, 22);
-            this.contextFileListReverseSelection.Text = global::SearchFile.Properties.Settings.Default.contextFileListReverseSelection_Text;
+            this.contextFileListReverseSelection.Text = "選択の切り替え(&R)";
             this.contextFileListReverseSelection.Click += new System.EventHandler(this.ReverseSelectionFileListEvent);
             // 
             // contextFileListAutoColumnWidth
             // 
             this.contextFileListAutoColumnWidth.Name = "contextFileListAutoColumnWidth";
             this.contextFileListAutoColumnWidth.Size = new System.Drawing.Size(230, 22);
-            this.contextFileListAutoColumnWidth.Text = global::SearchFile.Properties.Settings.Default.contextFileListAutoColumnWidth_Text;
+            this.contextFileListAutoColumnWidth.Text = "検索時に列幅を自動調整(&W)";
             this.contextFileListAutoColumnWidth.Click += new System.EventHandler(this.AutoFileListColumnWidthEvent);
             // 
             // contextFileListShowProperty
             // 
             this.contextFileListShowProperty.Name = "contextFileListShowProperty";
             this.contextFileListShowProperty.Size = new System.Drawing.Size(230, 22);
-            this.contextFileListShowProperty.Text = global::SearchFile.Properties.Settings.Default.contextFileListShowProperty_Text;
+            this.contextFileListShowProperty.Text = "プロパティの表示(&P)";
             this.contextFileListShowProperty.Click += new System.EventHandler(this.ShowFilePropertyEvent);
             // 
             // imageFileList
@@ -523,7 +523,7 @@
             this.buttonSearch.Name = "buttonSearch";
             this.buttonSearch.Size = new System.Drawing.Size(91, 23);
             this.buttonSearch.TabIndex = 7;
-            this.buttonSearch.Text = global::SearchFile.Properties.Settings.Default.buttonSearch_Text;
+            this.buttonSearch.Text = "検索開始(&S)";
             this.buttonSearch.UseVisualStyleBackColor = true;
             this.buttonSearch.Click += new System.EventHandler(this.SearchFileEvent);
             // 
@@ -534,7 +534,7 @@
             this.buttonClear.Name = "buttonClear";
             this.buttonClear.Size = new System.Drawing.Size(92, 23);
             this.buttonClear.TabIndex = 8;
-            this.buttonClear.Text = global::SearchFile.Properties.Settings.Default.buttonClear_Text;
+            this.buttonClear.Text = "リストのクリア";
             this.buttonClear.UseVisualStyleBackColor = true;
             this.buttonClear.Click += new System.EventHandler(this.FileListClearEvent);
             // 
@@ -546,7 +546,7 @@
             this.buttonDirectory.Name = "buttonDirectory";
             this.buttonDirectory.Size = new System.Drawing.Size(128, 23);
             this.buttonDirectory.TabIndex = 2;
-            this.buttonDirectory.Text = global::SearchFile.Properties.Settings.Default.buttonDirectory_Text;
+            this.buttonDirectory.Text = "ディレクトリの選択";
             this.buttonDirectory.UseVisualStyleBackColor = true;
             this.buttonDirectory.Click += new System.EventHandler(this.SelectDirectoryEvent);
             // 
@@ -560,7 +560,7 @@
             this.radioWildcard.Size = new System.Drawing.Size(88, 16);
             this.radioWildcard.TabIndex = 5;
             this.radioWildcard.TabStop = true;
-            this.radioWildcard.Text = global::SearchFile.Properties.Settings.Default.radioWildcard_Text;
+            this.radioWildcard.Text = "ワイルドカード";
             this.radioWildcard.UseVisualStyleBackColor = true;
             // 
             // radioRegex
@@ -571,7 +571,7 @@
             this.radioRegex.Name = "radioRegex";
             this.radioRegex.Size = new System.Drawing.Size(71, 16);
             this.radioRegex.TabIndex = 6;
-            this.radioRegex.Text = global::SearchFile.Properties.Settings.Default.radioRegex_Text;
+            this.radioRegex.Text = "正規表現";
             this.radioRegex.UseVisualStyleBackColor = true;
             // 
             // inputSearchInfoTitle
@@ -626,7 +626,7 @@
             this.buttonSelectAll.Name = "buttonSelectAll";
             this.buttonSelectAll.Size = new System.Drawing.Size(89, 23);
             this.buttonSelectAll.TabIndex = 0;
-            this.buttonSelectAll.Text = global::SearchFile.Properties.Settings.Default.buttonSelectAll_Text;
+            this.buttonSelectAll.Text = "すべて選択";
             this.buttonSelectAll.UseVisualStyleBackColor = true;
             this.buttonSelectAll.Click += new System.EventHandler(this.SelectAllFileListEvent);
             // 
@@ -637,7 +637,7 @@
             this.buttonReverseSelection.Name = "buttonReverseSelection";
             this.buttonReverseSelection.Size = new System.Drawing.Size(89, 23);
             this.buttonReverseSelection.TabIndex = 1;
-            this.buttonReverseSelection.Text = global::SearchFile.Properties.Settings.Default.buttonReverseSelection_Text;
+            this.buttonReverseSelection.Text = "選択の切り替え";
             this.buttonReverseSelection.UseVisualStyleBackColor = true;
             this.buttonReverseSelection.Click += new System.EventHandler(this.ReverseSelectionFileListEvent);
             // 
@@ -649,7 +649,7 @@
             this.buttonDeleteFile.Name = "buttonDeleteFile";
             this.buttonDeleteFile.Size = new System.Drawing.Size(148, 23);
             this.buttonDeleteFile.TabIndex = 2;
-            this.buttonDeleteFile.Text = global::SearchFile.Properties.Settings.Default.buttonDeleteFile_Text;
+            this.buttonDeleteFile.Text = "選択ファイルを削除する";
             this.buttonDeleteFile.UseVisualStyleBackColor = true;
             this.buttonDeleteFile.Click += new System.EventHandler(this.DeleteSelectionFilesEvent);
             // 
@@ -664,7 +664,7 @@
             this.checkMoveRecycler.Name = "checkMoveRecycler";
             this.checkMoveRecycler.Size = new System.Drawing.Size(175, 16);
             this.checkMoveRecycler.TabIndex = 3;
-            this.checkMoveRecycler.Text = global::SearchFile.Properties.Settings.Default.checkMoveRecycler_Text;
+            this.checkMoveRecycler.Text = "削除時にファイルをごみ箱に移す";
             this.checkMoveRecycler.UseVisualStyleBackColor = true;
             // 
             // inputActionInfoTitle
@@ -728,7 +728,7 @@
             this.toolFileClear.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolFileClear.Name = "toolFileClear";
             this.toolFileClear.Size = new System.Drawing.Size(23, 22);
-            this.toolFileClear.Text = global::SearchFile.Properties.Settings.Default.toolFileClear_Text;
+            this.toolFileClear.Text = "リストのクリア";
             this.toolFileClear.Click += new System.EventHandler(this.FileListClearEvent);
             // 
             // toolFileSelectDirectory
@@ -738,7 +738,7 @@
             this.toolFileSelectDirectory.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolFileSelectDirectory.Name = "toolFileSelectDirectory";
             this.toolFileSelectDirectory.Size = new System.Drawing.Size(23, 22);
-            this.toolFileSelectDirectory.Text = global::SearchFile.Properties.Settings.Default.toolFileSelectDirectory_Text;
+            this.toolFileSelectDirectory.Text = "ディレクトリの選択";
             this.toolFileSelectDirectory.Click += new System.EventHandler(this.SelectDirectoryEvent);
             // 
             // toolFileSaveAs
@@ -748,7 +748,7 @@
             this.toolFileSaveAs.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolFileSaveAs.Name = "toolFileSaveAs";
             this.toolFileSaveAs.Size = new System.Drawing.Size(23, 22);
-            this.toolFileSaveAs.Text = global::SearchFile.Properties.Settings.Default.toolFileSaveAs_Text;
+            this.toolFileSaveAs.Text = "名前を付けて保存";
             this.toolFileSaveAs.Click += new System.EventHandler(this.SaveFileListEvent);
             // 
             // toolEditResultCopy
@@ -758,7 +758,7 @@
             this.toolEditResultCopy.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolEditResultCopy.Name = "toolEditResultCopy";
             this.toolEditResultCopy.Size = new System.Drawing.Size(23, 22);
-            this.toolEditResultCopy.Text = global::SearchFile.Properties.Settings.Default.toolEditResultCopy_Text;
+            this.toolEditResultCopy.Text = "検索結果をコピー";
             this.toolEditResultCopy.Click += new System.EventHandler(this.ResultCopyEvent);
             // 
             // toolEditCut
@@ -768,7 +768,7 @@
             this.toolEditCut.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolEditCut.Name = "toolEditCut";
             this.toolEditCut.Size = new System.Drawing.Size(23, 22);
-            this.toolEditCut.Text = global::SearchFile.Properties.Settings.Default.toolEditCut_Text;
+            this.toolEditCut.Text = "切り取り";
             this.toolEditCut.Click += new System.EventHandler(this.TextBoxBaseCutEvent);
             // 
             // toolEditCopy
@@ -778,7 +778,7 @@
             this.toolEditCopy.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolEditCopy.Name = "toolEditCopy";
             this.toolEditCopy.Size = new System.Drawing.Size(23, 22);
-            this.toolEditCopy.Text = global::SearchFile.Properties.Settings.Default.toolEditCopy_Text;
+            this.toolEditCopy.Text = "コピー";
             this.toolEditCopy.Click += new System.EventHandler(this.TextBoxBaseCopyEvent);
             // 
             // toolEditPaste
@@ -788,7 +788,7 @@
             this.toolEditPaste.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolEditPaste.Name = "toolEditPaste";
             this.toolEditPaste.Size = new System.Drawing.Size(23, 22);
-            this.toolEditPaste.Text = global::SearchFile.Properties.Settings.Default.toolEditPaste_Text;
+            this.toolEditPaste.Text = "貼り付け";
             this.toolEditPaste.Click += new System.EventHandler(this.TextBoxBasePasteEvent);
             // 
             // backgroundSearchFile
@@ -808,7 +808,7 @@
             this.MainMenuStrip = this.mainMenuStrip;
             this.Name = "SearchFileForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.WindowsDefaultBounds;
-            this.Text = global::SearchFile.Properties.Settings.Default.SearchFileForm_Text;
+            this.Text = "ファイルの検索";
             this.Deactivate += new System.EventHandler(this.FormDeactivateEvent);
             this.Activated += new System.EventHandler(this.FormActivatedEvent);
             this.mainStatusStrip.ResumeLayout(false);
