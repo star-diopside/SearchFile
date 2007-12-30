@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="src\SearchFile\Utils\LinearGradientDrawLabelStateManager.cs" />
     <Compile Include="src\MyLib\CustomControls\AbstractDrawLabel.cs">
       <SubType>Component</SubType>
     </Compile>

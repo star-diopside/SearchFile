@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading;
 using System.Windows.Forms;
-using MyLib.WindowsShell;
 using MyLib.CustomControls;
+using MyLib.WindowsShell;
+using SearchFile.Utils;
 
 namespace SearchFile
 {
@@ -17,6 +18,9 @@ namespace SearchFile
     {
         // リストビューのソート時に使用するインスタンス
         private ListViewItemSorter listViewFileNameSorter;
+
+        // タイトルラベル状態管理用に使用するオブジェクト
+        private LinearGradientDrawLabelStateManager titleLabelStateManager = new LinearGradientDrawLabelStateManager();
 
         // 検索時にリストビューの列幅を自動調整するかどうかを示す値
         private bool _autoColumnWidth = true;
@@ -716,12 +720,11 @@ namespace SearchFile
         /// </summary>
         private void FormActivatedEvent(object sender, EventArgs e)
         {
-            inputSearchInfoTitle.FillColor1 = SystemColors.ActiveCaption;
-            inputSearchInfoTitle.FillColor2 = SystemColors.GradientActiveCaption;
-            inputSearchInfoTitle.BackColor = SystemColors.ActiveCaptionText;
-            inputActionInfoTitle.FillColor1 = SystemColors.ActiveCaption;
-            inputActionInfoTitle.FillColor2 = SystemColors.GradientActiveCaption;
-            inputActionInfoTitle.BackColor = SystemColors.ActiveCaptionText;
+            // タイトルラベルの状態を復元する。
+            this.titleLabelStateManager.RestoreAll();
+
+            // 管理対象リストをクリアする。
+            this.titleLabelStateManager.Clear();
         }
 
         /// <summary>
@@ -729,12 +732,57 @@ namespace SearchFile
         /// </summary>
         private void FormDeactivateEvent(object sender, EventArgs e)
         {
-            inputSearchInfoTitle.FillColor1 = SystemColors.InactiveCaption;
-            inputSearchInfoTitle.FillColor2 = SystemColors.GradientInactiveCaption;
-            inputSearchInfoTitle.BackColor = SystemColors.InactiveCaptionText;
-            inputActionInfoTitle.FillColor1 = SystemColors.InactiveCaption;
-            inputActionInfoTitle.FillColor2 = SystemColors.GradientInactiveCaption;
-            inputActionInfoTitle.BackColor = SystemColors.InactiveCaptionText;
+            // 現在のタイトルラベルの状態を保存する。
+            this.titleLabelStateManager.Add(this.inputSearchInfoTitle);
+            this.titleLabelStateManager.Add(this.inputActionInfoTitle);
+
+            // タイトルラベルを非アクティブであることを示す状態に変更する。
+            SetInactiveTitleLabelState(this.inputSearchInfoTitle);
+            SetInactiveTitleLabelState(this.inputActionInfoTitle);
+        }
+
+        private void inputSplitContainer_Panel1_Enter(object sender, EventArgs e)
+        {
+            SetActiveTitleLabelState(this.inputSearchInfoTitle);
+        }
+
+        private void inputSplitContainer_Panel1_Leave(object sender, EventArgs e)
+        {
+            SetInactiveTitleLabelState(this.inputSearchInfoTitle);
+        }
+
+        private void inputSplitContainer_Panel2_Enter(object sender, EventArgs e)
+        {
+            SetActiveTitleLabelState(this.inputActionInfoTitle);
+        }
+
+        private void inputSplitContainer_Panel2_Leave(object sender, EventArgs e)
+        {
+            SetInactiveTitleLabelState(this.inputActionInfoTitle);
+        }
+
+        /// <summary>
+        /// タイトルラベルをアクティブになったことを示す状態にセットする。
+        /// </summary>
+        /// <param name="label">状態を変更する LinearGradientDrawLabel オブジェクト</param>
+        private static void SetActiveTitleLabelState(LinearGradientDrawLabel label)
+        {
+            label.BackColor = SystemColors.ActiveCaptionText;
+            label.FillColor1 = SystemColors.GradientActiveCaption;
+            label.FillColor2 = SystemColors.ActiveCaption;
+            label.LinearGradientMode = LinearGradientMode.Vertical;
+        }
+
+        /// <summary>
+        /// タイトルラベルを非アクティブになったことを示す状態にセットする。
+        /// </summary>
+        /// <param name="label">状態を変更する LinearGradientDrawLabel オブジェクト</param>
+        private static void SetInactiveTitleLabelState(LinearGradientDrawLabel label)
+        {
+            label.BackColor = SystemColors.InactiveCaptionText;
+            label.FillColor1 = SystemColors.GradientInactiveCaption;
+            label.FillColor2 = SystemColors.InactiveCaption;
+            label.LinearGradientMode = LinearGradientMode.Vertical;
         }
     }
 }

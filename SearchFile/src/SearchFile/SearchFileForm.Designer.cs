@@ -441,10 +441,14 @@
             // inputSplitContainer.Panel1
             // 
             this.inputSplitContainer.Panel1.Controls.Add(this.inputSearchInfoBorderPanel);
+            this.inputSplitContainer.Panel1.Leave += new System.EventHandler(this.inputSplitContainer_Panel1_Leave);
+            this.inputSplitContainer.Panel1.Enter += new System.EventHandler(this.inputSplitContainer_Panel1_Enter);
             // 
             // inputSplitContainer.Panel2
             // 
             this.inputSplitContainer.Panel2.Controls.Add(this.inputActionInfoBorderPanel);
+            this.inputSplitContainer.Panel2.Leave += new System.EventHandler(this.inputSplitContainer_Panel2_Leave);
+            this.inputSplitContainer.Panel2.Enter += new System.EventHandler(this.inputSplitContainer_Panel2_Enter);
             this.inputSplitContainer.Size = new System.Drawing.Size(205, 407);
             this.inputSplitContainer.SplitterDistance = 205;
             this.inputSplitContainer.TabIndex = 0;
@@ -503,8 +507,8 @@
             this.textDirectory.Name = "textDirectory";
             this.textDirectory.Size = new System.Drawing.Size(189, 19);
             this.textDirectory.TabIndex = 1;
-            this.textDirectory.Enter += new System.EventHandler(this.textDirectory_Enter);
             this.textDirectory.Leave += new System.EventHandler(this.textDirectory_Leave);
+            this.textDirectory.Enter += new System.EventHandler(this.textDirectory_Enter);
             // 
             // textFile
             // 
@@ -579,7 +583,10 @@
             this.inputSearchInfoTitle.AutoEllipsis = true;
             this.inputSearchInfoTitle.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.inputSearchInfoTitle.Dock = System.Windows.Forms.DockStyle.Top;
+            this.inputSearchInfoTitle.FillColor1 = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.inputSearchInfoTitle.FillColor2 = System.Drawing.SystemColors.InactiveCaption;
             this.inputSearchInfoTitle.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.inputSearchInfoTitle.LinearGradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
             this.inputSearchInfoTitle.Location = new System.Drawing.Point(1, 1);
             this.inputSearchInfoTitle.Name = "inputSearchInfoTitle";
             this.inputSearchInfoTitle.Padding = new System.Windows.Forms.Padding(2);
@@ -672,7 +679,10 @@
             this.inputActionInfoTitle.AutoEllipsis = true;
             this.inputActionInfoTitle.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.inputActionInfoTitle.Dock = System.Windows.Forms.DockStyle.Top;
+            this.inputActionInfoTitle.FillColor1 = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.inputActionInfoTitle.FillColor2 = System.Drawing.SystemColors.InactiveCaption;
             this.inputActionInfoTitle.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.inputActionInfoTitle.LinearGradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
             this.inputActionInfoTitle.Location = new System.Drawing.Point(1, 1);
             this.inputActionInfoTitle.Name = "inputActionInfoTitle";
             this.inputActionInfoTitle.Padding = new System.Windows.Forms.Padding(2);
