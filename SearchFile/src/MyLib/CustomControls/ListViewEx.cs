@@ -7,7 +7,7 @@ namespace MyLib.CustomControls
 {
     public class ListViewEx : ListView
     {
-        private IntPtr? _headerHandle = null;
+        private readonly WeakReference _headerHandleRef = new WeakReference(null);
 
         public ListViewEx()
         {
@@ -89,11 +89,15 @@ namespace MyLib.CustomControls
         {
             get
             {
-                if (!this._headerHandle.HasValue)
+                IntPtr? headerHandle = this._headerHandleRef.Target as IntPtr?;
+
+                if (headerHandle == null)
                 {
-                    this._headerHandle = SendMessage(new HandleRef(this, this.Handle), (uint)ListViewMessages.LVM_GETHEADER, (IntPtr)0, (IntPtr)0);
+                    headerHandle = SendMessage(new HandleRef(this, this.Handle), (uint)ListViewMessages.LVM_GETHEADER, (IntPtr)0, (IntPtr)0);
+                    this._headerHandleRef.Target = headerHandle;
                 }
-                return this._headerHandle.Value;
+
+                return headerHandle.Value;
             }
         }
 
