@@ -53,7 +53,7 @@ namespace SearchFile
         /// </summary>
         internal virtual bool ShouldSerializeSearchPath()
         {
-            return this.SearchPath != null && this.SearchPath.Length == 0;
+            return this.SearchPath == null || this.SearchPath.Length != 0;
         }
 
         /// <summary>
