@@ -11,8 +11,8 @@ namespace SearchFile
     class FileInfo
     {
         private System.IO.FileInfo _info;
-        private Icon _smallIcon;
-        private Icon _largeIcon;
+        private readonly WeakReference _smallIconRef = new WeakReference(null);
+        private readonly WeakReference _largeIconRef = new WeakReference(null);
 
         /// <summary>
         /// 指定されたファイルに関する情報を取得するクラスの新しいインスタンスを生成する
@@ -86,21 +86,25 @@ namespace SearchFile
         {
             get
             {
-                if (_smallIcon == null)
+                Icon smallIcon = this._smallIconRef.Target as Icon;
+
+                if (smallIcon == null)
                 {
                     try
                     {
                         // ファイルに関連付けられたアイコンを取得する
-                        _smallIcon = ExtractIcon.ExtractFileIcon(_info.FullName, ExtractIcon.IconSize.Small);
+                        smallIcon = ExtractIcon.ExtractFileIcon(_info.FullName, ExtractIcon.IconSize.Small);
                     }
                     catch (Win32Exception)
                     {
                         // アイコンが取得できない場合は null を設定する
-                        _smallIcon = null;
+                        smallIcon = null;
                     }
+
+                    this._smallIconRef.Target = smallIcon;
                 }
 
-                return _smallIcon;
+                return smallIcon;
             }
         }
 
@@ -111,21 +115,25 @@ namespace SearchFile
         {
             get
             {
-                if (_largeIcon == null)
+                Icon largeIcon = this._largeIconRef.Target as Icon;
+
+                if (largeIcon == null)
                 {
                     try
                     {
                         // ファイルに関連付けられたアイコンを取得する
-                        _largeIcon = ExtractIcon.ExtractFileIcon(_info.FullName, ExtractIcon.IconSize.Large);
+                        largeIcon = ExtractIcon.ExtractFileIcon(_info.FullName, ExtractIcon.IconSize.Large);
                     }
                     catch (Win32Exception)
                     {
                         // アイコンが取得できない場合は null を設定する
-                        _largeIcon = null;
+                        largeIcon = null;
                     }
+
+                    this._largeIconRef.Target = largeIcon;
                 }
 
-                return _largeIcon;
+                return largeIcon;
             }
         }
     }
