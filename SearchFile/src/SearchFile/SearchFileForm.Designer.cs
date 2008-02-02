@@ -523,7 +523,8 @@
             // buttonSearch
             // 
             this.buttonSearch.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.buttonSearch.Location = new System.Drawing.Point(7, 136);
+            this.buttonSearch.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.buttonSearch.Location = new System.Drawing.Point(7, 137);
             this.buttonSearch.Name = "buttonSearch";
             this.buttonSearch.Size = new System.Drawing.Size(91, 23);
             this.buttonSearch.TabIndex = 7;
@@ -534,7 +535,8 @@
             // buttonClear
             // 
             this.buttonClear.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.buttonClear.Location = new System.Drawing.Point(104, 136);
+            this.buttonClear.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.buttonClear.Location = new System.Drawing.Point(104, 137);
             this.buttonClear.Name = "buttonClear";
             this.buttonClear.Size = new System.Drawing.Size(92, 23);
             this.buttonClear.TabIndex = 8;
@@ -546,6 +548,7 @@
             // 
             this.buttonDirectory.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.inputSearchInfoPanel.SetColumnSpan(this.buttonDirectory, 2);
+            this.buttonDirectory.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.buttonDirectory.Location = new System.Drawing.Point(68, 48);
             this.buttonDirectory.Name = "buttonDirectory";
             this.buttonDirectory.Size = new System.Drawing.Size(128, 23);
@@ -559,9 +562,10 @@
             this.radioWildcard.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.radioWildcard.AutoSize = true;
             this.radioWildcard.Checked = true;
-            this.radioWildcard.Location = new System.Drawing.Point(8, 114);
+            this.radioWildcard.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.radioWildcard.Location = new System.Drawing.Point(7, 114);
             this.radioWildcard.Name = "radioWildcard";
-            this.radioWildcard.Size = new System.Drawing.Size(88, 16);
+            this.radioWildcard.Size = new System.Drawing.Size(91, 17);
             this.radioWildcard.TabIndex = 5;
             this.radioWildcard.TabStop = true;
             this.radioWildcard.Text = "ワイルドカード";
@@ -571,9 +575,10 @@
             // 
             this.radioRegex.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.radioRegex.AutoSize = true;
-            this.radioRegex.Location = new System.Drawing.Point(114, 114);
+            this.radioRegex.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.radioRegex.Location = new System.Drawing.Point(111, 114);
             this.radioRegex.Name = "radioRegex";
-            this.radioRegex.Size = new System.Drawing.Size(71, 16);
+            this.radioRegex.Size = new System.Drawing.Size(77, 17);
             this.radioRegex.TabIndex = 6;
             this.radioRegex.Text = "正規表現";
             this.radioRegex.UseVisualStyleBackColor = true;
@@ -629,6 +634,7 @@
             // buttonSelectAll
             // 
             this.buttonSelectAll.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.buttonSelectAll.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.buttonSelectAll.Location = new System.Drawing.Point(8, 11);
             this.buttonSelectAll.Name = "buttonSelectAll";
             this.buttonSelectAll.Size = new System.Drawing.Size(89, 23);
@@ -640,6 +646,7 @@
             // buttonReverseSelection
             // 
             this.buttonReverseSelection.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.buttonReverseSelection.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.buttonReverseSelection.Location = new System.Drawing.Point(105, 11);
             this.buttonReverseSelection.Name = "buttonReverseSelection";
             this.buttonReverseSelection.Size = new System.Drawing.Size(89, 23);
@@ -652,6 +659,7 @@
             // 
             this.buttonDeleteFile.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.inputActionInfoPanel.SetColumnSpan(this.buttonDeleteFile, 2);
+            this.buttonDeleteFile.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.buttonDeleteFile.Location = new System.Drawing.Point(27, 40);
             this.buttonDeleteFile.Name = "buttonDeleteFile";
             this.buttonDeleteFile.Size = new System.Drawing.Size(148, 23);
@@ -667,9 +675,10 @@
             this.checkMoveRecycler.Checked = true;
             this.checkMoveRecycler.CheckState = System.Windows.Forms.CheckState.Checked;
             this.inputActionInfoPanel.SetColumnSpan(this.checkMoveRecycler, 2);
-            this.checkMoveRecycler.Location = new System.Drawing.Point(21, 69);
+            this.checkMoveRecycler.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.checkMoveRecycler.Location = new System.Drawing.Point(15, 69);
             this.checkMoveRecycler.Name = "checkMoveRecycler";
-            this.checkMoveRecycler.Size = new System.Drawing.Size(175, 16);
+            this.checkMoveRecycler.Size = new System.Drawing.Size(181, 17);
             this.checkMoveRecycler.TabIndex = 3;
             this.checkMoveRecycler.Text = "削除時にファイルをごみ箱に移す";
             this.checkMoveRecycler.UseVisualStyleBackColor = true;

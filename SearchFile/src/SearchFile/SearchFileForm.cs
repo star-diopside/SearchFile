@@ -395,7 +395,7 @@ namespace SearchFile
                 }
                 else
                 {
-                    message = e.Error.ToString();
+                    message = e.Error.Message;
                 }
 
                 MessageBox.Show(this, message, global::SearchFile.Properties.Resources.ErrorDialogCaption,

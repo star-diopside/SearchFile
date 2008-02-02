@@ -146,6 +146,10 @@ namespace SearchFile
                     info.HavingSearchResult = false;
                     this.ReportProgress(0, info);
 
+                    // ディレクトリ名の最後にディレクトリ区切り文字を追加する
+                    // （ディレクトリの末尾が全角スペースの場合の対応）
+                    path += Path.DirectorySeparatorChar;
+
                     // ProgressChanged イベントでの処理が完了するまで待機する
                     Monitor.Wait(lockObject);
 
