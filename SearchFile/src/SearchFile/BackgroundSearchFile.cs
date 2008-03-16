@@ -140,15 +140,28 @@ namespace SearchFile
                 {
                     SearchFileWorkerInfo info;
 
+                    // path が null か空文字列の場合は例外をスローする
+                    if (path == null)
+                    {
+                        throw new ArgumentNullException();
+                    }
+                    else if (path.Length == 0)
+                    {
+                        throw new ArgumentException();
+                    }
+
+                    // ディレクトリ名の最後にディレクトリ区切り文字を追加する
+                    // （ディレクトリの末尾が全角スペースの場合の対応）
+                    if (path[path.Length - 1] != Path.DirectorySeparatorChar)
+                    {
+                        path += Path.DirectorySeparatorChar;
+                    }
+
                     // 検索するディレクトリ名を通知する
                     info = new SearchFileWorkerInfo();
                     info.DirectoryPath = path;
                     info.HavingSearchResult = false;
                     this.ReportProgress(0, info);
-
-                    // ディレクトリ名の最後にディレクトリ区切り文字を追加する
-                    // （ディレクトリの末尾が全角スペースの場合の対応）
-                    path += Path.DirectorySeparatorChar;
 
                     // ProgressChanged イベントでの処理が完了するまで待機する
                     Monitor.Wait(lockObject);
