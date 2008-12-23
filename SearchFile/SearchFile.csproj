@@ -2,7 +2,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.21022</ProductVersion>
+    <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{17607F22-06F1-4300-9076-9202A6E00C29}</ProjectGuid>
     <OutputType>WinExe</OutputType>
@@ -15,6 +15,7 @@
     </UpgradeBackupLocation>
     <OldToolsVersion>2.0</OldToolsVersion>
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <StartupObject>SearchFile.Program</StartupObject>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -62,7 +63,6 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="src\SearchFile\FileInfo.cs" />
-    <Compile Include="src\MyLib\CustomControls\ToolStripColorTable.cs" />
     <Compile Include="src\MyLib\WindowsShell\FileOperate.cs" />
     <Compile Include="src\SearchFile\SearchFileForm.cs">
       <SubType>Form</SubType>

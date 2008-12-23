@@ -13,7 +13,7 @@ namespace SearchFile
         static void Main()
         {
             // フォームの既定の ToolStrip 描画スタイルを設定する
-            ToolStripManager.Renderer = new ToolStripProfessionalRenderer(new ToolStripColorTable());
+            ToolStripManager.VisualStylesEnabled = false;
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
