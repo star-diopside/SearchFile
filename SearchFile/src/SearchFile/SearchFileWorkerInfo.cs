@@ -13,10 +13,10 @@ namespace SearchFile
         private bool _havingSearchResult;
         private string _directoryPath;
         private IEnumerable<string> _fileNames;
-        private ICollection<FileInfo> _files;
+        private IEnumerable<FileInfo> _files;
 
         /// <summary>
-        /// 検索するディレクトリ名を通知しようとしている場合はfalse。検索結果を通知しようとしている場合はtrue。
+        /// 検索するディレクトリ名を通知する場合はfalse。検索結果を通知する場合はtrue。
         /// </summary>
         public bool HavingSearchResult
         {
@@ -75,11 +75,13 @@ namespace SearchFile
                 {
                     _fileNames = value;
 
-                    _files = new List<FileInfo>();
+                    List<FileInfo> files = new List<FileInfo>();
                     foreach (string fileName in _fileNames)
                     {
-                        _files.Add(new FileInfo(fileName));
+                        files.Add(new FileInfo(fileName));
                     }
+
+                    _files = files;
                 }
             }
         }
