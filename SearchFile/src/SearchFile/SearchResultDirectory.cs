@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace SearchFile
+﻿namespace SearchFile
 {
     /// <summary>
     /// スレッドから検索中のディレクトリ名を通知するクラス

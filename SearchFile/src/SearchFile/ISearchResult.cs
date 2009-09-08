@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace SearchFile
+﻿namespace SearchFile
 {
     /// <summary>
     /// 検索結果を通知するクラスが実装するインタフェース
