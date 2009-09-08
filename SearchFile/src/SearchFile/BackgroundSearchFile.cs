@@ -138,8 +138,6 @@ namespace SearchFile
             {
                 try
                 {
-                    SearchFileWorkerInfo info;
-
                     // path が null か空文字列の場合は例外をスローする
                     if (path == null)
                     {
@@ -158,10 +156,7 @@ namespace SearchFile
                     }
 
                     // 検索するディレクトリ名を通知する
-                    info = new SearchFileWorkerInfo();
-                    info.DirectoryPath = path;
-                    info.HavingSearchResult = false;
-                    this.ReportProgress(0, info);
+                    this.ReportProgress(0, new SearchResultDirectory(path));
 
                     // ProgressChanged イベントでの処理が完了するまで待機する
                     Monitor.Wait(lockObject);
@@ -183,10 +178,7 @@ namespace SearchFile
                     if (fileNames.Count > 0)
                     {
                         // 検索結果を通知する
-                        info = new SearchFileWorkerInfo();
-                        info.FileNames = fileNames;
-                        info.HavingSearchResult = true;
-                        this.ReportProgress(0, info);
+                        this.ReportProgress(0, new SearchResultFiles(fileNames));
 
                         // ProgressChanged イベントでの処理が完了するまで待機する
                         Monitor.Wait(lockObject);

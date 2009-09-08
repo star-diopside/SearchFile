@@ -14,7 +14,7 @@ using SearchFile.Utils;
 
 namespace SearchFile
 {
-    public partial class SearchFileForm : Form
+    public partial class SearchFileForm : Form, ISearchResultView
     {
         // リストビューのソート時に使用するインスタンス
         private ListViewItemSorter listViewFileNameSorter;
@@ -313,47 +313,13 @@ namespace SearchFile
 
         private void backgroundSearchFile_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-            Debug.Assert(e.UserState is SearchFileWorkerInfo);
-            SearchFileWorkerInfo info = e.UserState as SearchFileWorkerInfo;
+            Debug.Assert(e.UserState is ISearchResult);
+            ISearchResult result = e.UserState as ISearchResult;
 
             try
             {
-                if (info.HavingSearchResult)
-                {
-                    // リストビューの描画を中断する
-                    listViewFileName.BeginUpdate();
-
-                    // 検索結果のアイテムを追加する
-                    foreach (FileInfo file in info.Files)
-                    {
-                        // ファイルアイコンを取得し、イメージリストに追加する
-                        if (file.SmallIcon != null)
-                        {
-                            imageFileList.Images.Add(file.FullName, file.SmallIcon);
-                        }
-
-                        // リストビューに項目を追加する
-                        ListViewItem item = new ListViewItem();
-
-                        if (file.SmallIcon != null)
-                        {
-                            item.ImageKey = file.FullName;
-                        }
-                        item.Text = Path.GetFileName(file.Name);
-                        item.SubItems.Add(file.Extension);
-                        item.SubItems.Add(file.DirectoryName);
-
-                        listViewFileName.Items.Add(item);
-                    }
-
-                    // リストビューの描画を再開する
-                    listViewFileName.EndUpdate();
-                }
-                else
-                {
-                    // ステータスバーに検索中フォルダの情報を表示する
-                    statusLabelSearching.Text = string.Format(global::SearchFile.Properties.Resources.SearchingDirectoryMessage, info.DirectoryPath);
-                }
+                // 検索結果を表示する
+                result.View(this);
             }
             catch (Exception ex)
             {
@@ -376,6 +342,52 @@ namespace SearchFile
                     buttonSearch.Enabled = false;
                 }
             }
+        }
+
+        /// <summary>
+        /// 検索中のディレクトリ名を表示する
+        /// </summary>
+        /// <param name="directoryPath">検索中のディレクトリ名</param>
+        void ISearchResultView.ViewSearchingDirectory(string directoryPath)
+        {
+            // ステータスバーに検索中フォルダの情報を表示する
+            statusLabelSearching.Text = string.Format(global::SearchFile.Properties.Resources.SearchingDirectoryMessage, directoryPath);
+        }
+
+        /// <summary>
+        /// 検索結果のファイルを追加する
+        /// </summary>
+        /// <param name="files">検索結果のファイル情報</param>
+        void ISearchResultView.AddFiles(IEnumerable<FileInfo> files)
+        {
+            // リストビューの描画を中断する
+            listViewFileName.BeginUpdate();
+
+            // 検索結果のアイテムを追加する
+            foreach (FileInfo file in files)
+            {
+                // ファイルアイコンを取得し、イメージリストに追加する
+                if (file.SmallIcon != null)
+                {
+                    imageFileList.Images.Add(file.FullName, file.SmallIcon);
+                }
+
+                // リストビューに項目を追加する
+                ListViewItem item = new ListViewItem();
+
+                if (file.SmallIcon != null)
+                {
+                    item.ImageKey = file.FullName;
+                }
+                item.Text = Path.GetFileName(file.Name);
+                item.SubItems.Add(file.Extension);
+                item.SubItems.Add(file.DirectoryName);
+
+                listViewFileName.Items.Add(item);
+            }
+
+            // リストビューの描画を再開する
+            listViewFileName.EndUpdate();
         }
 
         private void backgroundSearchFile_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
