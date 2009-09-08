@@ -379,7 +379,7 @@ namespace SearchFile
                 {
                     item.ImageKey = file.FullName;
                 }
-                item.Text = Path.GetFileName(file.Name);
+                item.Text = file.Name;
                 item.SubItems.Add(file.Extension);
                 item.SubItems.Add(file.DirectoryName);
 
