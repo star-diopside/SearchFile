@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace SearchFile
 {
@@ -15,14 +16,8 @@ namespace SearchFile
         /// <param name="files">検索結果のファイル名</param>
         public SearchResultFiles(IEnumerable<string> fileNames)
         {
-            List<FileInfo> files = new List<FileInfo>();
-
-            foreach (string fileName in fileNames)
-            {
-                files.Add(new FileInfo(fileName));
-            }
-
-            this._files = files;
+            this._files = from fileName in fileNames
+                          select new FileInfo(fileName);
         }
 
         /// <summary>
