@@ -1,7 +1,7 @@
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
+using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading;
 
@@ -132,7 +132,7 @@ namespace SearchFile
         /// <returns>検索文字列に一致した件数</returns>
         protected int RecursiveSearchFile(string path, Regex pattern, SearchOption searchOption)
         {
-            int hitCount = 0;
+            int totalCount = 0;
 
             lock (lockObject)
             {
@@ -162,20 +162,15 @@ namespace SearchFile
                     Monitor.Wait(lockObject);
 
                     // ファイル名を取得する
-                    List<string> fileNames = new List<string>();
+                    var fileNames = from fileName in Directory.GetFiles(path)
+                                    where pattern.IsMatch(Path.GetFileName(fileName))
+                                    select fileName;
+                    int findCount = fileNames.Count();
 
-                    foreach (string fileName in Directory.GetFiles(path))
-                    {
-                        if (pattern.IsMatch(Path.GetFileName(fileName)))
-                        {
-                            fileNames.Add(fileName);
-                        }
-                    }
-
-                    hitCount += fileNames.Count;
+                    totalCount += findCount;
 
                     // ファイルが見つかった場合
-                    if (fileNames.Count > 0)
+                    if (findCount > 0)
                     {
                         // 検索結果を通知する
                         this.ReportProgress(0, new SearchResultFiles(fileNames));
@@ -195,7 +190,7 @@ namespace SearchFile
                                 break;
                             }
 
-                            hitCount += RecursiveSearchFile(directory, pattern, searchOption);
+                            totalCount += RecursiveSearchFile(directory, pattern, searchOption);
                         }
                     }
                 }
@@ -204,7 +199,7 @@ namespace SearchFile
                 }
             }
 
-            return hitCount;
+            return totalCount;
         }
 
         protected override void OnProgressChanged(ProgressChangedEventArgs e)
