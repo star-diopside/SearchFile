@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
@@ -465,14 +466,10 @@ namespace SearchFile
         {
             try
             {
-                int fileCount = listViewFileName.SelectedItems.Count;
-                List<string> selectedFiles = new List<string>(fileCount);
-
                 // チェックされているファイル名を取得する
-                foreach (ListViewItem item in listViewFileName.SelectedItems)
-                {
-                    selectedFiles.Add(Path.Combine(item.SubItems[2].Text, item.Text));
-                }
+                var selectedFiles = from ListViewItem item in listViewFileName.SelectedItems
+                                    select Path.Combine(item.SubItems[2].Text, item.Text);
+                int fileCount = listViewFileName.SelectedItems.Count;
 
                 // ファイルを削除する
                 FileOperate.DeleteFiles(this, selectedFiles, checkMoveRecycler.Checked);

@@ -74,7 +74,7 @@ namespace MyLib.WindowsShell
         /// </summary>
         /// <param name="files">削除するファイルのリスト</param>
         /// <param name="recycle">ファイルをごみ箱に移動する場合はtrue、完全に削除する場合はfalse</param>
-        public static void DeleteFiles(ICollection<string> files, bool recycle)
+        public static void DeleteFiles(IEnumerable<string> files, bool recycle)
         {
             DeleteFiles(null, files, recycle);
         }
@@ -85,13 +85,8 @@ namespace MyLib.WindowsShell
         /// <param name="owner">ダイアログボックスを所有する IWin32Window の実装</param>
         /// <param name="files">削除するファイルのリスト</param>
         /// <param name="recycle">ファイルをごみ箱に移動する場合はtrue、完全に削除する場合はfalse</param>
-        public static void DeleteFiles(IWin32Window owner, ICollection<string> files, bool recycle)
+        public static void DeleteFiles(IWin32Window owner, IEnumerable<string> files, bool recycle)
         {
-            if (files.Count == 0)
-            {
-                return;
-            }
-
             StringBuilder sb = new StringBuilder();
 
             // 削除対処ファイルを指定する
@@ -99,36 +94,41 @@ namespace MyLib.WindowsShell
             {
                 if (File.Exists(fileName))
                 {
-                    sb.AppendFormat("{0}\0", Path.GetFullPath(fileName));
+                    sb.Append(Path.GetFullPath(fileName)).Append('\0');
                 }
                 else
                 {
                     throw new FileNotFoundException();
                 }
             }
-            sb.Append('\0');
 
-            // ファイルを削除するシェル API を呼び出す
-            SHFILEOPSTRUCT sh = new SHFILEOPSTRUCT();
-
-            sh.hwnd = (owner == null ? IntPtr.Zero : owner.Handle);
-            sh.wFunc = SHFileOperationFunc.FO_DELETE;
-            sh.pFrom = sb.ToString();
-            sh.fFlags = 0;
-            if (recycle)
+            // 削除対象ファイルが指定されている場合
+            if (sb.Length > 0)
             {
-                sh.fFlags |= SHFileOperationFlags.FOF_ALLOWUNDO;
-            }
+                sb.Append('\0');
 
-            if (SHFileOperation(ref sh) != 0)
-            {
-                throw new Win32Exception();
-            }
+                // ファイルを削除するシェル API を呼び出す
+                SHFILEOPSTRUCT sh = new SHFILEOPSTRUCT();
 
-            // 処理がキャンセルされた場合
-            if (sh.fAnyOperationsAborted)
-            {
-                throw new OperationCanceledException();
+                sh.hwnd = (owner == null ? IntPtr.Zero : owner.Handle);
+                sh.wFunc = SHFileOperationFunc.FO_DELETE;
+                sh.pFrom = sb.ToString();
+                sh.fFlags = 0;
+                if (recycle)
+                {
+                    sh.fFlags |= SHFileOperationFlags.FOF_ALLOWUNDO;
+                }
+
+                if (SHFileOperation(ref sh) != 0)
+                {
+                    throw new Win32Exception();
+                }
+
+                // 処理がキャンセルされた場合
+                if (sh.fAnyOperationsAborted)
+                {
+                    throw new OperationCanceledException();
+                }
             }
         }
 
