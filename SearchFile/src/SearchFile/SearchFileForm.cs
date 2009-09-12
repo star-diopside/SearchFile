@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -16,20 +16,20 @@ namespace SearchFile
 {
     public partial class SearchFileForm : Form, ISearchResultView
     {
-        // ƒŠƒXƒgƒrƒ…[‚Ìƒ\[ƒg‚Ég—p‚·‚éƒCƒ“ƒXƒ^ƒ“ƒX
+        // ãƒªã‚¹ãƒˆãƒ“ãƒ¥ãƒ¼ã®ã‚½ãƒ¼ãƒˆæ™‚ã«ä½¿ç”¨ã™ã‚‹ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹
         private ListViewItemSorter listViewFileNameSorter;
 
-        // ƒ^ƒCƒgƒ‹ƒ‰ƒxƒ‹ó‘ÔŠÇ——p‚Ég—p‚·‚éƒIƒuƒWƒFƒNƒg
+        // ã‚¿ã‚¤ãƒˆãƒ«ãƒ©ãƒ™ãƒ«çŠ¶æ…‹ç®¡ç†ç”¨ã«ä½¿ç”¨ã™ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
         private LinearGradientDrawLabelStateManager titleLabelStateManager = new LinearGradientDrawLabelStateManager();
 
-        // ŒŸõ‚ÉƒŠƒXƒgƒrƒ…[‚Ì—ñ•‚ğ©“®’²®‚·‚é‚©‚Ç‚¤‚©‚ğ¦‚·’l
+        // æ¤œç´¢æ™‚ã«ãƒªã‚¹ãƒˆãƒ“ãƒ¥ãƒ¼ã®åˆ—å¹…ã‚’è‡ªå‹•èª¿æ•´ã™ã‚‹ã‹ã©ã†ã‹ã‚’ç¤ºã™å€¤
         private bool _autoColumnWidth = true;
 
         public SearchFileForm()
         {
             InitializeComponent();
 
-            // ƒŠƒXƒgƒrƒ…[‚Ìƒ\[ƒg‚ÉŠÖ‚·‚éİ’è
+            // ãƒªã‚¹ãƒˆãƒ“ãƒ¥ãƒ¼ã®ã‚½ãƒ¼ãƒˆã«é–¢ã™ã‚‹è¨­å®š
             listViewFileNameSorter = new ListViewItemSorter();
             listViewFileNameSorter.Column = 2;
             listViewFileNameSorter.SortOrder = SortOrder.Ascending;
@@ -42,7 +42,7 @@ namespace SearchFile
                 listViewFileNameSorter.Column,
                 SelectHeaderSortArrows(listViewFileNameSorter.SortOrder));
 
-            // ŒŸõƒfƒBƒŒƒNƒgƒŠ‚ÉƒVƒXƒeƒ€ƒfƒBƒŒƒNƒgƒŠ‚Ìƒ‹[ƒgƒfƒBƒŒƒNƒgƒŠ‚ğİ’è‚·‚é
+            // æ¤œç´¢ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã«ã‚·ã‚¹ãƒ†ãƒ ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã®ãƒ«ãƒ¼ãƒˆãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’è¨­å®šã™ã‚‹
             textDirectory.Text = Path.GetPathRoot(Environment.GetFolderPath(Environment.SpecialFolder.System));
         }
 
@@ -59,21 +59,21 @@ namespace SearchFile
         }
 
         /// <summary>
-        /// ƒAƒvƒŠƒP[ƒVƒ‡ƒ“‚ÌƒAƒCƒhƒ‹‚É”­¶‚·‚éƒCƒxƒ“ƒg‚ğˆ—‚·‚éƒƒ\ƒbƒh
+        /// ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã®ã‚¢ã‚¤ãƒ‰ãƒ«æ™‚ã«ç™ºç”Ÿã™ã‚‹ã‚¤ãƒ™ãƒ³ãƒˆã‚’å‡¦ç†ã™ã‚‹ãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         private void ApplicationIdleEvent(object sender, EventArgs e)
         {
             try
             {
-                // ƒŠƒXƒgƒrƒ…[‚Ìó‘Ô‚É‰‚¶‚ÄƒRƒs[‚Ì‰Â”Û‚ğ UI ‚É”½‰f‚·‚é
+                // ãƒªã‚¹ãƒˆãƒ“ãƒ¥ãƒ¼ã®çŠ¶æ…‹ã«å¿œã˜ã¦ã‚³ãƒ”ãƒ¼ã®å¯å¦ã‚’ UI ã«åæ˜ ã™ã‚‹
                 toolEditResultCopy.Enabled = (listViewFileName.Items.Count != 0);
 
-                // ƒAƒNƒeƒBƒuƒRƒ“ƒgƒ[ƒ‹‚ğæ“¾‚·‚é
+                // ã‚¢ã‚¯ãƒ†ã‚£ãƒ–ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«ã‚’å–å¾—ã™ã‚‹
                 TextBoxBase activeControl = GetActiveInnerControl() as TextBoxBase;
 
                 if (activeControl != null)
                 {
-                    // ƒAƒNƒeƒBƒuƒRƒ“ƒgƒ[ƒ‹‚ª TextBoxBase ‚Ìê‡
+                    // ã‚¢ã‚¯ãƒ†ã‚£ãƒ–ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«ãŒ TextBoxBase ã®å ´åˆ
                     toolEditCut.Enabled = toolEditCopy.Enabled = (activeControl.SelectionLength > 0);
                     toolEditPaste.Enabled = Clipboard.ContainsText();
                 }
@@ -94,9 +94,9 @@ namespace SearchFile
         }
 
         /// <summary>
-        /// ƒAƒNƒeƒBƒuƒRƒ“ƒgƒ[ƒ‹‚ğæ“¾‚·‚éBContainerControl ‚ªƒAƒNƒeƒBƒu‚Ìê‡‚É‚ÍÄ‹A“I‚É“à•”‚ÌƒAƒNƒeƒBƒuƒRƒ“ƒgƒ[ƒ‹‚ğæ“¾‚·‚éB
+        /// ã‚¢ã‚¯ãƒ†ã‚£ãƒ–ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«ã‚’å–å¾—ã™ã‚‹ã€‚ContainerControl ãŒã‚¢ã‚¯ãƒ†ã‚£ãƒ–ã®å ´åˆã«ã¯å†å¸°çš„ã«å†…éƒ¨ã®ã‚¢ã‚¯ãƒ†ã‚£ãƒ–ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«ã‚’å–å¾—ã™ã‚‹ã€‚
         /// </summary>
-        /// <returns>ˆê”Ô“à•”‚ÌƒAƒNƒeƒBƒuƒRƒ“ƒgƒ[ƒ‹</returns>
+        /// <returns>ä¸€ç•ªå†…éƒ¨ã®ã‚¢ã‚¯ãƒ†ã‚£ãƒ–ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«</returns>
         protected Control GetActiveInnerControl()
         {
             Control activeControl = this.ActiveControl;
@@ -110,7 +110,7 @@ namespace SearchFile
         }
 
         /// <summary>
-        /// ƒtƒH[ƒ€‚ğ•Â‚¶‚éƒCƒxƒ“ƒg‚ğˆ—‚·‚éƒƒ\ƒbƒh
+        /// ãƒ•ã‚©ãƒ¼ãƒ ã‚’é–‰ã˜ã‚‹ã‚¤ãƒ™ãƒ³ãƒˆã‚’å‡¦ç†ã™ã‚‹ãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         private void FormCloseEvent(object sender, EventArgs e)
         {
@@ -128,7 +128,7 @@ namespace SearchFile
         }
 
         /// <summary>
-        /// ƒtƒHƒ‹ƒ_‘I‘ğƒCƒxƒ“ƒg‚ğˆ—‚·‚éƒƒ\ƒbƒh
+        /// ãƒ•ã‚©ãƒ«ãƒ€é¸æŠã‚¤ãƒ™ãƒ³ãƒˆã‚’å‡¦ç†ã™ã‚‹ãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         private void SelectDirectoryEvent(object sender, EventArgs e)
         {
@@ -145,11 +145,11 @@ namespace SearchFile
         }
 
         /// <summary>
-        /// ƒtƒ@ƒCƒ‹ŒŸõŒ‹‰Ê‚ğƒNƒŠƒA‚·‚éƒCƒxƒ“ƒg‚ğˆ—‚·‚éƒƒ\ƒbƒh
+        /// ãƒ•ã‚¡ã‚¤ãƒ«æ¤œç´¢çµæœã‚’ã‚¯ãƒªã‚¢ã™ã‚‹ã‚¤ãƒ™ãƒ³ãƒˆã‚’å‡¦ç†ã™ã‚‹ãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         private void FileListClearEvent(object sender, EventArgs e)
         {
-            // ŒŸõŒ‹‰Ê‚ğƒNƒŠƒA‚·‚é
+            // æ¤œç´¢çµæœã‚’ã‚¯ãƒªã‚¢ã™ã‚‹
             if (ClearFileList())
             {
                 statusLabelSearching.Text = global::SearchFile.Properties.Resources.ClearFilesMessage;
@@ -157,9 +157,9 @@ namespace SearchFile
         }
 
         /// <summary>
-        /// ƒtƒ@ƒCƒ‹ŒŸõŒ‹‰Ê‚ğƒNƒŠƒA‚·‚é
+        /// ãƒ•ã‚¡ã‚¤ãƒ«æ¤œç´¢çµæœã‚’ã‚¯ãƒªã‚¢ã™ã‚‹
         /// </summary>
-        /// <returns>ŒŸõŒ‹‰Ê‚ªƒNƒŠƒA‚³‚ê‚½ê‡‚ÍtrueBƒLƒƒƒ“ƒZƒ‹‚³‚ê‚½ê‡‚ÍfalseB</returns>
+        /// <returns>æ¤œç´¢çµæœãŒã‚¯ãƒªã‚¢ã•ã‚ŒãŸå ´åˆã¯trueã€‚ã‚­ãƒ£ãƒ³ã‚»ãƒ«ã•ã‚ŒãŸå ´åˆã¯falseã€‚</returns>
         private bool ClearFileList()
         {
             if (listViewFileName.Items.Count == 0)
@@ -181,16 +181,16 @@ namespace SearchFile
         }
 
         /// <summary>
-        /// ƒtƒ@ƒCƒ‹ŒŸõ‚ÌÀsE’†~‚ğÀs‚·‚éƒCƒxƒ“ƒg‚ğˆ—‚·‚éƒƒ\ƒbƒh
+        /// ãƒ•ã‚¡ã‚¤ãƒ«æ¤œç´¢ã®å®Ÿè¡Œãƒ»ä¸­æ­¢ã‚’å®Ÿè¡Œã™ã‚‹ã‚¤ãƒ™ãƒ³ãƒˆã‚’å‡¦ç†ã™ã‚‹ãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         private void SearchFileEvent(object sender, EventArgs e)
         {
             if (backgroundSearchFile.IsBusy)
             {
-                // ŒŸõˆ—‚Ì’†~‚ğ—v‹‚·‚é
+                // æ¤œç´¢å‡¦ç†ã®ä¸­æ­¢ã‚’è¦æ±‚ã™ã‚‹
                 backgroundSearchFile.CancelAsync();
 
-                // ƒ{ƒ^ƒ“‚ğ•sŠˆ«‚É‚·‚é
+                // ãƒœã‚¿ãƒ³ã‚’ä¸æ´»æ€§ã«ã™ã‚‹
                 buttonSearch.Enabled = false;
             }
             else
@@ -200,7 +200,7 @@ namespace SearchFile
                     string directoryName = textDirectory.Text.Trim();
                     string fileName = textFile.Text.Trim();
 
-                    // •K—v‚Èƒf[ƒ^‚ª“ü—Í‚³‚ê‚Ä‚¢‚é‚©‚Ç‚¤‚©‚ğƒ`ƒFƒbƒN‚·‚é
+                    // å¿…è¦ãªãƒ‡ãƒ¼ã‚¿ãŒå…¥åŠ›ã•ã‚Œã¦ã„ã‚‹ã‹ã©ã†ã‹ã‚’ãƒã‚§ãƒƒã‚¯ã™ã‚‹
                     if (!Directory.Exists(directoryName))
                     {
                         throw new ArgumentException(global::SearchFile.Properties.Resources.DirectoryNotFoundMessage);
@@ -210,7 +210,7 @@ namespace SearchFile
                         throw new ArgumentException(global::SearchFile.Properties.Resources.NotInputFileNameMessage);
                     }
 
-                    // ŒŸõƒtƒ@ƒCƒ‹–¼‚Ìƒ`ƒFƒbƒN‚ğs‚¤
+                    // æ¤œç´¢ãƒ•ã‚¡ã‚¤ãƒ«åã®ãƒã‚§ãƒƒã‚¯ã‚’è¡Œã†
                     if (radioWildcard.Checked)
                     {
                         foreach (char c in Path.GetInvalidFileNameChars())
@@ -241,19 +241,19 @@ namespace SearchFile
                         throw new ArgumentException(global::SearchFile.Properties.Resources.NotSelectSearchPatternMessage);
                     }
 
-                    // Œ»İ‚Ìƒtƒ@ƒCƒ‹ƒŠƒXƒg‚ğƒNƒŠƒA‚·‚é
+                    // ç¾åœ¨ã®ãƒ•ã‚¡ã‚¤ãƒ«ãƒªã‚¹ãƒˆã‚’ã‚¯ãƒªã‚¢ã™ã‚‹
                     if (!ClearFileList())
                     {
                         return;
                     }
 
-                    // ƒtƒ@ƒCƒ‹ƒpƒ^[ƒ“‚ğ•\Œ»‚·‚é³‹K•\Œ»‚ğ¶¬‚·‚é
+                    // ãƒ•ã‚¡ã‚¤ãƒ«ãƒ‘ã‚¿ãƒ¼ãƒ³ã‚’è¡¨ç¾ã™ã‚‹æ­£è¦è¡¨ç¾ã‚’ç”Ÿæˆã™ã‚‹
                     string patternString;
                     Regex pattern;
 
                     if (radioWildcard.Checked)
                     {
-                        // ƒƒCƒ‹ƒhƒJ[ƒhƒpƒ^[ƒ“•¶š—ñ‚ğ³‹K•\Œ»ƒpƒ^[ƒ“•¶š—ñ‚É•ÏŠ·‚·‚é
+                        // ãƒ¯ã‚¤ãƒ«ãƒ‰ã‚«ãƒ¼ãƒ‰ãƒ‘ã‚¿ãƒ¼ãƒ³æ–‡å­—åˆ—ã‚’æ­£è¦è¡¨ç¾ãƒ‘ã‚¿ãƒ¼ãƒ³æ–‡å­—åˆ—ã«å¤‰æ›ã™ã‚‹
                         patternString = WildcardToRegex(fileName, true);
                     }
                     else if (radioRegex.Checked)
@@ -267,7 +267,7 @@ namespace SearchFile
 
                     pattern = new Regex(patternString, RegexOptions.Compiled | RegexOptions.IgnoreCase | RegexOptions.Singleline);
 
-                    // ƒtƒ@ƒCƒ‹‚ğŒŸõ‚·‚é
+                    // ãƒ•ã‚¡ã‚¤ãƒ«ã‚’æ¤œç´¢ã™ã‚‹
                     EnumerateFiles(directoryName, pattern, SearchOption.AllDirectories);
                 }
                 catch (ArgumentException ex)
@@ -279,22 +279,22 @@ namespace SearchFile
         }
 
         /// <summary>
-        /// ƒtƒ@ƒCƒ‹‚ğŒŸõ‚µ‚ÄƒŠƒXƒgƒrƒ…[‚É—ñ‹“‚·‚é
+        /// ãƒ•ã‚¡ã‚¤ãƒ«ã‚’æ¤œç´¢ã—ã¦ãƒªã‚¹ãƒˆãƒ“ãƒ¥ãƒ¼ã«åˆ—æŒ™ã™ã‚‹
         /// </summary>
-        /// <param name="path">ŒŸõ‚·‚éƒfƒBƒŒƒNƒgƒŠ</param>
-        /// <param name="pattern">path “à‚Ìƒtƒ@ƒCƒ‹–¼‚Æ‘Î‰‚³‚¹‚é³‹K•\Œ»</param>
-        /// <param name="searchOption">ŒŸõ‘€ì‚É‚·‚×‚Ä‚ÌƒTƒuƒfƒBƒŒƒNƒgƒŠ‚ğŠÜ‚ß‚é‚Ì‚©A‚Ü‚½‚ÍŒ»İ‚ÌƒfƒBƒŒƒNƒgƒŠ‚Ì‚İ‚ğŠÜ‚ß‚é‚Ì‚©‚ğw’è‚·‚é SearchOption ’l‚Ì 1 ‚Â</param>
+        /// <param name="path">æ¤œç´¢ã™ã‚‹ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒª</param>
+        /// <param name="pattern">path å†…ã®ãƒ•ã‚¡ã‚¤ãƒ«åã¨å¯¾å¿œã•ã›ã‚‹æ­£è¦è¡¨ç¾</param>
+        /// <param name="searchOption">æ¤œç´¢æ“ä½œã«ã™ã¹ã¦ã®ã‚µãƒ–ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’å«ã‚ã‚‹ã®ã‹ã€ã¾ãŸã¯ç¾åœ¨ã®ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã®ã¿ã‚’å«ã‚ã‚‹ã®ã‹ã‚’æŒ‡å®šã™ã‚‹ SearchOption å€¤ã® 1 ã¤</param>
         private void EnumerateFiles(string path, Regex pattern, SearchOption searchOption)
         {
             try
             {
-                // •ÊƒXƒŒƒbƒh‚Åƒtƒ@ƒCƒ‹ŒŸõ‚ğÀs‚·‚é
+                // åˆ¥ã‚¹ãƒ¬ãƒƒãƒ‰ã§ãƒ•ã‚¡ã‚¤ãƒ«æ¤œç´¢ã‚’å®Ÿè¡Œã™ã‚‹
                 backgroundSearchFile.SearchPath = path;
                 backgroundSearchFile.SearchPattern = pattern;
                 backgroundSearchFile.SearchOption = searchOption;
                 backgroundSearchFile.RunWorkerAsync();
 
-                // ŒŸõ’†‚Å‚ ‚é‚±‚Æ‚ğ UI ‚É”½‰f‚·‚é
+                // æ¤œç´¢ä¸­ã§ã‚ã‚‹ã“ã¨ã‚’ UI ã«åæ˜ ã™ã‚‹
                 buttonSearch.Text = global::SearchFile.Properties.Resources.SearchStopButtonText;
                 buttonClear.Enabled = false;
                 menuFileClear.Enabled = false;
@@ -318,7 +318,7 @@ namespace SearchFile
 
             try
             {
-                // ŒŸõŒ‹‰Ê‚ğ•\¦‚·‚é
+                // æ¤œç´¢çµæœã‚’è¡¨ç¤ºã™ã‚‹
                 result.View(this);
             }
             catch (Exception ex)
@@ -334,45 +334,45 @@ namespace SearchFile
                 if (MessageBox.Show(this, message, global::SearchFile.Properties.Resources.ErrorDialogCaption,
                                     MessageBoxButtons.YesNo, MessageBoxIcon.Error) == DialogResult.Yes)
                 {
-                    // ŒŸõˆ—‚Ì’†~‚ğ—v‹‚·‚é
+                    // æ¤œç´¢å‡¦ç†ã®ä¸­æ­¢ã‚’è¦æ±‚ã™ã‚‹
                     Debug.Assert(sender is BackgroundWorker);
                     (sender as BackgroundWorker).CancelAsync();
 
-                    // ƒ{ƒ^ƒ“‚ğ•sŠˆ«‚É‚·‚é
+                    // ãƒœã‚¿ãƒ³ã‚’ä¸æ´»æ€§ã«ã™ã‚‹
                     buttonSearch.Enabled = false;
                 }
             }
         }
 
         /// <summary>
-        /// ŒŸõ’†‚ÌƒfƒBƒŒƒNƒgƒŠ–¼‚ğ•\¦‚·‚é
+        /// æ¤œç´¢ä¸­ã®ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªåã‚’è¡¨ç¤ºã™ã‚‹
         /// </summary>
-        /// <param name="directoryPath">ŒŸõ’†‚ÌƒfƒBƒŒƒNƒgƒŠ–¼</param>
+        /// <param name="directoryPath">æ¤œç´¢ä¸­ã®ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªå</param>
         void ISearchResultView.ViewSearchingDirectory(string directoryPath)
         {
-            // ƒXƒe[ƒ^ƒXƒo[‚ÉŒŸõ’†ƒtƒHƒ‹ƒ_‚Ìî•ñ‚ğ•\¦‚·‚é
+            // ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ãƒãƒ¼ã«æ¤œç´¢ä¸­ãƒ•ã‚©ãƒ«ãƒ€ã®æƒ…å ±ã‚’è¡¨ç¤ºã™ã‚‹
             statusLabelSearching.Text = string.Format(global::SearchFile.Properties.Resources.SearchingDirectoryMessage, directoryPath);
         }
 
         /// <summary>
-        /// ŒŸõŒ‹‰Ê‚Ìƒtƒ@ƒCƒ‹‚ğ’Ç‰Á‚·‚é
+        /// æ¤œç´¢çµæœã®ãƒ•ã‚¡ã‚¤ãƒ«ã‚’è¿½åŠ ã™ã‚‹
         /// </summary>
-        /// <param name="files">ŒŸõŒ‹‰Ê‚Ìƒtƒ@ƒCƒ‹î•ñ</param>
+        /// <param name="files">æ¤œç´¢çµæœã®ãƒ•ã‚¡ã‚¤ãƒ«æƒ…å ±</param>
         void ISearchResultView.AddFiles(IEnumerable<FileInfo> files)
         {
-            // ƒŠƒXƒgƒrƒ…[‚Ì•`‰æ‚ğ’†’f‚·‚é
+            // ãƒªã‚¹ãƒˆãƒ“ãƒ¥ãƒ¼ã®æç”»ã‚’ä¸­æ–­ã™ã‚‹
             listViewFileName.BeginUpdate();
 
-            // ŒŸõŒ‹‰Ê‚ÌƒAƒCƒeƒ€‚ğ’Ç‰Á‚·‚é
+            // æ¤œç´¢çµæœã®ã‚¢ã‚¤ãƒ†ãƒ ã‚’è¿½åŠ ã™ã‚‹
             foreach (FileInfo file in files)
             {
-                // ƒtƒ@ƒCƒ‹ƒAƒCƒRƒ“‚ğæ“¾‚µAƒCƒ[ƒWƒŠƒXƒg‚É’Ç‰Á‚·‚é
+                // ãƒ•ã‚¡ã‚¤ãƒ«ã‚¢ã‚¤ã‚³ãƒ³ã‚’å–å¾—ã—ã€ã‚¤ãƒ¡ãƒ¼ã‚¸ãƒªã‚¹ãƒˆã«è¿½åŠ ã™ã‚‹
                 if (file.SmallIcon != null)
                 {
                     imageFileList.Images.Add(file.FullName, file.SmallIcon);
                 }
 
-                // ƒŠƒXƒgƒrƒ…[‚É€–Ú‚ğ’Ç‰Á‚·‚é
+                // ãƒªã‚¹ãƒˆãƒ“ãƒ¥ãƒ¼ã«é …ç›®ã‚’è¿½åŠ ã™ã‚‹
                 ListViewItem item = new ListViewItem();
 
                 if (file.SmallIcon != null)
@@ -386,13 +386,13 @@ namespace SearchFile
                 listViewFileName.Items.Add(item);
             }
 
-            // ƒŠƒXƒgƒrƒ…[‚Ì•`‰æ‚ğÄŠJ‚·‚é
+            // ãƒªã‚¹ãƒˆãƒ“ãƒ¥ãƒ¼ã®æç”»ã‚’å†é–‹ã™ã‚‹
             listViewFileName.EndUpdate();
         }
 
         private void backgroundSearchFile_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            // ƒXƒŒƒbƒh‚ÌŠ®—¹ó‘Ô‚É‰‚¶‚½ƒƒbƒZ[ƒW‚ğ•\¦‚·‚é
+            // ã‚¹ãƒ¬ãƒƒãƒ‰ã®å®Œäº†çŠ¶æ…‹ã«å¿œã˜ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’è¡¨ç¤ºã™ã‚‹
             if (e.Cancelled)
             {
                 statusLabelSearching.Text = global::SearchFile.Properties.Resources.SearchingStopMessage;
@@ -419,13 +419,13 @@ namespace SearchFile
                 statusLabelSearching.Text = string.Format(global::SearchFile.Properties.Resources.SearchingResultMessage, e.Result);
             }
 
-            // ƒŠƒXƒg‚ÌŠe—ñ•‚ğ©“®’²®‚·‚é
+            // ãƒªã‚¹ãƒˆã®å„åˆ—å¹…ã‚’è‡ªå‹•èª¿æ•´ã™ã‚‹
             if (this._autoColumnWidth)
             {
                 AdjustListViewColumnWidth(this.listViewFileName);
             }
 
-            // ƒXƒŒƒbƒh‚ªŠ®—¹‚µ‚½‚±‚Æ‚ğ UI ‚É”½‰f‚·‚é
+            // ã‚¹ãƒ¬ãƒƒãƒ‰ãŒå®Œäº†ã—ãŸã“ã¨ã‚’ UI ã«åæ˜ ã™ã‚‹
             buttonSearch.Text = global::SearchFile.Properties.Resources.SearchStartButtonText;
             buttonSearch.Enabled = true;
             buttonClear.Enabled = true;
@@ -437,7 +437,7 @@ namespace SearchFile
         }
 
         /// <summary>
-        /// ŒŸõŒ‹‰Ê‚Ìƒtƒ@ƒCƒ‹ƒŠƒXƒgƒrƒ…[‚Ì‘S€–Ú‚ğ‘I‘ğ‚·‚é
+        /// æ¤œç´¢çµæœã®ãƒ•ã‚¡ã‚¤ãƒ«ãƒªã‚¹ãƒˆãƒ“ãƒ¥ãƒ¼ã®å…¨é …ç›®ã‚’é¸æŠã™ã‚‹
         /// </summary>
         private void SelectAllFileListEvent(object sender, EventArgs e)
         {
@@ -448,7 +448,7 @@ namespace SearchFile
         }
 
         /// <summary>
-        /// ŒŸõŒ‹‰Ê‚Ìƒtƒ@ƒCƒ‹ƒŠƒXƒgƒrƒ…[‚Ì‘I‘ğó‘Ô‚ğ”½“]‚·‚é
+        /// æ¤œç´¢çµæœã®ãƒ•ã‚¡ã‚¤ãƒ«ãƒªã‚¹ãƒˆãƒ“ãƒ¥ãƒ¼ã®é¸æŠçŠ¶æ…‹ã‚’åè»¢ã™ã‚‹
         /// </summary>
         private void ReverseSelectionFileListEvent(object sender, EventArgs e)
         {
@@ -459,7 +459,7 @@ namespace SearchFile
         }
 
         /// <summary>
-        /// ‘I‘ğ‚³‚ê‚½ƒtƒ@ƒCƒ‹‚ğíœ‚·‚éƒCƒxƒ“ƒg‚ğˆ—‚·‚éƒƒ\ƒbƒh
+        /// é¸æŠã•ã‚ŒãŸãƒ•ã‚¡ã‚¤ãƒ«ã‚’å‰Šé™¤ã™ã‚‹ã‚¤ãƒ™ãƒ³ãƒˆã‚’å‡¦ç†ã™ã‚‹ãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         private void DeleteSelectionFilesEvent(object sender, EventArgs e)
         {
@@ -468,22 +468,22 @@ namespace SearchFile
                 int fileCount = listViewFileName.SelectedItems.Count;
                 List<string> selectedFiles = new List<string>(fileCount);
 
-                // ƒ`ƒFƒbƒN‚³‚ê‚Ä‚¢‚éƒtƒ@ƒCƒ‹–¼‚ğæ“¾‚·‚é
+                // ãƒã‚§ãƒƒã‚¯ã•ã‚Œã¦ã„ã‚‹ãƒ•ã‚¡ã‚¤ãƒ«åã‚’å–å¾—ã™ã‚‹
                 foreach (ListViewItem item in listViewFileName.SelectedItems)
                 {
                     selectedFiles.Add(Path.Combine(item.SubItems[2].Text, item.Text));
                 }
 
-                // ƒtƒ@ƒCƒ‹‚ğíœ‚·‚é
+                // ãƒ•ã‚¡ã‚¤ãƒ«ã‚’å‰Šé™¤ã™ã‚‹
                 FileOperate.DeleteFiles(this, selectedFiles, checkMoveRecycler.Checked);
 
-                // íœ‚µ‚½ƒtƒ@ƒCƒ‹‚ğƒŠƒXƒg‚©‚çíœ‚·‚é
+                // å‰Šé™¤ã—ãŸãƒ•ã‚¡ã‚¤ãƒ«ã‚’ãƒªã‚¹ãƒˆã‹ã‚‰å‰Šé™¤ã™ã‚‹
                 foreach (ListViewItem item in listViewFileName.SelectedItems)
                 {
                     listViewFileName.Items.Remove(item);
                 }
 
-                // íœƒƒbƒZ[ƒW‚ğƒXƒe[ƒ^ƒXƒo[‚É•\¦‚·‚é
+                // å‰Šé™¤ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ãƒãƒ¼ã«è¡¨ç¤ºã™ã‚‹
                 statusLabelSearching.Text = string.Format(global::SearchFile.Properties.Resources.FileDeleteMessage, fileCount);
             }
             catch (OperationCanceledException)
@@ -499,7 +499,7 @@ namespace SearchFile
         }
 
         /// <summary>
-        /// ƒtƒ@ƒCƒ‹ŒŸõŒ‹‰Ê‚ğƒNƒŠƒbƒvƒ{[ƒh‚ÉƒRƒs[‚·‚éƒCƒxƒ“ƒg‚ğˆ—‚·‚éƒƒ\ƒbƒh
+        /// ãƒ•ã‚¡ã‚¤ãƒ«æ¤œç´¢çµæœã‚’ã‚¯ãƒªãƒƒãƒ—ãƒœãƒ¼ãƒ‰ã«ã‚³ãƒ”ãƒ¼ã™ã‚‹ã‚¤ãƒ™ãƒ³ãƒˆã‚’å‡¦ç†ã™ã‚‹ãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         private void ResultCopyEvent(object sender, EventArgs e)
         {
@@ -515,7 +515,7 @@ namespace SearchFile
 
             try
             {
-                // ƒtƒ@ƒCƒ‹ˆê——‚ğƒNƒŠƒbƒvƒ{[ƒh‚É’Ç‰Á‚·‚é
+                // ãƒ•ã‚¡ã‚¤ãƒ«ä¸€è¦§ã‚’ã‚¯ãƒªãƒƒãƒ—ãƒœãƒ¼ãƒ‰ã«è¿½åŠ ã™ã‚‹
                 StringBuilder sb = new StringBuilder();
 
                 foreach (ListViewItem item in listViewFileName.Items)
@@ -525,7 +525,7 @@ namespace SearchFile
 
                 Clipboard.SetText(sb.ToString());
 
-                // ƒXƒe[ƒ^ƒXƒo[‚ÉŒ‹‰Ê‚ğ•\¦‚·‚é
+                // ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ãƒãƒ¼ã«çµæœã‚’è¡¨ç¤ºã™ã‚‹
                 statusLabelSearching.Text = string.Format(global::SearchFile.Properties.Resources.CopyFileNameMessage, fileCount);
             }
             catch (Exception ex)
@@ -537,7 +537,7 @@ namespace SearchFile
 
         private void contextFileList_Opened(object sender, EventArgs e)
         {
-            // ƒŠƒXƒgƒAƒCƒeƒ€”‚É‰‚¶‚ÄƒRƒ“ƒeƒLƒXƒgƒƒjƒ…[‚Éó‘Ô‚ğİ’è‚·‚é
+            // ãƒªã‚¹ãƒˆã‚¢ã‚¤ãƒ†ãƒ æ•°ã«å¿œã˜ã¦ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆãƒ¡ãƒ‹ãƒ¥ãƒ¼ã«çŠ¶æ…‹ã‚’è¨­å®šã™ã‚‹
             bool existedItem = (listViewFileName.Items.Count != 0);
 
             contextFileListResultCopy.Enabled = existedItem;
@@ -549,7 +549,7 @@ namespace SearchFile
 
         private void menuEdit_DropDownOpened(object sender, EventArgs e)
         {
-            // ƒŠƒXƒgƒAƒCƒeƒ€”‚É‰‚¶‚ÄƒRƒ“ƒeƒLƒXƒgƒƒjƒ…[‚Éó‘Ô‚ğİ’è‚·‚é
+            // ãƒªã‚¹ãƒˆã‚¢ã‚¤ãƒ†ãƒ æ•°ã«å¿œã˜ã¦ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆãƒ¡ãƒ‹ãƒ¥ãƒ¼ã«çŠ¶æ…‹ã‚’è¨­å®šã™ã‚‹
             bool existedItem = (listViewFileName.Items.Count != 0);
 
             menuEditCopy.Enabled = existedItem;
@@ -559,14 +559,14 @@ namespace SearchFile
 
         private void AutoFileListColumnWidthEvent(object sender, EventArgs e)
         {
-            // ƒŠƒXƒgƒrƒ…[‚Ì—ñ•©“®’²®‚Ìİ’è‚ğs‚¤
+            // ãƒªã‚¹ãƒˆãƒ“ãƒ¥ãƒ¼ã®åˆ—å¹…è‡ªå‹•èª¿æ•´ã®è¨­å®šã‚’è¡Œã†
             this._autoColumnWidth = !this._autoColumnWidth;
         }
 
         /// <summary>
-        /// ƒŠƒXƒgƒrƒ…[‚Ì—ñ•‚ğ€–Ú‚É‰‚¶‚Ä’²®‚·‚é
+        /// ãƒªã‚¹ãƒˆãƒ“ãƒ¥ãƒ¼ã®åˆ—å¹…ã‚’é …ç›®ã«å¿œã˜ã¦èª¿æ•´ã™ã‚‹
         /// </summary>
-        /// <param name="listView">—ñ•‚ğ’²®‚·‚é ListView ƒRƒ“ƒgƒ[ƒ‹</param>
+        /// <param name="listView">åˆ—å¹…ã‚’èª¿æ•´ã™ã‚‹ ListView ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«</param>
         private static void AdjustListViewColumnWidth(ListView listView)
         {
             if (listView.Items.Count > 0)
@@ -576,7 +576,7 @@ namespace SearchFile
         }
 
         /// <summary>
-        /// ƒtƒ@ƒCƒ‹ŒŸõŒ‹‰Ê‚ğƒtƒ@ƒCƒ‹‚É•Û‘¶‚·‚éƒCƒxƒ“ƒg‚ğˆ—‚·‚éƒƒ\ƒbƒh
+        /// ãƒ•ã‚¡ã‚¤ãƒ«æ¤œç´¢çµæœã‚’ãƒ•ã‚¡ã‚¤ãƒ«ã«ä¿å­˜ã™ã‚‹ã‚¤ãƒ™ãƒ³ãƒˆã‚’å‡¦ç†ã™ã‚‹ãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         private void SaveFileListEvent(object sender, EventArgs e)
         {
@@ -588,7 +588,7 @@ namespace SearchFile
             {
                 try
                 {
-                    // ŒŸõŒ‹‰Ê‚ğƒtƒ@ƒCƒ‹‚É•Û‘¶‚·‚é
+                    // æ¤œç´¢çµæœã‚’ãƒ•ã‚¡ã‚¤ãƒ«ã«ä¿å­˜ã™ã‚‹
                     using (TextWriter writer = new StreamWriter(dialog.FileName, false, Encoding.Default))
                     {
                         foreach (ListViewItem item in listViewFileName.Items)
@@ -606,7 +606,7 @@ namespace SearchFile
         }
 
         /// <summary>
-        /// ‘I‘ğ‚³‚ê‚½ƒtƒ@ƒCƒ‹‚ÌƒvƒƒpƒeƒB‚ğ•\¦‚·‚éƒCƒxƒ“ƒg‚ğˆ—‚·‚éƒƒ\ƒbƒh
+        /// é¸æŠã•ã‚ŒãŸãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’è¡¨ç¤ºã™ã‚‹ã‚¤ãƒ™ãƒ³ãƒˆã‚’å‡¦ç†ã™ã‚‹ãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         private void ShowFilePropertyEvent(object sender, EventArgs e)
         {
@@ -614,7 +614,7 @@ namespace SearchFile
             {
                 foreach (ListViewItem item in listViewFileName.SelectedItems)
                 {
-                    // ƒtƒ@ƒCƒ‹ƒvƒƒpƒeƒB‚ğ•\¦‚·‚é
+                    // ãƒ•ã‚¡ã‚¤ãƒ«ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’è¡¨ç¤ºã™ã‚‹
                     FileOperate.ShowPropertyDialog(this, Path.Combine(item.SubItems[2].Text, item.Text));
                 }
             }
@@ -681,10 +681,10 @@ namespace SearchFile
         }
 
         /// <summary>
-        /// ƒwƒbƒ_[‚É•\¦‚·‚é–îˆó‚Ìí—Ş‚ğ‘I‘ğ‚·‚é
+        /// ãƒ˜ãƒƒãƒ€ãƒ¼ã«è¡¨ç¤ºã™ã‚‹çŸ¢å°ã®ç¨®é¡ã‚’é¸æŠã™ã‚‹
         /// </summary>
-        /// <param name="order">•À‚×‘Ö‚¦•û–@</param>
-        /// <returns>ƒwƒbƒ_[‚É•\¦‚·‚é–îˆó‚Ìí—Ş</returns>
+        /// <param name="order">ä¸¦ã¹æ›¿ãˆæ–¹æ³•</param>
+        /// <returns>ãƒ˜ãƒƒãƒ€ãƒ¼ã«è¡¨ç¤ºã™ã‚‹çŸ¢å°ã®ç¨®é¡</returns>
         protected static ListViewEx.HeaderSortArrows SelectHeaderSortArrows(SortOrder order)
         {
             ListViewEx.HeaderSortArrows arrow;
@@ -706,11 +706,11 @@ namespace SearchFile
         }
 
         /// <summary>
-        /// ƒƒCƒ‹ƒhƒJ[ƒhƒpƒ^[ƒ“•¶š—ñ‚ğ³‹K•\Œ»ƒpƒ^[ƒ“•¶š—ñ‚É•ÏŠ·‚·‚é
+        /// ãƒ¯ã‚¤ãƒ«ãƒ‰ã‚«ãƒ¼ãƒ‰ãƒ‘ã‚¿ãƒ¼ãƒ³æ–‡å­—åˆ—ã‚’æ­£è¦è¡¨ç¾ãƒ‘ã‚¿ãƒ¼ãƒ³æ–‡å­—åˆ—ã«å¤‰æ›ã™ã‚‹
         /// </summary>
-        /// <param name="wildcard">ƒƒCƒ‹ƒhƒJ[ƒhƒpƒ^[ƒ“•¶š—ñ</param>
-        /// <param name="fullMatch">Š®‘Sˆê’v‚·‚é³‹K•\Œ»ƒpƒ^[ƒ“•¶š—ñ‚ğ¶¬‚·‚é‚©‚ğ¦‚·’l</param>
-        /// <returns>•ÏŠ·Œã‚Ì³‹K•\Œ»ƒpƒ^[ƒ“•¶š—ñ</returns>
+        /// <param name="wildcard">ãƒ¯ã‚¤ãƒ«ãƒ‰ã‚«ãƒ¼ãƒ‰ãƒ‘ã‚¿ãƒ¼ãƒ³æ–‡å­—åˆ—</param>
+        /// <param name="fullMatch">å®Œå…¨ä¸€è‡´ã™ã‚‹æ­£è¦è¡¨ç¾ãƒ‘ã‚¿ãƒ¼ãƒ³æ–‡å­—åˆ—ã‚’ç”Ÿæˆã™ã‚‹ã‹ã‚’ç¤ºã™å€¤</param>
+        /// <returns>å¤‰æ›å¾Œã®æ­£è¦è¡¨ç¾ãƒ‘ã‚¿ãƒ¼ãƒ³æ–‡å­—åˆ—</returns>
         protected static string WildcardToRegex(string wildcard, bool fullMatch)
         {
             StringBuilder sb = new StringBuilder(Regex.Escape(wildcard));
@@ -728,27 +728,27 @@ namespace SearchFile
         }
 
         /// <summary>
-        /// ƒtƒH[ƒ€‚ªƒAƒNƒeƒBƒu‚É‚È‚Á‚½‚ÌƒCƒxƒ“ƒg‚ğˆ—‚·‚éƒƒ\ƒbƒh
+        /// ãƒ•ã‚©ãƒ¼ãƒ ãŒã‚¢ã‚¯ãƒ†ã‚£ãƒ–ã«ãªã£ãŸæ™‚ã®ã‚¤ãƒ™ãƒ³ãƒˆã‚’å‡¦ç†ã™ã‚‹ãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         private void FormActivatedEvent(object sender, EventArgs e)
         {
-            // ƒ^ƒCƒgƒ‹ƒ‰ƒxƒ‹‚Ìó‘Ô‚ğ•œŒ³‚·‚éB
+            // ã‚¿ã‚¤ãƒˆãƒ«ãƒ©ãƒ™ãƒ«ã®çŠ¶æ…‹ã‚’å¾©å…ƒã™ã‚‹ã€‚
             this.titleLabelStateManager.RestoreAll();
 
-            // ŠÇ—‘ÎÛƒŠƒXƒg‚ğƒNƒŠƒA‚·‚éB
+            // ç®¡ç†å¯¾è±¡ãƒªã‚¹ãƒˆã‚’ã‚¯ãƒªã‚¢ã™ã‚‹ã€‚
             this.titleLabelStateManager.Clear();
         }
 
         /// <summary>
-        /// ƒtƒH[ƒ€‚ª”ñƒAƒNƒeƒBƒu‚É‚È‚Á‚½‚ÌƒCƒxƒ“ƒg‚ğˆ—‚·‚éƒƒ\ƒbƒh
+        /// ãƒ•ã‚©ãƒ¼ãƒ ãŒéã‚¢ã‚¯ãƒ†ã‚£ãƒ–ã«ãªã£ãŸæ™‚ã®ã‚¤ãƒ™ãƒ³ãƒˆã‚’å‡¦ç†ã™ã‚‹ãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         private void FormDeactivateEvent(object sender, EventArgs e)
         {
-            // Œ»İ‚Ìƒ^ƒCƒgƒ‹ƒ‰ƒxƒ‹‚Ìó‘Ô‚ğ•Û‘¶‚·‚éB
+            // ç¾åœ¨ã®ã‚¿ã‚¤ãƒˆãƒ«ãƒ©ãƒ™ãƒ«ã®çŠ¶æ…‹ã‚’ä¿å­˜ã™ã‚‹ã€‚
             this.titleLabelStateManager.Add(this.inputSearchInfoTitle);
             this.titleLabelStateManager.Add(this.inputActionInfoTitle);
 
-            // ƒ^ƒCƒgƒ‹ƒ‰ƒxƒ‹‚ğ”ñƒAƒNƒeƒBƒu‚Å‚ ‚é‚±‚Æ‚ğ¦‚·ó‘Ô‚É•ÏX‚·‚éB
+            // ã‚¿ã‚¤ãƒˆãƒ«ãƒ©ãƒ™ãƒ«ã‚’éã‚¢ã‚¯ãƒ†ã‚£ãƒ–ã§ã‚ã‚‹ã“ã¨ã‚’ç¤ºã™çŠ¶æ…‹ã«å¤‰æ›´ã™ã‚‹ã€‚
             SetInactiveTitleLabelState(this.inputSearchInfoTitle);
             SetInactiveTitleLabelState(this.inputActionInfoTitle);
         }
@@ -774,9 +774,9 @@ namespace SearchFile
         }
 
         /// <summary>
-        /// ƒ^ƒCƒgƒ‹ƒ‰ƒxƒ‹‚ğƒAƒNƒeƒBƒu‚É‚È‚Á‚½‚±‚Æ‚ğ¦‚·ó‘Ô‚ÉƒZƒbƒg‚·‚éB
+        /// ã‚¿ã‚¤ãƒˆãƒ«ãƒ©ãƒ™ãƒ«ã‚’ã‚¢ã‚¯ãƒ†ã‚£ãƒ–ã«ãªã£ãŸã“ã¨ã‚’ç¤ºã™çŠ¶æ…‹ã«ã‚»ãƒƒãƒˆã™ã‚‹ã€‚
         /// </summary>
-        /// <param name="label">ó‘Ô‚ğ•ÏX‚·‚é LinearGradientDrawLabel ƒIƒuƒWƒFƒNƒg</param>
+        /// <param name="label">çŠ¶æ…‹ã‚’å¤‰æ›´ã™ã‚‹ LinearGradientDrawLabel ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ</param>
         private static void SetActiveTitleLabelState(LinearGradientDrawLabel label)
         {
             label.BackColor = SystemColors.ActiveCaptionText;
@@ -786,9 +786,9 @@ namespace SearchFile
         }
 
         /// <summary>
-        /// ƒ^ƒCƒgƒ‹ƒ‰ƒxƒ‹‚ğ”ñƒAƒNƒeƒBƒu‚É‚È‚Á‚½‚±‚Æ‚ğ¦‚·ó‘Ô‚ÉƒZƒbƒg‚·‚éB
+        /// ã‚¿ã‚¤ãƒˆãƒ«ãƒ©ãƒ™ãƒ«ã‚’éã‚¢ã‚¯ãƒ†ã‚£ãƒ–ã«ãªã£ãŸã“ã¨ã‚’ç¤ºã™çŠ¶æ…‹ã«ã‚»ãƒƒãƒˆã™ã‚‹ã€‚
         /// </summary>
-        /// <param name="label">ó‘Ô‚ğ•ÏX‚·‚é LinearGradientDrawLabel ƒIƒuƒWƒFƒNƒg</param>
+        /// <param name="label">çŠ¶æ…‹ã‚’å¤‰æ›´ã™ã‚‹ LinearGradientDrawLabel ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ</param>
         private static void SetInactiveTitleLabelState(LinearGradientDrawLabel label)
         {
             label.BackColor = SystemColors.InactiveCaptionText;

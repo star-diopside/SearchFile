@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
@@ -9,7 +9,7 @@ using System.Windows.Forms;
 namespace MyLib.WindowsShell
 {
     /// <summary>
-    /// ƒtƒ@ƒCƒ‹‘€ì‚ðs‚¤ƒVƒFƒ‹ API ‚ðŒÄ‚Ño‚·
+    /// ãƒ•ã‚¡ã‚¤ãƒ«æ“ä½œã‚’è¡Œã†ã‚·ã‚§ãƒ« API ã‚’å‘¼ã³å‡ºã™
     /// </summary>
     static class FileOperate
     {
@@ -70,21 +70,21 @@ namespace MyLib.WindowsShell
         }
 
         /// <summary>
-        /// •¡”‚Ìƒtƒ@ƒCƒ‹‚ðíœ‚·‚é
+        /// è¤‡æ•°ã®ãƒ•ã‚¡ã‚¤ãƒ«ã‚’å‰Šé™¤ã™ã‚‹
         /// </summary>
-        /// <param name="files">íœ‚·‚éƒtƒ@ƒCƒ‹‚ÌƒŠƒXƒg</param>
-        /// <param name="recycle">ƒtƒ@ƒCƒ‹‚ð‚²‚Ý” ‚ÉˆÚ“®‚·‚éê‡‚ÍtrueAŠ®‘S‚Éíœ‚·‚éê‡‚Ífalse</param>
+        /// <param name="files">å‰Šé™¤ã™ã‚‹ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒªã‚¹ãƒˆ</param>
+        /// <param name="recycle">ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ã”ã¿ç®±ã«ç§»å‹•ã™ã‚‹å ´åˆã¯trueã€å®Œå…¨ã«å‰Šé™¤ã™ã‚‹å ´åˆã¯false</param>
         public static void DeleteFiles(ICollection<string> files, bool recycle)
         {
             DeleteFiles(null, files, recycle);
         }
 
         /// <summary>
-        /// •¡”‚Ìƒtƒ@ƒCƒ‹‚ðíœ‚·‚é
+        /// è¤‡æ•°ã®ãƒ•ã‚¡ã‚¤ãƒ«ã‚’å‰Šé™¤ã™ã‚‹
         /// </summary>
-        /// <param name="owner">ƒ_ƒCƒAƒƒOƒ{ƒbƒNƒX‚ðŠ—L‚·‚é IWin32Window ‚ÌŽÀ‘•</param>
-        /// <param name="files">íœ‚·‚éƒtƒ@ƒCƒ‹‚ÌƒŠƒXƒg</param>
-        /// <param name="recycle">ƒtƒ@ƒCƒ‹‚ð‚²‚Ý” ‚ÉˆÚ“®‚·‚éê‡‚ÍtrueAŠ®‘S‚Éíœ‚·‚éê‡‚Ífalse</param>
+        /// <param name="owner">ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ãƒœãƒƒã‚¯ã‚¹ã‚’æ‰€æœ‰ã™ã‚‹ IWin32Window ã®å®Ÿè£…</param>
+        /// <param name="files">å‰Šé™¤ã™ã‚‹ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒªã‚¹ãƒˆ</param>
+        /// <param name="recycle">ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ã”ã¿ç®±ã«ç§»å‹•ã™ã‚‹å ´åˆã¯trueã€å®Œå…¨ã«å‰Šé™¤ã™ã‚‹å ´åˆã¯false</param>
         public static void DeleteFiles(IWin32Window owner, ICollection<string> files, bool recycle)
         {
             if (files.Count == 0)
@@ -94,7 +94,7 @@ namespace MyLib.WindowsShell
 
             StringBuilder sb = new StringBuilder();
 
-            // íœ‘Îˆƒtƒ@ƒCƒ‹‚ðŽw’è‚·‚é
+            // å‰Šé™¤å¯¾å‡¦ãƒ•ã‚¡ã‚¤ãƒ«ã‚’æŒ‡å®šã™ã‚‹
             foreach (string fileName in files)
             {
                 if (File.Exists(fileName))
@@ -108,7 +108,7 @@ namespace MyLib.WindowsShell
             }
             sb.Append('\0');
 
-            // ƒtƒ@ƒCƒ‹‚ðíœ‚·‚éƒVƒFƒ‹ API ‚ðŒÄ‚Ño‚·
+            // ãƒ•ã‚¡ã‚¤ãƒ«ã‚’å‰Šé™¤ã™ã‚‹ã‚·ã‚§ãƒ« API ã‚’å‘¼ã³å‡ºã™
             SHFILEOPSTRUCT sh = new SHFILEOPSTRUCT();
 
             sh.hwnd = (owner == null ? IntPtr.Zero : owner.Handle);
@@ -125,7 +125,7 @@ namespace MyLib.WindowsShell
                 throw new Win32Exception();
             }
 
-            // ˆ—‚ªƒLƒƒƒ“ƒZƒ‹‚³‚ê‚½ê‡
+            // å‡¦ç†ãŒã‚­ãƒ£ãƒ³ã‚»ãƒ«ã•ã‚ŒãŸå ´åˆ
             if (sh.fAnyOperationsAborted)
             {
                 throw new OperationCanceledException();
@@ -191,65 +191,65 @@ namespace MyLib.WindowsShell
         private enum ShellExecuteErrors : int
         {
             /// <summary>
-            /// ƒtƒ@ƒCƒ‹‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñB
+            /// ãƒ•ã‚¡ã‚¤ãƒ«ãŒè¦‹ã¤ã‹ã‚Šã¾ã›ã‚“ã€‚
             /// </summary>
             SE_ERR_FNF = 2,
             /// <summary>
-            /// ƒpƒX‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñB
+            /// ãƒ‘ã‚¹ãŒè¦‹ã¤ã‹ã‚Šã¾ã›ã‚“ã€‚
             /// </summary>
             SE_ERR_PNF = 3,
             /// <summary>
-            /// ƒtƒ@ƒCƒ‹ƒAƒNƒZƒX‚ª‹‘”Û‚³‚ê‚Ü‚µ‚½B
+            /// ãƒ•ã‚¡ã‚¤ãƒ«ã‚¢ã‚¯ã‚»ã‚¹ãŒæ‹’å¦ã•ã‚Œã¾ã—ãŸã€‚
             /// </summary>
             SE_ERR_ACCESSDENIED = 5,
             /// <summary>
-            /// ƒƒ‚ƒŠ•s‘«‚Å‚·B
+            /// ãƒ¡ãƒ¢ãƒªä¸è¶³ã§ã™ã€‚
             /// </summary>
             SE_ERR_OOM = 8,
             /// <summary>
-            /// DLL ‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñB
+            /// DLL ãŒè¦‹ã¤ã‹ã‚Šã¾ã›ã‚“ã€‚
             /// </summary>
             SE_ERR_DLLNOTFOUND = 32,
             /// <summary>
-            /// ‹¤—Lˆá”½‚ª”­¶‚µ‚Ü‚µ‚½B
+            /// å…±æœ‰é•åãŒç™ºç”Ÿã—ã¾ã—ãŸã€‚
             /// </summary>
             SE_ERR_SHARE = 26,
             /// <summary>
-            /// ƒtƒ@ƒCƒ‹ŠÖ˜A•t‚¯‚ªŠ®‘S‚Å‚Í‚È‚¢‚©–³Œø‚Å‚·B
+            /// ãƒ•ã‚¡ã‚¤ãƒ«é–¢é€£ä»˜ã‘ãŒå®Œå…¨ã§ã¯ãªã„ã‹ç„¡åŠ¹ã§ã™ã€‚
             /// </summary>
             SE_ERR_ASSOCINCOMPLETE = 27,
             /// <summary>
-            /// DDE ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚ªƒ^ƒCƒ€ƒAƒEƒg‚É‚æ‚è’†’f‚³‚ê‚Ü‚µ‚½B
+            /// DDE ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ãŒã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã«ã‚ˆã‚Šä¸­æ–­ã•ã‚Œã¾ã—ãŸã€‚
             /// </summary>
             SE_ERR_DDETIMEOUT = 28,
             /// <summary>
-            /// DDE ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚ªŽ¸”s‚µ‚Ü‚µ‚½B
+            /// DDE ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ãŒå¤±æ•—ã—ã¾ã—ãŸã€‚
             /// </summary>
             SE_ERR_DDEFAIL = 29,
             /// <summary>
-            /// ‘¼‚Ì DDE ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚ªˆ—‚³‚ê‚Ä‚¢‚½‚½‚ß DDE ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚ªI—¹‚Å‚«‚Ü‚¹‚ñ‚Å‚µ‚½B
+            /// ä»–ã® DDE ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ãŒå‡¦ç†ã•ã‚Œã¦ã„ãŸãŸã‚ DDE ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ãŒçµ‚äº†ã§ãã¾ã›ã‚“ã§ã—ãŸã€‚
             /// </summary>
             SE_ERR_DDEBUSY = 30,
             /// <summary>
-            /// ƒtƒ@ƒCƒ‹ŠÖ˜A•t‚¯‚ª•s–¾‚Å‚·B
+            /// ãƒ•ã‚¡ã‚¤ãƒ«é–¢é€£ä»˜ã‘ãŒä¸æ˜Žã§ã™ã€‚
             /// </summary>
             SE_ERR_NOASSOC = 31
         }
 
         /// <summary>
-        /// ƒvƒƒpƒeƒBƒ_ƒCƒAƒƒO‚ð•\Ž¦‚·‚é
+        /// ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã‚’è¡¨ç¤ºã™ã‚‹
         /// </summary>
-        /// <param name="fileName">ƒvƒƒpƒeƒB‚ð•\Ž¦‚·‚éƒtƒ@ƒCƒ‹–¼</param>
+        /// <param name="fileName">ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’è¡¨ç¤ºã™ã‚‹ãƒ•ã‚¡ã‚¤ãƒ«å</param>
         public static void ShowPropertyDialog(string fileName)
         {
             ShowPropertyDialog(null, fileName);
         }
 
         /// <summary>
-        /// ƒvƒƒpƒeƒBƒ_ƒCƒAƒƒO‚ð•\Ž¦‚·‚é
+        /// ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã‚’è¡¨ç¤ºã™ã‚‹
         /// </summary>
-        /// <param name="owner">ƒ_ƒCƒAƒƒOƒ{ƒbƒNƒX‚ðŠ—L‚·‚é IWin32Window ‚ÌŽÀ‘•</param>
-        /// <param name="fileName">ƒvƒƒpƒeƒB‚ð•\Ž¦‚·‚éƒtƒ@ƒCƒ‹–¼</param>
+        /// <param name="owner">ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ãƒœãƒƒã‚¯ã‚¹ã‚’æ‰€æœ‰ã™ã‚‹ IWin32Window ã®å®Ÿè£…</param>
+        /// <param name="fileName">ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’è¡¨ç¤ºã™ã‚‹ãƒ•ã‚¡ã‚¤ãƒ«å</param>
         public static void ShowPropertyDialog(IWin32Window owner, string fileName)
         {
             SHELLEXECUTEINFO info = new SHELLEXECUTEINFO();
@@ -266,7 +266,7 @@ namespace MyLib.WindowsShell
 
             if (!ShellExecuteEx(ref info))
             {
-                // ƒGƒ‰[ƒR[ƒh‚É‰ž‚¶‚½—áŠO‚ðƒXƒ[‚·‚é
+                // ã‚¨ãƒ©ãƒ¼ã‚³ãƒ¼ãƒ‰ã«å¿œã˜ãŸä¾‹å¤–ã‚’ã‚¹ãƒ­ãƒ¼ã™ã‚‹
                 switch ((ShellExecuteErrors)Marshal.GetLastWin32Error())
                 {
                     case ShellExecuteErrors.SE_ERR_FNF:

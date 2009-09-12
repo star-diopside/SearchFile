@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -6,7 +6,7 @@ using System.Windows.Forms;
 namespace SearchFile
 {
     /// <summary>
-    /// ƒŠƒXƒgƒrƒ…[‚ÌƒAƒCƒeƒ€‚Ì•À‚×‘Ö‚¦‚Ì‚½‚ß‚Ég—p‚·‚é IComparer ƒCƒ“ƒ^[ƒtƒFƒCƒX‚ğÀ‘•‚µ‚½ƒNƒ‰ƒX
+    /// ãƒªã‚¹ãƒˆãƒ“ãƒ¥ãƒ¼ã®ã‚¢ã‚¤ãƒ†ãƒ ã®ä¸¦ã¹æ›¿ãˆã®ãŸã‚ã«ä½¿ç”¨ã™ã‚‹ IComparer ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹ã‚’å®Ÿè£…ã—ãŸã‚¯ãƒ©ã‚¹
     /// </summary>
     class ListViewItemSorter : IComparer, IComparer<ListViewItem>
     {
@@ -15,14 +15,14 @@ namespace SearchFile
         private readonly IList<IComparer<string>> _comparers = new List<IComparer<string>>();
 
         /// <summary>
-        /// ListViewItemSorter ƒNƒ‰ƒX‚ÌV‚µ‚¢ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ‰Šú‰»‚·‚é
+        /// ListViewItemSorter ã‚¯ãƒ©ã‚¹ã®æ–°ã—ã„ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’åˆæœŸåŒ–ã™ã‚‹
         /// </summary>
         public ListViewItemSorter()
         {
         }
 
         /// <summary>
-        /// ƒ\[ƒg‚·‚é—ñ‚ÌƒCƒ“ƒfƒbƒNƒX”Ô†‚ğæ“¾‚Ü‚½‚Íİ’è‚·‚é
+        /// ã‚½ãƒ¼ãƒˆã™ã‚‹åˆ—ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ç•ªå·ã‚’å–å¾—ã¾ãŸã¯è¨­å®šã™ã‚‹
         /// </summary>
         public int Column
         {
@@ -34,7 +34,7 @@ namespace SearchFile
             {
                 if (this._column == value)
                 {
-                    // ˆÈ‘O‚Æ“¯‚¶—ñ‚ªw’è‚³‚ê‚½ê‡‚Í•À‚×‘Ö‚¦‡˜‚ğ“ü‚ê‘Ö‚¦‚é
+                    // ä»¥å‰ã¨åŒã˜åˆ—ãŒæŒ‡å®šã•ã‚ŒãŸå ´åˆã¯ä¸¦ã¹æ›¿ãˆé †åºã‚’å…¥ã‚Œæ›¿ãˆã‚‹
                     if (this._sortOrder == SortOrder.Ascending)
                     {
                         this._sortOrder = SortOrder.Descending;
@@ -50,7 +50,7 @@ namespace SearchFile
                 }
                 else
                 {
-                    // ˆÈ‘O‚Æˆá‚¤—ñ‚ªw’è‚³‚ê‚½ê‡‚Í•À‚×‘Ö‚¦•û–@‚ğ¸‡‚Éİ’è‚·‚é
+                    // ä»¥å‰ã¨é•ã†åˆ—ãŒæŒ‡å®šã•ã‚ŒãŸå ´åˆã¯ä¸¦ã¹æ›¿ãˆæ–¹æ³•ã‚’æ˜‡é †ã«è¨­å®šã™ã‚‹
                     this._sortOrder = SortOrder.Ascending;
                 }
 
@@ -59,7 +59,7 @@ namespace SearchFile
         }
 
         /// <summary>
-        /// ƒ\[ƒg‚Ì•À‚×‘Ö‚¦•û–@‚ğæ“¾‚Ü‚½‚Íİ’è‚·‚é
+        /// ã‚½ãƒ¼ãƒˆã®ä¸¦ã¹æ›¿ãˆæ–¹æ³•ã‚’å–å¾—ã¾ãŸã¯è¨­å®šã™ã‚‹
         /// </summary>
         public SortOrder SortOrder
         {
@@ -74,7 +74,7 @@ namespace SearchFile
         }
 
         /// <summary>
-        /// —ñ€–Ú‚Ìƒ\[ƒg‚É•¶š—ñ”äŠr‚ğs‚¤ IComparer&lt;string&gt; ‚ğŠi”[‚·‚éƒRƒŒƒNƒVƒ‡ƒ“
+        /// åˆ—é …ç›®ã®ã‚½ãƒ¼ãƒˆæ™‚ã«æ–‡å­—åˆ—æ¯”è¼ƒã‚’è¡Œã† IComparer&lt;string&gt; ã‚’æ ¼ç´ã™ã‚‹ã‚³ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³
         /// </summary>
         public IList<IComparer<string>> Comparers
         {
@@ -86,34 +86,34 @@ namespace SearchFile
 
         public int Compare(ListViewItem x, ListViewItem y)
         {
-            // •À‚×‘Ö‚¦‚ğs‚í‚È‚¢ê‡‚Í 0 ‚ğ•Ô‚·
+            // ä¸¦ã¹æ›¿ãˆã‚’è¡Œã‚ãªã„å ´åˆã¯ 0 ã‚’è¿”ã™
             if (_sortOrder == SortOrder.None)
             {
                 return 0;
             }
 
-            // —ñƒCƒ“ƒfƒbƒNƒX‚ª•‰”‚Ìê‡
+            // åˆ—ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ãŒè² æ•°ã®å ´åˆ
             if (_column < 0)
             {
                 return 0;
             }
 
-            // w’è—ñƒCƒ“ƒfƒbƒNƒX‚ªˆø”‚Åw’è‚³‚ê‚½ ListViewItem ‚Ì—ñ”ÍˆÍŠO‚Ìê‡
+            // æŒ‡å®šåˆ—ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ãŒå¼•æ•°ã§æŒ‡å®šã•ã‚ŒãŸ ListViewItem ã®åˆ—ç¯„å›²å¤–ã®å ´åˆ
             if (x.SubItems.Count <= _column || y.SubItems.Count <= _column)
             {
                 return 0;
             }
 
-            // •¶š—ñ”äŠrƒIƒuƒWƒFƒNƒg‚ªw’è‚³‚ê‚Ä‚¢‚È‚¢ê‡
+            // æ–‡å­—åˆ—æ¯”è¼ƒã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒæŒ‡å®šã•ã‚Œã¦ã„ãªã„å ´åˆ
             if (_comparers.Count <= _column)
             {
                 return 0;
             }
 
-            // €–Ú‚Ì‘å¬‚ğ”äŠr‚·‚é
+            // é …ç›®ã®å¤§å°ã‚’æ¯”è¼ƒã™ã‚‹
             int result = _comparers[_column].Compare(x.SubItems[_column].Text, y.SubItems[_column].Text);
 
-            // •À‚×‘Ö‚¦•û–@‚ª~‡‚Ìê‡‚Í”äŠrŒ‹‰Ê‚ğ”½“]‚³‚¹‚é
+            // ä¸¦ã¹æ›¿ãˆæ–¹æ³•ãŒé™é †ã®å ´åˆã¯æ¯”è¼ƒçµæœã‚’åè»¢ã•ã›ã‚‹
             if (_sortOrder == SortOrder.Descending)
             {
                 result = -result;

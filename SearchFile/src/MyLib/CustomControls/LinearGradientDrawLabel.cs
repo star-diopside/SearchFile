@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Drawing2D;
@@ -6,7 +6,7 @@ using System.Drawing.Drawing2D;
 namespace MyLib.CustomControls
 {
     /// <summary>
-    /// üŒ`ƒOƒ‰ƒf[ƒVƒ‡ƒ“‚Å“h‚è‚Â‚Ô‚µ‚ğs‚¤ Label ƒRƒ“ƒgƒ[ƒ‹‚ğ•\‚µ‚Ü‚·B
+    /// ç·šå½¢ã‚°ãƒ©ãƒ‡ãƒ¼ã‚·ãƒ§ãƒ³ã§å¡—ã‚Šã¤ã¶ã—ã‚’è¡Œã† Label ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«ã‚’è¡¨ã—ã¾ã™ã€‚
     /// </summary>
     public class LinearGradientDrawLabel : AbstractDrawLabel
     {
@@ -15,9 +15,9 @@ namespace MyLib.CustomControls
         private Color _fillColor2 = Color.Empty;
 
         /// <summary>
-        /// üŒ`ƒOƒ‰ƒf[ƒVƒ‡ƒ“‚Ì•ûŒü‚ğæ“¾‚Ü‚½‚Íİ’è‚µ‚Ü‚·B
+        /// ç·šå½¢ã‚°ãƒ©ãƒ‡ãƒ¼ã‚·ãƒ§ãƒ³ã®æ–¹å‘ã‚’å–å¾—ã¾ãŸã¯è¨­å®šã—ã¾ã™ã€‚
         /// </summary>
-        [Category("ƒJƒXƒ^ƒ€•`‰æ"), Description("üŒ`ƒOƒ‰ƒf[ƒVƒ‡ƒ“‚Ì•ûŒü‚Å‚·B")]
+        [Category("ã‚«ã‚¹ã‚¿ãƒ æç”»"), Description("ç·šå½¢ã‚°ãƒ©ãƒ‡ãƒ¼ã‚·ãƒ§ãƒ³ã®æ–¹å‘ã§ã™ã€‚")]
         public LinearGradientMode LinearGradientMode
         {
             get
@@ -35,7 +35,7 @@ namespace MyLib.CustomControls
         }
 
         /// <summary>
-        /// LinearGradientMode ƒvƒƒpƒeƒB‚ğ‰i‘±‰»‚·‚é•K—v‚ª‚ ‚é‚©‚Ç‚¤‚©‚ğ¦‚·B
+        /// LinearGradientMode ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’æ°¸ç¶šåŒ–ã™ã‚‹å¿…è¦ãŒã‚ã‚‹ã‹ã©ã†ã‹ã‚’ç¤ºã™ã€‚
         /// </summary>
         private bool ShouldSerializeLinearGradientMode()
         {
@@ -43,7 +43,7 @@ namespace MyLib.CustomControls
         }
 
         /// <summary>
-        /// LinearGradientMode ƒvƒƒpƒeƒB‚ğŠù’è’l‚ÉƒŠƒZƒbƒg‚·‚éB
+        /// LinearGradientMode ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’æ—¢å®šå€¤ã«ãƒªã‚»ãƒƒãƒˆã™ã‚‹ã€‚
         /// </summary>
         private void ResetLinearGradientMode()
         {
@@ -51,9 +51,9 @@ namespace MyLib.CustomControls
         }
 
         /// <summary>
-        /// ƒOƒ‰ƒf[ƒVƒ‡ƒ“‚ÌŠJnF‚ğæ“¾‚Ü‚½‚Íİ’è‚µ‚Ü‚·B
+        /// ã‚°ãƒ©ãƒ‡ãƒ¼ã‚·ãƒ§ãƒ³ã®é–‹å§‹è‰²ã‚’å–å¾—ã¾ãŸã¯è¨­å®šã—ã¾ã™ã€‚
         /// </summary>
-        [Category("ƒJƒXƒ^ƒ€•`‰æ"), Description("“h‚è‚Â‚Ô‚µ‚ğs‚¤‚½‚ß‚Ég—p‚·‚éƒOƒ‰ƒf[ƒVƒ‡ƒ“‚ÌŠJnF‚Å‚·B")]
+        [Category("ã‚«ã‚¹ã‚¿ãƒ æç”»"), Description("å¡—ã‚Šã¤ã¶ã—ã‚’è¡Œã†ãŸã‚ã«ä½¿ç”¨ã™ã‚‹ã‚°ãƒ©ãƒ‡ãƒ¼ã‚·ãƒ§ãƒ³ã®é–‹å§‹è‰²ã§ã™ã€‚")]
         public Color FillColor1
         {
             get
@@ -72,7 +72,7 @@ namespace MyLib.CustomControls
         }
 
         /// <summary>
-        /// FillColor1 ƒvƒƒpƒeƒB‚ğ‰i‘±‰»‚·‚é•K—v‚ª‚ ‚é‚©‚Ç‚¤‚©‚ğ¦‚·B
+        /// FillColor1 ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’æ°¸ç¶šåŒ–ã™ã‚‹å¿…è¦ãŒã‚ã‚‹ã‹ã©ã†ã‹ã‚’ç¤ºã™ã€‚
         /// </summary>
         private bool ShouldSerializeFillColor1()
         {
@@ -80,7 +80,7 @@ namespace MyLib.CustomControls
         }
 
         /// <summary>
-        /// FillColor1 ƒvƒƒpƒeƒB‚ğŠù’è’l‚ÉƒŠƒZƒbƒg‚·‚éB
+        /// FillColor1 ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’æ—¢å®šå€¤ã«ãƒªã‚»ãƒƒãƒˆã™ã‚‹ã€‚
         /// </summary>
         private void ResetFillColor1()
         {
@@ -88,9 +88,9 @@ namespace MyLib.CustomControls
         }
 
         /// <summary>
-        /// ƒOƒ‰ƒf[ƒVƒ‡ƒ“‚ÌI—¹F‚ğæ“¾‚Ü‚½‚Íİ’è‚µ‚Ü‚·B
+        /// ã‚°ãƒ©ãƒ‡ãƒ¼ã‚·ãƒ§ãƒ³ã®çµ‚äº†è‰²ã‚’å–å¾—ã¾ãŸã¯è¨­å®šã—ã¾ã™ã€‚
         /// </summary>
-        [Category("ƒJƒXƒ^ƒ€•`‰æ"), Description("“h‚è‚Â‚Ô‚µ‚ğs‚¤‚½‚ß‚Ég—p‚·‚éƒOƒ‰ƒf[ƒVƒ‡ƒ“‚ÌI—¹F‚Å‚·B")]
+        [Category("ã‚«ã‚¹ã‚¿ãƒ æç”»"), Description("å¡—ã‚Šã¤ã¶ã—ã‚’è¡Œã†ãŸã‚ã«ä½¿ç”¨ã™ã‚‹ã‚°ãƒ©ãƒ‡ãƒ¼ã‚·ãƒ§ãƒ³ã®çµ‚äº†è‰²ã§ã™ã€‚")]
         public Color FillColor2
         {
             get
@@ -109,7 +109,7 @@ namespace MyLib.CustomControls
         }
 
         /// <summary>
-        /// FillColor2 ƒvƒƒpƒeƒB‚ğ‰i‘±‰»‚·‚é•K—v‚ª‚ ‚é‚©‚Ç‚¤‚©‚ğ¦‚·B
+        /// FillColor2 ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’æ°¸ç¶šåŒ–ã™ã‚‹å¿…è¦ãŒã‚ã‚‹ã‹ã©ã†ã‹ã‚’ç¤ºã™ã€‚
         /// </summary>
         private bool ShouldSerializeFillColor2()
         {
@@ -117,7 +117,7 @@ namespace MyLib.CustomControls
         }
 
         /// <summary>
-        /// FillColor2 ƒvƒƒpƒeƒB‚ğŠù’è’l‚ÉƒŠƒZƒbƒg‚·‚éB
+        /// FillColor2 ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’æ—¢å®šå€¤ã«ãƒªã‚»ãƒƒãƒˆã™ã‚‹ã€‚
         /// </summary>
         private void ResetFillColor2()
         {
@@ -125,9 +125,9 @@ namespace MyLib.CustomControls
         }
 
         /// <summary>
-        /// üŒ`ƒOƒ‰ƒf[ƒVƒ‡ƒ“‚Å“h‚è‚Â‚Ô‚µ‚ğs‚¤‚½‚ß‚Ì Brush ƒIƒuƒWƒFƒNƒg‚ğ¶¬‚·‚éB
+        /// ç·šå½¢ã‚°ãƒ©ãƒ‡ãƒ¼ã‚·ãƒ§ãƒ³ã§å¡—ã‚Šã¤ã¶ã—ã‚’è¡Œã†ãŸã‚ã® Brush ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ç”Ÿæˆã™ã‚‹ã€‚
         /// </summary>
-        /// <returns>üŒ`ƒOƒ‰ƒf[ƒVƒ‡ƒ“‚³‚ê‚½ Brush ƒIƒuƒWƒFƒNƒg</returns>
+        /// <returns>ç·šå½¢ã‚°ãƒ©ãƒ‡ãƒ¼ã‚·ãƒ§ãƒ³ã•ã‚ŒãŸ Brush ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ</returns>
         protected override Brush CreateFillBrush()
         {
             return new LinearGradientBrush(this.ClientRectangle,

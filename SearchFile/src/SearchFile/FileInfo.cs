@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.ComponentModel;
 using System.Drawing;
 using MyLib.WindowsShell;
@@ -6,7 +6,7 @@ using MyLib.WindowsShell;
 namespace SearchFile
 {
     /// <summary>
-    /// �t�@�C���Ɋւ�������擾����N���X
+    /// ファイルに関する情報を取得するクラス
     /// </summary>
     class FileInfo
     {
@@ -15,17 +15,17 @@ namespace SearchFile
         private readonly WeakReference _largeIconRef = new WeakReference(null);
 
         /// <summary>
-        /// �w�肳�ꂽ�t�@�C���Ɋւ�������擾����N���X�̐V�����C���X�^���X�𐶐�����
+        /// 指定されたファイルに関する情報を取得するクラスの新しいインスタンスを生成する
         /// </summary>
-        /// <param name="fileName">�V�����t�@�C���̊��S�C�����܂��͑��΃t�@�C����</param>
+        /// <param name="fileName">新しいファイルの完全修飾名または相対ファイル名</param>
         public FileInfo(string fileName)
         {
-            // �w�肳�ꂽ�t�@�C�������� System.IO.FileInfo �N���X�̃C���X�^���X�𐶐�����
+            // 指定されたファイル名から System.IO.FileInfo クラスのインスタンスを生成する
             _info = new System.IO.FileInfo(fileName);
         }
 
         /// <summary>
-        /// �f�B���N�g���܂��̓t�@�C���̐�΃p�X���擾����
+        /// ディレクトリまたはファイルの絶対パスを取得する
         /// </summary>
         public string FullName
         {
@@ -36,7 +36,7 @@ namespace SearchFile
         }
 
         /// <summary>
-        /// �t�@�C���̖��O���擾����
+        /// ファイルの名前を取得する
         /// </summary>
         public string Name
         {
@@ -47,16 +47,16 @@ namespace SearchFile
         }
 
         /// <summary>
-        /// �t�@�C���̊g���q������\����������擾����
+        /// ファイルの拡張子部分を表す文字列を取得する
         /// </summary>
         public string Extension
         {
             get
             {
-                // �g���q���擾����
+                // 拡張子を取得する
                 string ext = _info.Extension;
 
-                // �g���q�̐擪�̃s���I�h���폜����
+                // 拡張子の先頭のピリオドを削除する
                 if (!string.IsNullOrEmpty(ext) && ext[0] == '.')
                 {
                     return ext.Substring(1);
@@ -69,7 +69,7 @@ namespace SearchFile
         }
 
         /// <summary>
-        /// �f�B���N�g���̐�΃p�X��\����������擾����
+        /// ディレクトリの絶対パスを表す文字列を取得する
         /// </summary>
         public string DirectoryName
         {
@@ -80,7 +80,7 @@ namespace SearchFile
         }
 
         /// <summary>
-        /// �t�@�C���Ɋ֘A�t����ꂽ�������A�C�R�����擾����
+        /// ファイルに関連付けられた小さいアイコンを取得する
         /// </summary>
         public Icon SmallIcon
         {
@@ -92,12 +92,12 @@ namespace SearchFile
                 {
                     try
                     {
-                        // �t�@�C���Ɋ֘A�t����ꂽ�A�C�R�����擾����
+                        // ファイルに関連付けられたアイコンを取得する
                         smallIcon = ExtractIcon.ExtractFileIcon(_info.FullName, ExtractIcon.IconSize.Small);
                     }
                     catch (Win32Exception)
                     {
-                        // �A�C�R�����擾�ł��Ȃ��ꍇ�� null ��ݒ肷��
+                        // アイコンが取得できない場合は null を設定する
                         smallIcon = null;
                     }
 
@@ -109,7 +109,7 @@ namespace SearchFile
         }
 
         /// <summary>
-        /// �t�@�C���Ɋ֘A�t����ꂽ�傫���A�C�R�����擾����
+        /// ファイルに関連付けられた大きいアイコンを取得する
         /// </summary>
         public Icon LargeIcon
         {
@@ -121,12 +121,12 @@ namespace SearchFile
                 {
                     try
                     {
-                        // �t�@�C���Ɋ֘A�t����ꂽ�A�C�R�����擾����
+                        // ファイルに関連付けられたアイコンを取得する
                         largeIcon = ExtractIcon.ExtractFileIcon(_info.FullName, ExtractIcon.IconSize.Large);
                     }
                     catch (Win32Exception)
                     {
-                        // �A�C�R�����擾�ł��Ȃ��ꍇ�� null ��ݒ肷��
+                        // アイコンが取得できない場合は null を設定する
                         largeIcon = null;
                     }
 

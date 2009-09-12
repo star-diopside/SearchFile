@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Runtime.InteropServices;
@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 namespace MyLib.WindowsShell
 {
     /// <summary>
-    /// ���s�t�@�C����g���q�Ɋ֘A�t����ꂽ�A�C�R���Ɋւ���@�\��񋟂���
+    /// 実行ファイルや拡張子に関連付けられたアイコンに関する機能を提供する
     /// </summary>
     public static class ExtractIcon
     {
@@ -80,7 +80,7 @@ namespace MyLib.WindowsShell
         }
 
         /// <summary>
-        /// �擾����A�C�R�����w�肷��񋓑�
+        /// 取得するアイコンを指定する列挙体
         /// </summary>
         public enum IconSize : uint
         {
@@ -89,20 +89,20 @@ namespace MyLib.WindowsShell
         }
 
         /// <summary>
-        /// �t�@�C���Ɋ֘A�t����ꂽ�A�C�R�����擾����
+        /// ファイルに関連付けられたアイコンを取得する
         /// </summary>
-        /// <param name="fileName">�t�@�C����</param>
-        /// <param name="iconSize">�A�C�R���T�C�Y</param>
-        /// <returns>�t�@�C���Ɋ֘A�t����ꂽ�A�C�R��</returns>
-        /// <exception cref="System.ComponentModel.Win32Exception">�A�C�R�����擾�ł��Ȃ��ꍇ</exception>
-        /// <exception cref="System.DllNotFoundException">DLL ��������Ȃ��ꍇ</exception>
+        /// <param name="fileName">ファイル名</param>
+        /// <param name="iconSize">アイコンサイズ</param>
+        /// <returns>ファイルに関連付けられたアイコン</returns>
+        /// <exception cref="System.ComponentModel.Win32Exception">アイコンが取得できない場合</exception>
+        /// <exception cref="System.DllNotFoundException">DLL が見つからない場合</exception>
         public static Icon ExtractFileIcon(string fileName, IconSize iconSize)
         {
             IntPtr? handle = null;
 
             try
             {
-                // �A�C�R�������ʂ��� Windows �n���h������ GDI+ ICON ���쐬����
+                // アイコンを識別する Windows ハンドルから GDI+ ICON を作成する
                 handle = ExtractFileIconHandle(fileName, iconSize);
                 using (Icon icon = Icon.FromHandle(handle.Value))
                 {
@@ -111,7 +111,7 @@ namespace MyLib.WindowsShell
             }
             finally
             {
-                // �A�C�R����j������
+                // アイコンを破棄する
                 if (handle.HasValue)
                 {
                     DestroyIcon(handle.Value);
@@ -120,26 +120,26 @@ namespace MyLib.WindowsShell
         }
 
         /// <summary>
-        /// �t�@�C���Ɋ֘A�t����ꂽ�A�C�R�������ʂ��� Windows �n���h�����擾����
+        /// ファイルに関連付けられたアイコンを識別する Windows ハンドルを取得する
         /// </summary>
-        /// <param name="fileName">�t�@�C����</param>
-        /// <param name="iconSize">�A�C�R���T�C�Y</param>
-        /// <returns>�t�@�C���Ɋ֘A�t����ꂽ�A�C�R�������ʂ��� Windows �n���h�������� IntPtr</returns>
-        /// <exception cref="System.ComponentModel.Win32Exception">�A�C�R�����擾�ł��Ȃ��ꍇ</exception>
-        /// <exception cref="System.DllNotFoundException">DLL ��������Ȃ��ꍇ</exception>
+        /// <param name="fileName">ファイル名</param>
+        /// <param name="iconSize">アイコンサイズ</param>
+        /// <returns>ファイルに関連付けられたアイコンを識別する Windows ハンドルを示す IntPtr</returns>
+        /// <exception cref="System.ComponentModel.Win32Exception">アイコンが取得できない場合</exception>
+        /// <exception cref="System.DllNotFoundException">DLL が見つからない場合</exception>
         private static IntPtr ExtractFileIconHandle(string fileName, IconSize iconSize)
         {
-            // �A�C�R�����擾����
+            // アイコンを取得する
             SHFILEINFO shfi = new SHFILEINFO();
             IntPtr result = SHGetFileInfo(fileName, 0, ref shfi, (uint)Marshal.SizeOf(shfi), SHGetFileInfoFlags.SHGFI_ICON | (SHGetFileInfoFlags)iconSize);
 
-            // �A�C�R�����擾�ł��Ȃ��ꍇ�͗�O�𔭐�������
+            // アイコンが取得できない場合は例外を発生させる
             if (result == IntPtr.Zero)
             {
                 throw new Win32Exception();
             }
 
-            // �A�C�R�������ʂ��� Windows �n���h����Ԃ�
+            // アイコンを識別する Windows ハンドルを返す
             return shfi.hIcon;
         }
     }

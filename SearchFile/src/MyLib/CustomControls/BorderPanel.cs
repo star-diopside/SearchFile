@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
@@ -6,25 +6,25 @@ using System.Windows.Forms;
 namespace MyLib.CustomControls
 {
     /// <summary>
-    /// ’Pƒ‚Èü‚ğ‹«ŠEü‚Æ‚µ‚Ä•\¦‚·‚é Panel ƒRƒ“ƒgƒ[ƒ‹‚ğ•\‚µ‚Ü‚·B
+    /// å˜ç´”ãªç·šã‚’å¢ƒç•Œç·šã¨ã—ã¦è¡¨ç¤ºã™ã‚‹ Panel ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«ã‚’è¡¨ã—ã¾ã™ã€‚
     /// </summary>
     public class LineBorderPanel : Panel
     {
         private Color _lineColor = Color.Empty;
 
         /// <summary>
-        /// BorderPanel ƒNƒ‰ƒX‚ÌV‚µ‚¢ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ‰Šú‰»‚µ‚Ü‚·B
+        /// BorderPanel ã‚¯ãƒ©ã‚¹ã®æ–°ã—ã„ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’åˆæœŸåŒ–ã—ã¾ã™ã€‚
         /// </summary>
         public LineBorderPanel()
         {
-            // ƒTƒCƒY•ÏX‚ÉÄ•`‰æ‚ğs‚¤
+            // ã‚µã‚¤ã‚ºå¤‰æ›´æ™‚ã«å†æç”»ã‚’è¡Œã†
             this.ResizeRedraw = true;
         }
 
         /// <summary>
-        /// ‹«ŠEü‚Ì•`‰æ‚Ég—p‚·‚éF‚ğæ“¾‚Ü‚½‚Íİ’è‚µ‚Ü‚·B
+        /// å¢ƒç•Œç·šã®æç”»æ™‚ã«ä½¿ç”¨ã™ã‚‹è‰²ã‚’å–å¾—ã¾ãŸã¯è¨­å®šã—ã¾ã™ã€‚
         /// </summary>
-        [Category("ƒJƒXƒ^ƒ€•`‰æ"), Description("‹«ŠEü‚Ì•`‰æ‚Ég—p‚·‚éF‚Å‚·B")]
+        [Category("ã‚«ã‚¹ã‚¿ãƒ æç”»"), Description("å¢ƒç•Œç·šã®æç”»æ™‚ã«ä½¿ç”¨ã™ã‚‹è‰²ã§ã™ã€‚")]
         public virtual Color LineColor
         {
             get
@@ -43,7 +43,7 @@ namespace MyLib.CustomControls
         }
 
         /// <summary>
-        /// LineColorƒvƒƒpƒeƒB‚ğ‰i‘±‰»‚·‚é•K—v‚ª‚ ‚é‚©‚Ç‚¤‚©‚ğ¦‚·B
+        /// LineColorãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’æ°¸ç¶šåŒ–ã™ã‚‹å¿…è¦ãŒã‚ã‚‹ã‹ã©ã†ã‹ã‚’ç¤ºã™ã€‚
         /// </summary>
         protected virtual bool ShouldSerializeLineColor()
         {
@@ -51,7 +51,7 @@ namespace MyLib.CustomControls
         }
 
         /// <summary>
-        /// LineColorƒvƒƒpƒeƒB‚ğŠù’è’l‚ÉƒŠƒZƒbƒg‚·‚éB
+        /// LineColorãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’æ—¢å®šå€¤ã«ãƒªã‚»ãƒƒãƒˆã™ã‚‹ã€‚
         /// </summary>
         protected virtual void ResetLineColor()
         {
@@ -59,16 +59,16 @@ namespace MyLib.CustomControls
         }
 
         /// <summary>
-        /// ‹«ŠEü•`‰æ‚Ég—p‚·‚éPenƒIƒuƒWƒFƒNƒg‚ğ¶¬‚·‚éB
+        /// å¢ƒç•Œç·šæç”»ã«ä½¿ç”¨ã™ã‚‹Penã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ç”Ÿæˆã™ã‚‹ã€‚
         /// </summary>
-        /// <returns>‹«ŠEü•`‰æ‚Ég—p‚·‚éPenƒIƒuƒWƒFƒNƒg</returns>
+        /// <returns>å¢ƒç•Œç·šæç”»ã«ä½¿ç”¨ã™ã‚‹Penã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ</returns>
         protected virtual Pen CreateLinePen()
         {
             return new Pen(this.LineColor);
         }
 
         /// <summary>
-        /// ‹«ŠEü‚ğ•`‰æ‚µAPaintƒCƒxƒ“ƒg‚ğ”­¶‚³‚¹‚éB
+        /// å¢ƒç•Œç·šã‚’æç”»ã—ã€Paintã‚¤ãƒ™ãƒ³ãƒˆã‚’ç™ºç”Ÿã•ã›ã‚‹ã€‚
         /// </summary>
         protected override void OnPaint(PaintEventArgs e)
         {

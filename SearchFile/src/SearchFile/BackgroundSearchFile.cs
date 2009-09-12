@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
@@ -8,24 +8,24 @@ using System.Threading;
 namespace SearchFile
 {
     /// <summary>
-    /// ŒÂ•Ê‚ÌƒXƒŒƒbƒh‚Åƒtƒ@ƒCƒ‹ŒŸõ‚ğÀs‚·‚éB
+    /// å€‹åˆ¥ã®ã‚¹ãƒ¬ãƒƒãƒ‰ã§ãƒ•ã‚¡ã‚¤ãƒ«æ¤œç´¢ã‚’å®Ÿè¡Œã™ã‚‹ã€‚
     /// </summary>
     internal class BackgroundSearchFile : BackgroundWorker
     {
-        // ƒXƒŒƒbƒh‚ÌƒƒbƒN‚Ég—p‚·‚éƒIƒuƒWƒFƒNƒg‚ÌƒCƒ“ƒXƒ^ƒ“ƒX
+        // ã‚¹ãƒ¬ãƒƒãƒ‰ã®ãƒ­ãƒƒã‚¯æ™‚ã«ä½¿ç”¨ã™ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹
         private readonly object lockObject = new object();
 
-        // ŒŸõ‚ğs‚¤ƒfƒBƒŒƒNƒgƒŠƒpƒX
+        // æ¤œç´¢ã‚’è¡Œã†ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªãƒ‘ã‚¹
         private string _searchPath = string.Empty;
 
-        // ŒŸõ‚ğs‚¤ƒtƒ@ƒCƒ‹–¼‚Ì³‹K•\Œ»
+        // æ¤œç´¢ã‚’è¡Œã†ãƒ•ã‚¡ã‚¤ãƒ«åã®æ­£è¦è¡¨ç¾
         private Regex _searchPattern = null;
 
-        // ŒŸõ”ÍˆÍ‚ğw’è‚·‚é SearchOption ’l
+        // æ¤œç´¢ç¯„å›²ã‚’æŒ‡å®šã™ã‚‹ SearchOption å€¤
         private SearchOption _searchOption = SearchOption.TopDirectoryOnly;
 
         /// <summary>
-        /// ŒŸõ‚ğs‚¤ƒfƒBƒŒƒNƒgƒŠ‚Ìæ“¾‚Ü‚½‚Íİ’è‚ğs‚¤B
+        /// æ¤œç´¢ã‚’è¡Œã†ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã®å–å¾—ã¾ãŸã¯è¨­å®šã‚’è¡Œã†ã€‚
         /// </summary>
         [Browsable(true)]
         public string SearchPath
@@ -49,7 +49,7 @@ namespace SearchFile
         }
 
         /// <summary>
-        /// SearchPath ƒvƒƒpƒeƒB‚ğ‰i‘±‰»‚·‚é•K—v‚ª‚ ‚é‚©‚Ç‚¤‚©‚ğ¦‚·B
+        /// SearchPath ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’æ°¸ç¶šåŒ–ã™ã‚‹å¿…è¦ãŒã‚ã‚‹ã‹ã©ã†ã‹ã‚’ç¤ºã™ã€‚
         /// </summary>
         internal virtual bool ShouldSerializeSearchPath()
         {
@@ -57,7 +57,7 @@ namespace SearchFile
         }
 
         /// <summary>
-        /// SearchPath ƒvƒƒpƒeƒB‚ğŠù’è’l‚ÉƒŠƒZƒbƒg‚·‚éB
+        /// SearchPath ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’æ—¢å®šå€¤ã«ãƒªã‚»ãƒƒãƒˆã™ã‚‹ã€‚
         /// </summary>
         public virtual void ResetSearchPath()
         {
@@ -65,7 +65,7 @@ namespace SearchFile
         }
 
         /// <summary>
-        /// ŒŸõ‚ğs‚¤ƒtƒ@ƒCƒ‹–¼‚Ì³‹K•\Œ»‚Ìæ“¾‚Ü‚½‚Íİ’è‚ğs‚¤B
+        /// æ¤œç´¢ã‚’è¡Œã†ãƒ•ã‚¡ã‚¤ãƒ«åã®æ­£è¦è¡¨ç¾ã®å–å¾—ã¾ãŸã¯è¨­å®šã‚’è¡Œã†ã€‚
         /// </summary>
         [Browsable(true), DefaultValue(null)]
         public Regex SearchPattern
@@ -89,7 +89,7 @@ namespace SearchFile
         }
 
         /// <summary>
-        /// ŒŸõ‘€ì‚É‚·‚×‚Ä‚ÌƒTƒuƒfƒBƒŒƒNƒgƒŠ‚ğŠÜ‚ß‚é‚Ì‚©A‚Ü‚½‚ÍŒ»İ‚ÌƒfƒBƒŒƒNƒgƒŠ‚Ì‚İ‚ğŠÜ‚ß‚é‚Ì‚©‚ğw’è‚·‚é SearchOption ’l‚Ìæ“¾‚Ü‚½‚Íİ’è‚ğs‚¤B
+        /// æ¤œç´¢æ“ä½œã«ã™ã¹ã¦ã®ã‚µãƒ–ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’å«ã‚ã‚‹ã®ã‹ã€ã¾ãŸã¯ç¾åœ¨ã®ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã®ã¿ã‚’å«ã‚ã‚‹ã®ã‹ã‚’æŒ‡å®šã™ã‚‹ SearchOption å€¤ã®å–å¾—ã¾ãŸã¯è¨­å®šã‚’è¡Œã†ã€‚
         /// </summary>
         [Browsable(true), DefaultValue(SearchOption.TopDirectoryOnly)]
         public SearchOption SearchOption
@@ -118,18 +118,18 @@ namespace SearchFile
             {
                 base.OnDoWork(e);
 
-                // Ä‹A“I‚Éƒtƒ@ƒCƒ‹ŒŸõ‚ğs‚¤
+                // å†å¸°çš„ã«ãƒ•ã‚¡ã‚¤ãƒ«æ¤œç´¢ã‚’è¡Œã†
                 e.Result = RecursiveSearchFile(this.SearchPath, this.SearchPattern, this.SearchOption);
             }
         }
 
         /// <summary>
-        /// Ä‹A“I‚Éƒtƒ@ƒCƒ‹ŒŸõ‚ğs‚¤B
+        /// å†å¸°çš„ã«ãƒ•ã‚¡ã‚¤ãƒ«æ¤œç´¢ã‚’è¡Œã†ã€‚
         /// </summary>
-        /// <param name="path">ŒŸõ‚·‚éƒfƒBƒŒƒNƒgƒŠ</param>
-        /// <param name="pattern">path “à‚Ìƒtƒ@ƒCƒ‹–¼‚Æ‘Î‰‚³‚¹‚é³‹K•\Œ»</param>
-        /// <param name="searchOption">ŒŸõ‘€ì‚É‚·‚×‚Ä‚ÌƒTƒuƒfƒBƒŒƒNƒgƒŠ‚ğŠÜ‚ß‚é‚Ì‚©A‚Ü‚½‚ÍŒ»İ‚ÌƒfƒBƒŒƒNƒgƒŠ‚Ì‚İ‚ğŠÜ‚ß‚é‚Ì‚©‚ğw’è‚·‚é SearchOption ’l‚Ì 1 ‚Â</param>
-        /// <returns>ŒŸõ•¶š—ñ‚Éˆê’v‚µ‚½Œ”</returns>
+        /// <param name="path">æ¤œç´¢ã™ã‚‹ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒª</param>
+        /// <param name="pattern">path å†…ã®ãƒ•ã‚¡ã‚¤ãƒ«åã¨å¯¾å¿œã•ã›ã‚‹æ­£è¦è¡¨ç¾</param>
+        /// <param name="searchOption">æ¤œç´¢æ“ä½œã«ã™ã¹ã¦ã®ã‚µãƒ–ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’å«ã‚ã‚‹ã®ã‹ã€ã¾ãŸã¯ç¾åœ¨ã®ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã®ã¿ã‚’å«ã‚ã‚‹ã®ã‹ã‚’æŒ‡å®šã™ã‚‹ SearchOption å€¤ã® 1 ã¤</param>
+        /// <returns>æ¤œç´¢æ–‡å­—åˆ—ã«ä¸€è‡´ã—ãŸä»¶æ•°</returns>
         protected int RecursiveSearchFile(string path, Regex pattern, SearchOption searchOption)
         {
             int totalCount = 0;
@@ -138,7 +138,7 @@ namespace SearchFile
             {
                 try
                 {
-                    // path ‚ª null ‚©‹ó•¶š—ñ‚Ìê‡‚Í—áŠO‚ğƒXƒ[‚·‚é
+                    // path ãŒ null ã‹ç©ºæ–‡å­—åˆ—ã®å ´åˆã¯ä¾‹å¤–ã‚’ã‚¹ãƒ­ãƒ¼ã™ã‚‹
                     if (path == null)
                     {
                         throw new ArgumentNullException();
@@ -148,20 +148,20 @@ namespace SearchFile
                         throw new ArgumentException();
                     }
 
-                    // ƒfƒBƒŒƒNƒgƒŠ–¼‚ÌÅŒã‚ÉƒfƒBƒŒƒNƒgƒŠ‹æØ‚è•¶š‚ğ’Ç‰Á‚·‚é
-                    // iƒfƒBƒŒƒNƒgƒŠ‚Ì––”ö‚ª‘SŠpƒXƒy[ƒX‚Ìê‡‚Ì‘Î‰j
+                    // ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªåã®æœ€å¾Œã«ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªåŒºåˆ‡ã‚Šæ–‡å­—ã‚’è¿½åŠ ã™ã‚‹
+                    // ï¼ˆãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã®æœ«å°¾ãŒå…¨è§’ã‚¹ãƒšãƒ¼ã‚¹ã®å ´åˆã®å¯¾å¿œï¼‰
                     if (path[path.Length - 1] != Path.DirectorySeparatorChar)
                     {
                         path += Path.DirectorySeparatorChar;
                     }
 
-                    // ŒŸõ‚·‚éƒfƒBƒŒƒNƒgƒŠ–¼‚ğ’Ê’m‚·‚é
+                    // æ¤œç´¢ã™ã‚‹ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªåã‚’é€šçŸ¥ã™ã‚‹
                     this.ReportProgress(0, new SearchResultDirectory(path));
 
-                    // ProgressChanged ƒCƒxƒ“ƒg‚Å‚Ìˆ—‚ªŠ®—¹‚·‚é‚Ü‚Å‘Ò‹@‚·‚é
+                    // ProgressChanged ã‚¤ãƒ™ãƒ³ãƒˆã§ã®å‡¦ç†ãŒå®Œäº†ã™ã‚‹ã¾ã§å¾…æ©Ÿã™ã‚‹
                     Monitor.Wait(lockObject);
 
-                    // ƒtƒ@ƒCƒ‹–¼‚ğæ“¾‚·‚é
+                    // ãƒ•ã‚¡ã‚¤ãƒ«åã‚’å–å¾—ã™ã‚‹
                     var fileNames = from fileName in Directory.GetFiles(path)
                                     where pattern.IsMatch(Path.GetFileName(fileName))
                                     select fileName;
@@ -169,22 +169,22 @@ namespace SearchFile
 
                     totalCount += findCount;
 
-                    // ƒtƒ@ƒCƒ‹‚ªŒ©‚Â‚©‚Á‚½ê‡
+                    // ãƒ•ã‚¡ã‚¤ãƒ«ãŒè¦‹ã¤ã‹ã£ãŸå ´åˆ
                     if (findCount > 0)
                     {
-                        // ŒŸõŒ‹‰Ê‚ğ’Ê’m‚·‚é
+                        // æ¤œç´¢çµæœã‚’é€šçŸ¥ã™ã‚‹
                         this.ReportProgress(0, new SearchResultFiles(fileNames));
 
-                        // ProgressChanged ƒCƒxƒ“ƒg‚Å‚Ìˆ—‚ªŠ®—¹‚·‚é‚Ü‚Å‘Ò‹@‚·‚é
+                        // ProgressChanged ã‚¤ãƒ™ãƒ³ãƒˆã§ã®å‡¦ç†ãŒå®Œäº†ã™ã‚‹ã¾ã§å¾…æ©Ÿã™ã‚‹
                         Monitor.Wait(lockObject);
                     }
 
-                    // Ä‹A“I‚ÉƒfƒBƒŒƒNƒgƒŠ‚ğŒŸõ‚·‚é
+                    // å†å¸°çš„ã«ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’æ¤œç´¢ã™ã‚‹
                     if (searchOption == SearchOption.AllDirectories)
                     {
                         foreach (string directory in Directory.GetDirectories(path))
                         {
-                            // ƒLƒƒƒ“ƒZƒ‹—v‹‚ª‚ ‚Á‚½ê‡‚ÍŒJ‚è•Ô‚µ‚ğI—¹‚·‚é
+                            // ã‚­ãƒ£ãƒ³ã‚»ãƒ«è¦æ±‚ãŒã‚ã£ãŸå ´åˆã¯ç¹°ã‚Šè¿”ã—ã‚’çµ‚äº†ã™ã‚‹
                             if (this.CancellationPending)
                             {
                                 break;

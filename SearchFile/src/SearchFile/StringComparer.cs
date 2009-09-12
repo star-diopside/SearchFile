@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
@@ -6,7 +6,7 @@ using System.Globalization;
 namespace SearchFile
 {
     /// <summary>
-    /// •¶š—ñ”äŠr‚ğs‚¤ƒIƒuƒWƒFƒNƒg‚ğ•\‚·ƒNƒ‰ƒX
+    /// æ–‡å­—åˆ—æ¯”è¼ƒã‚’è¡Œã†ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¡¨ã™ã‚¯ãƒ©ã‚¹
     /// </summary>
     class StringComparer : IComparer, IComparer<string>
     {
@@ -14,7 +14,7 @@ namespace SearchFile
         private CultureInfo _culture;
 
         /// <summary>
-        /// StringComparer ƒNƒ‰ƒX‚ÌV‚µ‚¢ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ‰Šú‰»‚·‚éB
+        /// StringComparer ã‚¯ãƒ©ã‚¹ã®æ–°ã—ã„ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’åˆæœŸåŒ–ã™ã‚‹ã€‚
         /// </summary>
         public StringComparer()
         {
@@ -23,9 +23,9 @@ namespace SearchFile
         }
 
         /// <summary>
-        /// StringComparer ƒNƒ‰ƒX‚ÌV‚µ‚¢ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ‰Šú‰»‚·‚éB
+        /// StringComparer ã‚¯ãƒ©ã‚¹ã®æ–°ã—ã„ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’åˆæœŸåŒ–ã™ã‚‹ã€‚
         /// </summary>
-        /// <param name="ignoreCase">‘å•¶š‚Æ¬•¶š‚ğ‹æ•Ê‚µ‚Ä”äŠr‚·‚é‚©‚Ç‚¤‚©‚ğ¦‚·’lB</param>
+        /// <param name="ignoreCase">å¤§æ–‡å­—ã¨å°æ–‡å­—ã‚’åŒºåˆ¥ã—ã¦æ¯”è¼ƒã™ã‚‹ã‹ã©ã†ã‹ã‚’ç¤ºã™å€¤ã€‚</param>
         public StringComparer(bool ignoreCase)
         {
             this._ignoreCase = ignoreCase;
@@ -33,10 +33,10 @@ namespace SearchFile
         }
 
         /// <summary>
-        /// StringComparer ƒNƒ‰ƒX‚ÌV‚µ‚¢ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ‰Šú‰»‚·‚éB
+        /// StringComparer ã‚¯ãƒ©ã‚¹ã®æ–°ã—ã„ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’åˆæœŸåŒ–ã™ã‚‹ã€‚
         /// </summary>
-        /// <param name="ignoreCase">‘å•¶š‚Æ¬•¶š‚ğ‹æ•Ê‚µ‚Ä”äŠr‚·‚é‚©‚Ç‚¤‚©‚ğ¦‚·’lB</param>
-        /// <param name="culture">ƒJƒ‹ƒ`ƒƒŒÅ—L‚Ì”äŠrî•ñ‚ğ’ñ‹Ÿ‚·‚é CultureInfo ƒIƒuƒWƒFƒNƒgB</param>
+        /// <param name="ignoreCase">å¤§æ–‡å­—ã¨å°æ–‡å­—ã‚’åŒºåˆ¥ã—ã¦æ¯”è¼ƒã™ã‚‹ã‹ã©ã†ã‹ã‚’ç¤ºã™å€¤ã€‚</param>
+        /// <param name="culture">ã‚«ãƒ«ãƒãƒ£å›ºæœ‰ã®æ¯”è¼ƒæƒ…å ±ã‚’æä¾›ã™ã‚‹ CultureInfo ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã€‚</param>
         public StringComparer(bool ignoreCase, CultureInfo culture)
         {
             this._ignoreCase = ignoreCase;
@@ -52,7 +52,7 @@ namespace SearchFile
         }
 
         /// <summary>
-        /// ‘å•¶š‚Æ¬•¶š‚ğ‹æ•Ê‚µ‚Ä”äŠr‚·‚é‚©‚Ç‚¤‚©‚ğ¦‚·’l‚ğæ“¾‚Ü‚½‚Íİ’è‚·‚éB
+        /// å¤§æ–‡å­—ã¨å°æ–‡å­—ã‚’åŒºåˆ¥ã—ã¦æ¯”è¼ƒã™ã‚‹ã‹ã©ã†ã‹ã‚’ç¤ºã™å€¤ã‚’å–å¾—ã¾ãŸã¯è¨­å®šã™ã‚‹ã€‚
         /// </summary>
         public bool IgnoreCase
         {
@@ -67,7 +67,7 @@ namespace SearchFile
         }
 
         /// <summary>
-        /// ƒJƒ‹ƒ`ƒƒŒÅ—L‚Ì”äŠrî•ñ‚ğ’ñ‹Ÿ‚·‚é CultureInfo ƒIƒuƒWƒFƒNƒg‚ğæ“¾‚Ü‚½‚Íİ’è‚·‚éB
+        /// ã‚«ãƒ«ãƒãƒ£å›ºæœ‰ã®æ¯”è¼ƒæƒ…å ±ã‚’æä¾›ã™ã‚‹ CultureInfo ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å–å¾—ã¾ãŸã¯è¨­å®šã™ã‚‹ã€‚
         /// </summary>
         public CultureInfo Culture
         {
@@ -89,22 +89,22 @@ namespace SearchFile
         }
 
         /// <summary>
-        /// w’è‚µ‚½•¶š—ñ‚ğ”äŠr‚·‚éB
+        /// æŒ‡å®šã—ãŸæ–‡å­—åˆ—ã‚’æ¯”è¼ƒã™ã‚‹ã€‚
         /// </summary>
-        /// <param name="x">‘æ 1 ‚Ì•¶š—ñB</param>
-        /// <param name="y">‘æ 2 ‚Ì•¶š—ñB</param>
-        /// <returns>2 ‚Â‚Ì•¶š—ñ‚ÌŠÖŒW‚ğ¦‚· 32 ƒrƒbƒg•„†•t‚«®”B</returns>
+        /// <param name="x">ç¬¬ 1 ã®æ–‡å­—åˆ—ã€‚</param>
+        /// <param name="y">ç¬¬ 2 ã®æ–‡å­—åˆ—ã€‚</param>
+        /// <returns>2 ã¤ã®æ–‡å­—åˆ—ã®é–¢ä¿‚ã‚’ç¤ºã™ 32 ãƒ“ãƒƒãƒˆç¬¦å·ä»˜ãæ•´æ•°ã€‚</returns>
         public virtual int Compare(string x, string y)
         {
             return string.Compare(x, y, _ignoreCase, _culture);
         }
 
         /// <summary>
-        /// w’è‚µ‚½•¶š—ñ‚ğ”äŠr‚·‚éB
+        /// æŒ‡å®šã—ãŸæ–‡å­—åˆ—ã‚’æ¯”è¼ƒã™ã‚‹ã€‚
         /// </summary>
-        /// <param name="x">‘æ 1 ‚Ì•¶š—ñB</param>
-        /// <param name="y">‘æ 2 ‚Ì•¶š—ñB</param>
-        /// <returns>2 ‚Â‚Ì•¶š—ñ‚ÌŠÖŒW‚ğ¦‚· 32 ƒrƒbƒg•„†•t‚«®”B</returns>
+        /// <param name="x">ç¬¬ 1 ã®æ–‡å­—åˆ—ã€‚</param>
+        /// <param name="y">ç¬¬ 2 ã®æ–‡å­—åˆ—ã€‚</param>
+        /// <returns>2 ã¤ã®æ–‡å­—åˆ—ã®é–¢ä¿‚ã‚’ç¤ºã™ 32 ãƒ“ãƒƒãƒˆç¬¦å·ä»˜ãæ•´æ•°ã€‚</returns>
         int IComparer.Compare(object x, object y)
         {
             return Compare((string)x, (string)y);

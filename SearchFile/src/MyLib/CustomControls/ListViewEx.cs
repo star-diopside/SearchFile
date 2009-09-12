@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.ComponentModel;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
@@ -14,7 +14,7 @@ namespace MyLib.CustomControls
             this.DoubleBuffered = true;
         }
 
-        #region Win32 API ‚ğŒÄ‚Ño‚·‚½‚ß‚Ì’è‹`
+        #region Win32 API ã‚’å‘¼ã³å‡ºã™ãŸã‚ã®å®šç¾©
 
         [DllImport("user32.dll")]
         protected static extern IntPtr SendMessage(HandleRef hWnd, uint Msg, IntPtr wParam, IntPtr lParam);
@@ -73,7 +73,7 @@ namespace MyLib.CustomControls
         #endregion
 
         /// <summary>
-        /// ƒwƒbƒ_[‚É•\¦‚·‚é–îˆó‚Ìí—Ş
+        /// ãƒ˜ãƒƒãƒ€ãƒ¼ã«è¡¨ç¤ºã™ã‚‹çŸ¢å°ã®ç¨®é¡
         /// </summary>
         public enum HeaderSortArrows
         {
@@ -83,7 +83,7 @@ namespace MyLib.CustomControls
         }
 
         /// <summary>
-        /// ƒwƒbƒ_[‚ÌƒEƒBƒ“ƒhƒEƒnƒ“ƒhƒ‹‚ğæ“¾‚·‚éB
+        /// ãƒ˜ãƒƒãƒ€ãƒ¼ã®ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ãƒãƒ³ãƒ‰ãƒ«ã‚’å–å¾—ã™ã‚‹ã€‚
         /// </summary>
         protected IntPtr HeaderHandle
         {
@@ -102,23 +102,23 @@ namespace MyLib.CustomControls
         }
 
         /// <summary>
-        /// ƒwƒbƒ_[‚É•\¦‚·‚é–îˆó‚ğİ’è‚·‚é
+        /// ãƒ˜ãƒƒãƒ€ãƒ¼ã«è¡¨ç¤ºã™ã‚‹çŸ¢å°ã‚’è¨­å®šã™ã‚‹
         /// </summary>
-        /// <param name="column">—ñƒwƒbƒ_[‚ÌƒCƒ“ƒfƒbƒNƒX</param>
-        /// <param name="style">–îˆó‚Ìí—Ş</param>
+        /// <param name="column">åˆ—ãƒ˜ãƒƒãƒ€ãƒ¼ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹</param>
+        /// <param name="style">çŸ¢å°ã®ç¨®é¡</param>
         public void SetHeaderSortArrowStyle(int column, HeaderSortArrows style)
         {
-            // ƒwƒbƒ_[‚ÌƒtƒH[ƒ}ƒbƒg‚Ìæ“¾Eİ’è‚ğs‚¤‚½‚ß‚Ì\‘¢‘Ì‚Ìİ’è‚ğs‚¤
+            // ãƒ˜ãƒƒãƒ€ãƒ¼ã®ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã®å–å¾—ãƒ»è¨­å®šã‚’è¡Œã†ãŸã‚ã®æ§‹é€ ä½“ã®è¨­å®šã‚’è¡Œã†
             HDITEM item = new HDITEM();
             item.mask = HeaderItemMasks.HDI_FORMAT;
 
-            // Œ»İ‚Ìƒwƒbƒ_[î•ñ‚ğæ“¾‚·‚é
+            // ç¾åœ¨ã®ãƒ˜ãƒƒãƒ€ãƒ¼æƒ…å ±ã‚’å–å¾—ã™ã‚‹
             if (SendMessage(new HandleRef(this, this.HeaderHandle), (uint)HeaderMessages.HDM_GETITEM, (IntPtr)column, ref item) == IntPtr.Zero)
             {
                 throw new Win32Exception();
             }
 
-            // ƒwƒbƒ_[ƒXƒ^ƒCƒ‹‚ğİ’è‚·‚é
+            // ãƒ˜ãƒƒãƒ€ãƒ¼ã‚¹ã‚¿ã‚¤ãƒ«ã‚’è¨­å®šã™ã‚‹
             switch (style)
             {
                 case HeaderSortArrows.None:
@@ -140,7 +140,7 @@ namespace MyLib.CustomControls
                     break;
             }
 
-            // ƒwƒbƒ_[î•ñ‚ğİ’è‚·‚é
+            // ãƒ˜ãƒƒãƒ€ãƒ¼æƒ…å ±ã‚’è¨­å®šã™ã‚‹
             if (SendMessage(new HandleRef(this, this.HeaderHandle), (uint)HeaderMessages.HDM_SETITEM, (IntPtr)column, ref item) == IntPtr.Zero)
             {
                 throw new Win32Exception();

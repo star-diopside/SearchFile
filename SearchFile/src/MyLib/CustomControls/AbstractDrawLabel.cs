@@ -1,28 +1,28 @@
-using System;
+ï»¿using System;
 using System.Drawing;
 using System.Windows.Forms;
 
 namespace MyLib.CustomControls
 {
     /// <summary>
-    /// ƒJƒXƒ^ƒ€‚Ì“h‚è‚Â‚Ô‚µ‚ğs‚¤ Label ƒRƒ“ƒgƒ[ƒ‹‚ÌŠî–{ƒNƒ‰ƒX‚ğ’è‹`‚µ‚Ü‚·B
+    /// ã‚«ã‚¹ã‚¿ãƒ ã®å¡—ã‚Šã¤ã¶ã—ã‚’è¡Œã† Label ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«ã®åŸºæœ¬ã‚¯ãƒ©ã‚¹ã‚’å®šç¾©ã—ã¾ã™ã€‚
     /// </summary>
     public abstract class AbstractDrawLabel : Label
     {
         /// <summary>
-        /// AbstractDrawLabel ƒNƒ‰ƒX‚ÌV‚µ‚¢ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ‰Šú‰»‚µ‚Ü‚·B
+        /// AbstractDrawLabel ã‚¯ãƒ©ã‚¹ã®æ–°ã—ã„ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’åˆæœŸåŒ–ã—ã¾ã™ã€‚
         /// </summary>
         public AbstractDrawLabel()
         {
         }
 
         /// <summary>
-        /// “h‚è‚Â‚Ô‚µ‚Ég—p‚·‚éBrushƒIƒuƒWƒFƒNƒg‚ğ¶¬‚·‚éB
+        /// å¡—ã‚Šã¤ã¶ã—ã«ä½¿ç”¨ã™ã‚‹Brushã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ç”Ÿæˆã™ã‚‹ã€‚
         /// </summary>
         protected abstract Brush CreateFillBrush();
 
         /// <summary>
-        /// “h‚è‚Â‚Ô‚µ‚ğs‚¢APaintƒCƒxƒ“ƒg‚ğ”­¶‚³‚¹‚éB
+        /// å¡—ã‚Šã¤ã¶ã—ã‚’è¡Œã„ã€Paintã‚¤ãƒ™ãƒ³ãƒˆã‚’ç™ºç”Ÿã•ã›ã‚‹ã€‚
         /// </summary>
         protected override void OnPaint(PaintEventArgs e)
         {
