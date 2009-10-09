@@ -86,7 +86,7 @@ namespace SearchFile
         {
             get
             {
-                Icon smallIcon = this._smallIconRef.Target as Icon;
+                Icon smallIcon = (Icon)this._smallIconRef.Target;
 
                 if (smallIcon == null)
                 {
@@ -115,7 +115,7 @@ namespace SearchFile
         {
             get
             {
-                Icon largeIcon = this._largeIconRef.Target as Icon;
+                Icon largeIcon = (Icon)this._largeIconRef.Target;
 
                 if (largeIcon == null)
                 {

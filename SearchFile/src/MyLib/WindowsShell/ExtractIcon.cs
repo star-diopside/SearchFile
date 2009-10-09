@@ -95,28 +95,42 @@ namespace MyLib.WindowsShell
         /// <param name="iconSize">アイコンサイズ</param>
         /// <returns>ファイルに関連付けられたアイコン</returns>
         /// <exception cref="System.ComponentModel.Win32Exception">アイコンが取得できない場合</exception>
-        /// <exception cref="System.DllNotFoundException">DLL が見つからない場合</exception>
         public static Icon ExtractFileIcon(string fileName, IconSize iconSize)
         {
-            IntPtr? handle = null;
+            Icon returnIcon;
 
             try
             {
-                // アイコンを識別する Windows ハンドルから GDI+ ICON を作成する
-                handle = ExtractFileIconHandle(fileName, iconSize);
-                using (Icon icon = Icon.FromHandle(handle.Value))
+                IntPtr? handle = null;
+
+                try
                 {
-                    return (Icon)icon.Clone();
+                    // アイコンを識別する Windows ハンドルから GDI+ ICON を作成する
+                    handle = ExtractFileIconHandle(fileName, iconSize);
+                    using (Icon icon = Icon.FromHandle(handle.Value))
+                    {
+                        returnIcon = (Icon)icon.Clone();
+                    }
+                }
+                finally
+                {
+                    // アイコンを破棄する
+                    if (handle.HasValue)
+                    {
+                        DestroyIcon(handle.Value);
+                    }
                 }
             }
-            finally
+            catch (DllNotFoundException)
             {
-                // アイコンを破棄する
-                if (handle.HasValue)
-                {
-                    DestroyIcon(handle.Value);
-                }
+                returnIcon = null;
             }
+            catch (EntryPointNotFoundException)
+            {
+                returnIcon = null;
+            }
+
+            return returnIcon;
         }
 
         /// <summary>

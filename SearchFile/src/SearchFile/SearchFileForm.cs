@@ -44,7 +44,12 @@ namespace SearchFile
                 SelectHeaderSortArrows(listViewFileNameSorter.SortOrder));
 
             // 検索ディレクトリにシステムディレクトリのルートディレクトリを設定する
-            textDirectory.Text = Path.GetPathRoot(Environment.GetFolderPath(Environment.SpecialFolder.System));
+            string systemPath = Environment.GetFolderPath(Environment.SpecialFolder.System);
+
+            if (!string.IsNullOrEmpty(systemPath))
+            {
+                textDirectory.Text = Path.GetPathRoot(systemPath);
+            }
         }
 
         protected override void OnLoad(EventArgs e)

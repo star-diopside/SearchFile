@@ -89,11 +89,23 @@ namespace MyLib.CustomControls
         {
             get
             {
-                IntPtr? headerHandle = this._headerHandleRef.Target as IntPtr?;
+                IntPtr? headerHandle = (IntPtr?)this._headerHandleRef.Target;
 
                 if (headerHandle == null)
                 {
-                    headerHandle = SendMessage(new HandleRef(this, this.Handle), (uint)ListViewMessages.LVM_GETHEADER, (IntPtr)0, (IntPtr)0);
+                    try
+                    {
+                        headerHandle = SendMessage(new HandleRef(this, this.Handle), (uint)ListViewMessages.LVM_GETHEADER, (IntPtr)0, (IntPtr)0);
+                    }
+                    catch (DllNotFoundException)
+                    {
+                        headerHandle = IntPtr.Zero;
+                    }
+                    catch (EntryPointNotFoundException)
+                    {
+                        headerHandle = IntPtr.Zero;
+                    }
+
                     this._headerHandleRef.Target = headerHandle;
                 }
 
@@ -108,42 +120,45 @@ namespace MyLib.CustomControls
         /// <param name="style">矢印の種類</param>
         public void SetHeaderSortArrowStyle(int column, HeaderSortArrows style)
         {
-            // ヘッダーのフォーマットの取得・設定を行うための構造体の設定を行う
-            HDITEM item = new HDITEM();
-            item.mask = HeaderItemMasks.HDI_FORMAT;
-
-            // 現在のヘッダー情報を取得する
-            if (SendMessage(new HandleRef(this, this.HeaderHandle), (uint)HeaderMessages.HDM_GETITEM, (IntPtr)column, ref item) == IntPtr.Zero)
+            if (this.HeaderHandle != IntPtr.Zero)
             {
-                throw new Win32Exception();
-            }
+                // ヘッダーのフォーマットの取得・設定を行うための構造体の設定を行う
+                HDITEM item = new HDITEM();
+                item.mask = HeaderItemMasks.HDI_FORMAT;
 
-            // ヘッダースタイルを設定する
-            switch (style)
-            {
-                case HeaderSortArrows.None:
-                    item.fmt &= ~HeaderFormats.HDF_SORTDOWN;
-                    item.fmt &= ~HeaderFormats.HDF_SORTUP;
-                    break;
+                // 現在のヘッダー情報を取得する
+                if (SendMessage(new HandleRef(this, this.HeaderHandle), (uint)HeaderMessages.HDM_GETITEM, (IntPtr)column, ref item) == IntPtr.Zero)
+                {
+                    throw new Win32Exception();
+                }
 
-                case HeaderSortArrows.SortUp:
-                    item.fmt &= ~HeaderFormats.HDF_SORTDOWN;
-                    item.fmt |= HeaderFormats.HDF_SORTUP;
-                    break;
+                // ヘッダースタイルを設定する
+                switch (style)
+                {
+                    case HeaderSortArrows.None:
+                        item.fmt &= ~HeaderFormats.HDF_SORTDOWN;
+                        item.fmt &= ~HeaderFormats.HDF_SORTUP;
+                        break;
 
-                case HeaderSortArrows.SortDown:
-                    item.fmt |= HeaderFormats.HDF_SORTDOWN;
-                    item.fmt &= ~HeaderFormats.HDF_SORTUP;
-                    break;
+                    case HeaderSortArrows.SortUp:
+                        item.fmt &= ~HeaderFormats.HDF_SORTDOWN;
+                        item.fmt |= HeaderFormats.HDF_SORTUP;
+                        break;
 
-                default:
-                    break;
-            }
+                    case HeaderSortArrows.SortDown:
+                        item.fmt |= HeaderFormats.HDF_SORTDOWN;
+                        item.fmt &= ~HeaderFormats.HDF_SORTUP;
+                        break;
 
-            // ヘッダー情報を設定する
-            if (SendMessage(new HandleRef(this, this.HeaderHandle), (uint)HeaderMessages.HDM_SETITEM, (IntPtr)column, ref item) == IntPtr.Zero)
-            {
-                throw new Win32Exception();
+                    default:
+                        break;
+                }
+
+                // ヘッダー情報を設定する
+                if (SendMessage(new HandleRef(this, this.HeaderHandle), (uint)HeaderMessages.HDM_SETITEM, (IntPtr)column, ref item) == IntPtr.Zero)
+                {
+                    throw new Win32Exception();
+                }
             }
         }
     }
