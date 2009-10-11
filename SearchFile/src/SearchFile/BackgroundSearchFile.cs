@@ -194,8 +194,14 @@ namespace SearchFile
                         }
                     }
                 }
+                catch (DirectoryNotFoundException)
+                {
+                    // ディレクトリが見つからない場合、後続の処理を続行する
+                    // （検索中にディレクトリが削除された場合の対応）
+                }
                 catch (UnauthorizedAccessException)
                 {
+                    // アクセスエラーの場合、後続の処理を続行する
                 }
             }
 
