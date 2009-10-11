@@ -34,10 +34,11 @@ namespace SearchFile
             listViewFileNameSorter = new ListViewItemSorter();
             listViewFileNameSorter.Column = 2;
             listViewFileNameSorter.SortOrder = SortOrder.Ascending;
-            StringComparer ignoreCaseComparer = new StringComparer(false);
+            IComparer<string> ignoreCaseComparer = new StringComparer(false);
+            IComparer<string> ignoreCaseDirectoryComparer = new DirectoryComparer(false);
             listViewFileNameSorter.Comparers.Add(ignoreCaseComparer);
             listViewFileNameSorter.Comparers.Add(ignoreCaseComparer);
-            listViewFileNameSorter.Comparers.Add(ignoreCaseComparer);
+            listViewFileNameSorter.Comparers.Add(ignoreCaseDirectoryComparer);
             listViewFileName.ListViewItemSorter = listViewFileNameSorter;
             listViewFileName.SetHeaderSortArrowStyle(
                 listViewFileNameSorter.Column,
