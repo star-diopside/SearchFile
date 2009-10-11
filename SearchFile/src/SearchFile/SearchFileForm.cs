@@ -319,13 +319,13 @@ namespace SearchFile
 
         private void backgroundSearchFile_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
+            Debug.Assert(sender is BackgroundWorker);
             Debug.Assert(e.UserState is ISearchResult);
-            ISearchResult result = e.UserState as ISearchResult;
 
             try
             {
                 // 検索結果を表示する
-                result.View(this);
+                ((ISearchResult)e.UserState).View(this);
             }
             catch (Exception ex)
             {
@@ -341,8 +341,7 @@ namespace SearchFile
                                     MessageBoxButtons.YesNo, MessageBoxIcon.Error) == DialogResult.Yes)
                 {
                     // 検索処理の中止を要求する
-                    Debug.Assert(sender is BackgroundWorker);
-                    (sender as BackgroundWorker).CancelAsync();
+                    ((BackgroundWorker)sender).CancelAsync();
 
                     // ボタンを不活性にする
                     buttonSearch.Enabled = false;
@@ -664,16 +663,12 @@ namespace SearchFile
                 listViewFileNameSorter.Column = e.Column;
                 listViewFileName.Sort();
 
-                ListViewEx lv = sender as ListViewEx;
-                if (sender != null)
+                for (int i = 0; i < listViewFileName.Columns.Count; i++)
                 {
-                    for (int i = 0; i < lv.Columns.Count; i++)
-                    {
-                        lv.SetHeaderSortArrowStyle(i, ListViewEx.HeaderSortArrows.None);
-                    }
-
-                    lv.SetHeaderSortArrowStyle(e.Column, SelectHeaderSortArrows(listViewFileNameSorter.SortOrder));
+                    listViewFileName.SetHeaderSortArrowStyle(i, ListViewEx.HeaderSortArrows.None);
                 }
+
+                listViewFileName.SetHeaderSortArrowStyle(e.Column, SelectHeaderSortArrows(listViewFileNameSorter.SortOrder));
             }
             catch (Exception ex)
             {
