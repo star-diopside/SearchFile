@@ -248,12 +248,6 @@ namespace SearchFile
                         throw new ArgumentException(global::SearchFile.Properties.Resources.NotSelectSearchPatternMessage);
                     }
 
-                    // 現在のファイルリストをクリアする
-                    if (!ClearFileList())
-                    {
-                        return;
-                    }
-
                     // ファイルパターンを表現する正規表現を生成する
                     string patternString;
                     Regex pattern;
@@ -273,6 +267,12 @@ namespace SearchFile
                     }
 
                     pattern = new Regex(patternString, RegexOptions.Compiled | RegexOptions.IgnoreCase | RegexOptions.Singleline);
+
+                    // 現在のファイルリストをクリアする
+                    if (!ClearFileList())
+                    {
+                        return;
+                    }
 
                     // ファイルを検索する
                     EnumerateFiles(directoryName, pattern, SearchOption.AllDirectories);
