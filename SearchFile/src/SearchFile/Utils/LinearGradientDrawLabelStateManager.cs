@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using MyLib.CustomControls;
+﻿using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using MyLib.CustomControls;
 
 namespace SearchFile.Utils
 {
