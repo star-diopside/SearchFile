@@ -11,21 +11,41 @@ using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using MyLib.CustomControls;
 using MyLib.WindowsShell;
+using SearchFile.Extension;
 using SearchFile.Utils;
 
 namespace SearchFile
 {
     public partial class SearchFileForm : Form, ISearchResultView
     {
-        // リストビューのソート時に使用するインスタンス
+        /// <summary>
+        /// リストビューのソート時に使用するインスタンス
+        /// </summary>
         private ListViewItemSorter listViewFileNameSorter;
 
-        // タイトルラベル状態管理用に使用するオブジェクト
+        /// <summary>
+        /// タイトルラベル状態管理用に使用するオブジェクト
+        /// </summary>
         private LinearGradientDrawLabelStateManager titleLabelStateManager = new LinearGradientDrawLabelStateManager();
 
-        // 検索時にリストビューの列幅を自動調整するかどうかを示す値
+        /// <summary>
+        /// 検索時にリストビューの列幅を自動調整するかどうかを示す値
+        /// </summary>
         private bool _autoColumnWidth = true;
 
+        /// <summary>
+        /// 検索結果のファイル情報を格納するリスト
+        /// </summary>
+        private FindFileList findFileList = new FindFileList();
+
+        /// <summary>
+        /// ファイル検索結果と ListViewItem インスタンスの対応表
+        /// </summary>
+        private Dictionary<string, ListViewItem> listViewItemTable = new Dictionary<string, ListViewItem>();
+
+        /// <summary>
+        /// コンストラクタ
+        /// </summary>
         public SearchFileForm()
         {
             InitializeComponent();
@@ -73,7 +93,7 @@ namespace SearchFile
             try
             {
                 // リストビューの状態に応じてコピーの可否を UI に反映する
-                toolEditResultCopy.Enabled = (listViewFileName.Items.Count != 0);
+                toolEditResultCopy.Enabled = (this.findFileList.Count != 0);
 
                 // アクティブコントロールを取得する
                 TextBoxBase activeControl = GetActiveInnerControl() as TextBoxBase;
@@ -169,7 +189,7 @@ namespace SearchFile
         /// <returns>検索結果がクリアされた場合はtrue。キャンセルされた場合はfalse。</returns>
         private bool ClearFileList()
         {
-            if (listViewFileName.Items.Count == 0)
+            if (this.findFileList.Count == 0)
             {
                 return true;
             }
@@ -181,8 +201,11 @@ namespace SearchFile
             }
             else
             {
-                listViewFileName.Items.Clear();
+                this.findFileList.Clear();
+                listViewFileName.VirtualListSize = 0;
+                this.listViewItemTable.Clear();
                 imageFileList.Images.Clear();
+
                 return true;
             }
         }
@@ -366,34 +389,9 @@ namespace SearchFile
         /// <param name="files">検索結果のファイル情報</param>
         void ISearchResultView.AddFiles(IEnumerable<FileInfo> files)
         {
-            // リストビューの描画を中断する
-            listViewFileName.BeginUpdate();
-
             // 検索結果のアイテムを追加する
-            foreach (FileInfo file in files)
-            {
-                // ファイルアイコンを取得し、イメージリストに追加する
-                if (file.SmallIcon != null)
-                {
-                    imageFileList.Images.Add(file.FullName, file.SmallIcon);
-                }
-
-                // リストビューに項目を追加する
-                ListViewItem item = new ListViewItem();
-
-                if (file.SmallIcon != null)
-                {
-                    item.ImageKey = file.FullName;
-                }
-                item.Text = file.Name;
-                item.SubItems.Add(file.Extension);
-                item.SubItems.Add(file.DirectoryName);
-
-                listViewFileName.Items.Add(item);
-            }
-
-            // リストビューの描画を再開する
-            listViewFileName.EndUpdate();
+            this.findFileList.AddRange(files);
+            listViewFileName.VirtualListSize = this.findFileList.Count;
         }
 
         private void backgroundSearchFile_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -447,9 +445,11 @@ namespace SearchFile
         /// </summary>
         private void SelectAllFileListEvent(object sender, EventArgs e)
         {
-            foreach (ListViewItem item in listViewFileName.Items)
+            listViewFileName.SelectedIndices.Clear();
+
+            for (int i = 0; i < this.findFileList.Count; i++)
             {
-                item.Selected = true;
+                listViewFileName.SelectedIndices.Add(i);
             }
         }
 
@@ -458,9 +458,15 @@ namespace SearchFile
         /// </summary>
         private void ReverseSelectionFileListEvent(object sender, EventArgs e)
         {
-            foreach (ListViewItem item in listViewFileName.Items)
+            int[] selectedIndices = listViewFileName.SelectedIndices.Cast<int>().ToArray();
+            listViewFileName.SelectedIndices.Clear();
+
+            for (int i = 0; i < this.findFileList.Count; i++)
             {
-                item.Selected = !item.Selected;
+                if (!selectedIndices.Contains(i))
+                {
+                    listViewFileName.SelectedIndices.Add(i);
+                }
             }
         }
 
@@ -472,18 +478,18 @@ namespace SearchFile
             try
             {
                 // チェックされているファイル名を取得する
-                var selectedFiles = from ListViewItem item in listViewFileName.SelectedItems.AsParallel()
-                                    select Path.Combine(item.SubItems[2].Text, item.Text);
-                int fileCount = listViewFileName.SelectedItems.Count;
+                IEnumerable<FileInfo> selectedFiles = this.findFileList.GetSelectedItems(listViewFileName.SelectedIndices);
+                int fileCount = listViewFileName.SelectedIndices.Count;
 
                 // ファイルを削除する
-                FileOperate.DeleteFiles(this, selectedFiles, checkMoveRecycler.Checked);
+                FileOperate.DeleteFiles(this, selectedFiles.Select(file => file.FullName), checkMoveRecycler.Checked);
 
                 // 削除したファイルをリストから削除する
-                foreach (ListViewItem item in listViewFileName.SelectedItems)
+                foreach (FileInfo file in selectedFiles)
                 {
-                    listViewFileName.Items.Remove(item);
+                    this.findFileList.Remove(file);
                 }
+                listViewFileName.VirtualListSize = this.findFileList.Count;
 
                 // 削除メッセージをステータスバーに表示する
                 statusLabelSearching.Text = string.Format(global::SearchFile.Properties.Resources.FileDeleteMessage, fileCount);
@@ -505,7 +511,7 @@ namespace SearchFile
         /// </summary>
         private void ResultCopyEvent(object sender, EventArgs e)
         {
-            int fileCount = listViewFileName.Items.Count;
+            int fileCount = this.findFileList.Count;
 
             if (fileCount == 0)
             {
@@ -520,9 +526,9 @@ namespace SearchFile
                 // ファイル一覧をクリップボードに追加する
                 StringBuilder sb = new StringBuilder();
 
-                foreach (ListViewItem item in listViewFileName.Items)
+                foreach (FileInfo file in this.findFileList)
                 {
-                    sb.AppendLine(Path.Combine(item.SubItems[2].Text, item.Text));
+                    sb.AppendLine(file.FullName);
                 }
 
                 Clipboard.SetText(sb.ToString());
@@ -540,19 +546,19 @@ namespace SearchFile
         private void contextFileList_Opened(object sender, EventArgs e)
         {
             // リストアイテム数に応じてコンテキストメニューに状態を設定する
-            bool existedItem = (listViewFileName.Items.Count != 0);
+            bool existedItem = (this.findFileList.Count != 0);
 
             contextFileListResultCopy.Enabled = existedItem;
             contextFileListSelectAll.Enabled = existedItem;
             contextFileListReverseSelection.Enabled = existedItem;
             contextFileListAutoColumnWidth.Checked = this._autoColumnWidth;
-            contextFileListShowProperty.Enabled = (listViewFileName.SelectedItems.Count > 0);
+            contextFileListShowProperty.Enabled = (listViewFileName.SelectedIndices.Count > 0);
         }
 
         private void menuEdit_DropDownOpened(object sender, EventArgs e)
         {
             // リストアイテム数に応じてコンテキストメニューに状態を設定する
-            bool existedItem = (listViewFileName.Items.Count != 0);
+            bool existedItem = (this.findFileList.Count != 0);
 
             menuEditCopy.Enabled = existedItem;
             menuEditSelectAll.Enabled = existedItem;
@@ -593,9 +599,9 @@ namespace SearchFile
                     // 検索結果をファイルに保存する
                     using (TextWriter writer = new StreamWriter(dialog.FileName, false, Encoding.Default))
                     {
-                        foreach (ListViewItem item in listViewFileName.Items)
+                        foreach (FileInfo file in this.findFileList)
                         {
-                            writer.WriteLine(Path.Combine(item.SubItems[2].Text, item.Text));
+                            writer.WriteLine(file.FullName);
                         }
                     }
                 }
@@ -614,10 +620,10 @@ namespace SearchFile
         {
             try
             {
-                foreach (ListViewItem item in listViewFileName.SelectedItems)
+                foreach (FileInfo file in this.findFileList.GetSelectedItems(listViewFileName.SelectedIndices))
                 {
                     // ファイルプロパティを表示する
-                    FileOperate.ShowPropertyDialog(this, Path.Combine(item.SubItems[2].Text, item.Text));
+                    FileOperate.ShowPropertyDialog(this, file.FullName);
                 }
             }
             catch (Exception ex)
@@ -793,6 +799,33 @@ namespace SearchFile
             label.FillColor1 = SystemColors.GradientInactiveCaption;
             label.FillColor2 = SystemColors.InactiveCaption;
             label.LinearGradientMode = LinearGradientMode.Vertical;
+        }
+
+        private void listViewFileName_RetrieveVirtualItem(object sender, RetrieveVirtualItemEventArgs e)
+        {
+            FileInfo file = this.findFileList[e.ItemIndex];
+            ListViewItem item;
+
+            if (!this.listViewItemTable.TryGetValue(file.FullName, out item))
+            {
+                item = file.ConvertListViewItem(imageFileList);
+                this.listViewItemTable[file.FullName] = item;
+            }
+
+            e.Item = item;
+        }
+
+        private void listViewFileName_CacheVirtualItems(object sender, CacheVirtualItemsEventArgs e)
+        {
+            for (int i = e.StartIndex; i <= e.EndIndex; i++)
+            {
+                FileInfo file = this.findFileList[i];
+
+                if (!this.listViewItemTable.ContainsKey(file.FullName))
+                {
+                    this.listViewItemTable[file.FullName] = file.ConvertListViewItem(imageFileList);
+                }
+            }
         }
     }
 }
