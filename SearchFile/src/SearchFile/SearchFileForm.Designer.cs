@@ -345,7 +345,10 @@
             this.listViewFileName.TabIndex = 0;
             this.listViewFileName.UseCompatibleStateImageBehavior = false;
             this.listViewFileName.View = System.Windows.Forms.View.Details;
+            this.listViewFileName.VirtualMode = true;
             this.listViewFileName.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.listViewFileName_ColumnClick);
+            this.listViewFileName.RetrieveVirtualItem += new System.Windows.Forms.RetrieveVirtualItemEventHandler(this.listViewFileName_RetrieveVirtualItem);
+            this.listViewFileName.CacheVirtualItems += new System.Windows.Forms.CacheVirtualItemsEventHandler(this.listViewFileName_CacheVirtualItems);
             // 
             // columnFileName
             // 
