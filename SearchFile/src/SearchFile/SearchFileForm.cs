@@ -10,6 +10,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using MyLib.CustomControls;
+using MyLib.Utils;
 using MyLib.WindowsShell;
 using SearchFile.Extension;
 using SearchFile.Utils;
@@ -90,33 +91,57 @@ namespace SearchFile
         /// </summary>
         private void ApplicationIdleEvent(object sender, EventArgs e)
         {
-            try
+            // リストビューの状態に応じてコピーの可否を UI に反映する
+            toolEditResultCopy.Enabled = (this.findFileList.Count != 0);
+
+            // アクティブコントロールを取得する
+            TextBoxBase activeControl = GetActiveInnerControl() as TextBoxBase;
+
+            if (activeControl != null)
             {
-                // リストビューの状態に応じてコピーの可否を UI に反映する
-                toolEditResultCopy.Enabled = (this.findFileList.Count != 0);
-
-                // アクティブコントロールを取得する
-                TextBoxBase activeControl = GetActiveInnerControl() as TextBoxBase;
-
-                if (activeControl != null)
-                {
-                    // アクティブコントロールが TextBoxBase の場合
-                    toolEditCut.Enabled = toolEditCopy.Enabled = (activeControl.SelectionLength > 0);
-                    toolEditPaste.Enabled = Clipboard.ContainsText();
-                }
-                else
-                {
-                    toolEditCut.Enabled = false;
-                    toolEditCopy.Enabled = false;
-                    toolEditPaste.Enabled = false;
-                }
+                // アクティブコントロールが TextBoxBase の場合
+                toolEditCut.Enabled = toolEditCopy.Enabled = (activeControl.SelectionLength > 0);
+                toolEditPaste.Enabled = Clipboard.ContainsText();
             }
-            catch (Exception)
+            else
             {
-                toolEditResultCopy.Enabled = false;
                 toolEditCut.Enabled = false;
                 toolEditCopy.Enabled = false;
                 toolEditPaste.Enabled = false;
+            }
+        }
+
+        /// <summary>
+        /// アプリケーションのアイドル時に ListViewItem のキャッシュを行うイベント
+        /// </summary>
+        private void ApplicationIdleCacheListViewItemEvent(object sender, EventArgs e)
+        {
+            // リストビューの表示要素のキャッシュが完了していない場合
+            if (!this.findFileList.EnumeratedEnd)
+            {
+                IEnumerator<FileInfo> enumerator = this.findFileList.EnumerateItem().GetEnumerator();
+
+                // 1 回のアイドル処理で最大 4 件キャッシュを行う
+                for (int i = 0; i < 4; i++)
+                {
+                    if (!enumerator.MoveNext())
+                    {
+                        break;
+                    }
+
+                    CacheListViewItem(enumerator.Current);
+                }
+
+                if (this.findFileList.EnumeratedEnd)
+                {
+                    // アイドルイベントから登録を解除する
+                    Application.Idle -= this.ApplicationIdleCacheListViewItemEvent;
+                }
+                else
+                {
+                    // 再度アイドルイベントを発生させる
+                    ApplicationUtility.RaiseIdle();
+                }
             }
         }
 
@@ -389,9 +414,18 @@ namespace SearchFile
         /// <param name="files">検索結果のファイル情報</param>
         void ISearchResultView.AddFiles(IEnumerable<FileInfo> files)
         {
+            // 検索結果のアイテム追加前の状態を取得する
+            bool beforeEnumeratedEnd = this.findFileList.EnumeratedEnd;
+
             // 検索結果のアイテムを追加する
             this.findFileList.AddRange(files);
             listViewFileName.VirtualListSize = this.findFileList.Count;
+
+            // 検索結果のアイテム追加前にキャッシュ処理が終了していた場合はアイドルイベントを登録する
+            if (beforeEnumeratedEnd)
+            {
+                Application.Idle += this.ApplicationIdleCacheListViewItemEvent;
+            }
         }
 
         private void backgroundSearchFile_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -801,9 +835,32 @@ namespace SearchFile
             label.LinearGradientMode = LinearGradientMode.Vertical;
         }
 
+        /// <summary>
+        /// RetrieveVirtualItem イベントを処理する
+        /// </summary>
         private void listViewFileName_RetrieveVirtualItem(object sender, RetrieveVirtualItemEventArgs e)
         {
-            FileInfo file = this.findFileList[e.ItemIndex];
+            e.Item = CacheListViewItem(this.findFileList[e.ItemIndex]);
+        }
+
+        /// <summary>
+        /// CacheVirtualItems イベントを処理する
+        /// </summary>
+        private void listViewFileName_CacheVirtualItems(object sender, CacheVirtualItemsEventArgs e)
+        {
+            for (int i = e.StartIndex; i <= e.EndIndex; i++)
+            {
+                CacheListViewItem(this.findFileList[i]);
+            }
+        }
+
+        /// <summary>
+        /// FileInfo オブジェクトの情報をもとに ListViewItem オブジェクトを生成し、キャッシュする。
+        /// </summary>
+        /// <param name="file">キャッシュするファイル情報を示す FileInfo オブジェクト</param>
+        /// <returns>生成した ListViewItem オブジェクト。既にキャッシュされている場合は新たに生成せずに、キャッシュ済みのインスタンスを返す。</returns>
+        private ListViewItem CacheListViewItem(FileInfo file)
+        {
             ListViewItem item;
 
             if (!this.listViewItemTable.TryGetValue(file.FullName, out item))
@@ -812,20 +869,7 @@ namespace SearchFile
                 this.listViewItemTable[file.FullName] = item;
             }
 
-            e.Item = item;
-        }
-
-        private void listViewFileName_CacheVirtualItems(object sender, CacheVirtualItemsEventArgs e)
-        {
-            for (int i = e.StartIndex; i <= e.EndIndex; i++)
-            {
-                FileInfo file = this.findFileList[i];
-
-                if (!this.listViewItemTable.ContainsKey(file.FullName))
-                {
-                    this.listViewItemTable[file.FullName] = file.ConvertListViewItem(imageFileList);
-                }
-            }
+            return item;
         }
     }
 }

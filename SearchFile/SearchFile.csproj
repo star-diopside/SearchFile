@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="src\MyLib\Utils\ApplicationUtility.cs" />
     <Compile Include="src\SearchFile\DirectoryComparer.cs" />
     <Compile Include="src\SearchFile\Extension\ConvertExtensions.cs" />
     <Compile Include="src\SearchFile\FindFileList.cs" />
