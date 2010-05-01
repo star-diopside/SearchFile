@@ -472,7 +472,7 @@ namespace SearchFile
             try
             {
                 // チェックされているファイル名を取得する
-                var selectedFiles = from ListViewItem item in listViewFileName.SelectedItems
+                var selectedFiles = from ListViewItem item in listViewFileName.SelectedItems.AsParallel()
                                     select Path.Combine(item.SubItems[2].Text, item.Text);
                 int fileCount = listViewFileName.SelectedItems.Count;
 

@@ -162,7 +162,7 @@ namespace SearchFile
                     Monitor.Wait(lockObject);
 
                     // ファイル名を取得する
-                    var fileNames = from fileName in Directory.GetFiles(path)
+                    var fileNames = from fileName in Directory.EnumerateFiles(path).AsParallel()
                                     where pattern.IsMatch(Path.GetFileName(fileName))
                                     select fileName;
                     int findCount = fileNames.Count();

@@ -16,7 +16,7 @@ namespace SearchFile
         /// <param name="files">検索結果のファイル名</param>
         public SearchResultFiles(IEnumerable<string> fileNames)
         {
-            this._files = from fileName in fileNames
+            this._files = from fileName in fileNames.AsParallel()
                           select new FileInfo(fileName);
         }
 
